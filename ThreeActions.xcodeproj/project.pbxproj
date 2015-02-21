@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E4D1A98E021005673D1 /* AppDelegate.swift */; };
+		40687E501A98E021005673D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E4F1A98E021005673D1 /* ViewController.swift */; };
+		40687E531A98E021005673D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40687E511A98E021005673D1 /* Main.storyboard */; };
+		40687E551A98E021005673D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40687E541A98E021005673D1 /* Images.xcassets */; };
+		40687E581A98E021005673D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40687E561A98E021005673D1 /* LaunchScreen.xib */; };
+		40687E641A98E021005673D1 /* ThreeActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E631A98E021005673D1 /* ThreeActionsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40687E5E1A98E021005673D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40687E401A98E021005673D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40687E471A98E021005673D1;
+			remoteInfo = ThreeActions;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40687E481A98E021005673D1 /* ThreeActions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeActions.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40687E4C1A98E021005673D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40687E4D1A98E021005673D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40687E4F1A98E021005673D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40687E521A98E021005673D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40687E541A98E021005673D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		40687E571A98E021005673D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		40687E5D1A98E021005673D1 /* ThreeActionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThreeActionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40687E621A98E021005673D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40687E631A98E021005673D1 /* ThreeActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeActionsTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40687E451A98E021005673D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40687E5A1A98E021005673D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40687E3F1A98E021005673D1 = {
+			isa = PBXGroup;
+			children = (
+				40687E4A1A98E021005673D1 /* ThreeActions */,
+				40687E601A98E021005673D1 /* ThreeActionsTests */,
+				40687E491A98E021005673D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40687E491A98E021005673D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40687E481A98E021005673D1 /* ThreeActions.app */,
+				40687E5D1A98E021005673D1 /* ThreeActionsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40687E4A1A98E021005673D1 /* ThreeActions */ = {
+			isa = PBXGroup;
+			children = (
+				40687E4D1A98E021005673D1 /* AppDelegate.swift */,
+				40687E4F1A98E021005673D1 /* ViewController.swift */,
+				40687E511A98E021005673D1 /* Main.storyboard */,
+				40687E541A98E021005673D1 /* Images.xcassets */,
+				40687E561A98E021005673D1 /* LaunchScreen.xib */,
+				40687E4B1A98E021005673D1 /* Supporting Files */,
+			);
+			path = ThreeActions;
+			sourceTree = "<group>";
+		};
+		40687E4B1A98E021005673D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40687E4C1A98E021005673D1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		40687E601A98E021005673D1 /* ThreeActionsTests */ = {
+			isa = PBXGroup;
+			children = (
+				40687E631A98E021005673D1 /* ThreeActionsTests.swift */,
+				40687E611A98E021005673D1 /* Supporting Files */,
+			);
+			path = ThreeActionsTests;
+			sourceTree = "<group>";
+		};
+		40687E611A98E021005673D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40687E621A98E021005673D1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40687E471A98E021005673D1 /* ThreeActions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40687E671A98E021005673D1 /* Build configuration list for PBXNativeTarget "ThreeActions" */;
+			buildPhases = (
+				40687E441A98E021005673D1 /* Sources */,
+				40687E451A98E021005673D1 /* Frameworks */,
+				40687E461A98E021005673D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThreeActions;
+			productName = ThreeActions;
+			productReference = 40687E481A98E021005673D1 /* ThreeActions.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40687E5C1A98E021005673D1 /* ThreeActionsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40687E6A1A98E021005673D1 /* Build configuration list for PBXNativeTarget "ThreeActionsTests" */;
+			buildPhases = (
+				40687E591A98E021005673D1 /* Sources */,
+				40687E5A1A98E021005673D1 /* Frameworks */,
+				40687E5B1A98E021005673D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40687E5F1A98E021005673D1 /* PBXTargetDependency */,
+			);
+			name = ThreeActionsTests;
+			productName = ThreeActionsTests;
+			productReference = 40687E5D1A98E021005673D1 /* ThreeActionsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40687E401A98E021005673D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Revolvity LLC";
+				TargetAttributes = {
+					40687E471A98E021005673D1 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					40687E5C1A98E021005673D1 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 40687E471A98E021005673D1;
+					};
+				};
+			};
+			buildConfigurationList = 40687E431A98E021005673D1 /* Build configuration list for PBXProject "ThreeActions" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 40687E3F1A98E021005673D1;
+			productRefGroup = 40687E491A98E021005673D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40687E471A98E021005673D1 /* ThreeActions */,
+				40687E5C1A98E021005673D1 /* ThreeActionsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		40687E461A98E021005673D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40687E531A98E021005673D1 /* Main.storyboard in Resources */,
+				40687E581A98E021005673D1 /* LaunchScreen.xib in Resources */,
+				40687E551A98E021005673D1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40687E5B1A98E021005673D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40687E441A98E021005673D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40687E501A98E021005673D1 /* ViewController.swift in Sources */,
+				40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40687E591A98E021005673D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40687E641A98E021005673D1 /* ThreeActionsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40687E5F1A98E021005673D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40687E471A98E021005673D1 /* ThreeActions */;
+			targetProxy = 40687E5E1A98E021005673D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		40687E511A98E021005673D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40687E521A98E021005673D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		40687E561A98E021005673D1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40687E571A98E021005673D1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40687E651A98E021005673D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		40687E661A98E021005673D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40687E681A98E021005673D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ThreeActions/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		40687E691A98E021005673D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ThreeActions/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		40687E6B1A98E021005673D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ThreeActionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThreeActions.app/ThreeActions";
+			};
+			name = Debug;
+		};
+		40687E6C1A98E021005673D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ThreeActionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ThreeActions.app/ThreeActions";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40687E431A98E021005673D1 /* Build configuration list for PBXProject "ThreeActions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40687E651A98E021005673D1 /* Debug */,
+				40687E661A98E021005673D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40687E671A98E021005673D1 /* Build configuration list for PBXNativeTarget "ThreeActions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40687E681A98E021005673D1 /* Debug */,
+				40687E691A98E021005673D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		40687E6A1A98E021005673D1 /* Build configuration list for PBXNativeTarget "ThreeActionsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40687E6B1A98E021005673D1 /* Debug */,
+				40687E6C1A98E021005673D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40687E401A98E021005673D1 /* Project object */;
+}
