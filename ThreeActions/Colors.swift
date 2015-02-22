@@ -41,4 +41,7 @@ extension UIColor {
     class func appSage() -> UIColor {
         return UIColor(red: 120.0/255.0, green: 116.0/255.0, blue: 63.0/255.0, alpha: 1.0)
     }
+    class func appErrorRed() -> UIColor {
+        return UIColor(red: 211.0/255.0, green: 141.0/255.0, blue: 182.0/255.0, alpha: 1.0)
+    }
 }

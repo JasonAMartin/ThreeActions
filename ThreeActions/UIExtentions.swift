@@ -12,6 +12,7 @@ import UIKit
 extension UIViewController {
     
     class func  buttonCreator(button:UIButton){
+        //plum
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.appDarkPlum().CGColor
         button.layer.borderWidth = 0.5
@@ -22,6 +23,7 @@ extension UIViewController {
     }
     
     class func  buttonCreatorAction(button:UIButton){
+        //sage
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.appDarkPlum().CGColor
         button.layer.borderWidth = 0.5
@@ -32,6 +34,7 @@ extension UIViewController {
     }
     
     class func  buttonCreatorDismiss(button:UIButton){
+        //midnight
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.appDarkPlum().CGColor
         button.layer.borderWidth = 0.5
