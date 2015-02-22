@@ -11,20 +11,20 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     //import parseErrorDictionary
     let parseErrorDictionary = ParseErrorDictionary
-    let appColors = ColorWheel()
+    
     
     override func viewDidLoad() {
-        signUpButton.layer.cornerRadius = 5
-        signUpButton.layer.borderColor = UIColor.appDarkPlum().CGColor
-        signUpButton.layer.borderWidth = 0.5
-        signUpButton.backgroundColor = UIColor.appPlum()
-        signUpButton.setTitleColor(UIColor.appGhostWhite(), forState: UIControlState.Normal)
-        signUpButton.setTitleColor(UIColor.appLightBase(), forState: UIControlState.Highlighted)
-
-
+        
+        //create button look.
+        //I've extended UIViewController with custom methods in UIExtentions.swift
+        
+        UIViewController.buttonCreatorAction(signUpButton)
+        UIViewController.buttonCreatorAction(loginButton)
+        
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

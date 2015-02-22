@@ -32,6 +32,9 @@
 		40687E901A98E3A5005673D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */; };
 		40687E921A98E7B7005673D1 /* ErrorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E911A98E7B7005673D1 /* ErrorDictionary.swift */; };
 		40B88BC91A991297008F7B5B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BC81A991297008F7B5B /* Colors.swift */; };
+		40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */; };
+		40B88BCF1A997CEF008F7B5B /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */; };
+		40B88BD11A998917008F7B5B /* LoginAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		40687E911A98E7B7005673D1 /* ErrorDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorDictionary.swift; sourceTree = "<group>"; };
 		40B88BC81A991297008F7B5B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
+		40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +152,12 @@
 			children = (
 				40687E4D1A98E021005673D1 /* AppDelegate.swift */,
 				40687E4F1A98E021005673D1 /* ViewController.swift */,
+				40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */,
+				40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */,
 				40687E911A98E7B7005673D1 /* ErrorDictionary.swift */,
 				40687E511A98E021005673D1 /* Main.storyboard */,
 				40B88BC81A991297008F7B5B /* Colors.swift */,
+				40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */,
 				40687E541A98E021005673D1 /* Images.xcassets */,
 				40687E561A98E021005673D1 /* LaunchScreen.xib */,
 				40687E4B1A98E021005673D1 /* Supporting Files */,
@@ -295,10 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B88BD11A998917008F7B5B /* LoginAccountViewController.swift in Sources */,
+				40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */,
 				40687E921A98E7B7005673D1 /* ErrorDictionary.swift in Sources */,
 				40B88BC91A991297008F7B5B /* Colors.swift in Sources */,
 				40687E501A98E021005673D1 /* ViewController.swift in Sources */,
 				40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */,
+				40B88BCF1A997CEF008F7B5B /* UIExtentions.swift in Sources */,
 				40687E6F1A98E06D005673D1 /* ParseReq.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
