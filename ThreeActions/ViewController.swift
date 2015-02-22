@@ -22,6 +22,17 @@ class ViewController: UIViewController {
         UIViewController.buttonCreatorAction(loginButton)
         
         
+        //make sure Parse cached user!
+        
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            println("user is here!")
+            println("\n \(currentUser)")
+        } else {
+            println("lol come on")
+        }
+        
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         

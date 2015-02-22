@@ -6,7 +6,17 @@
 //  Copyright (c) 2015 Revolvity LLC. All rights reserved.
 //
 
+//This file holds all responses
+
 import Foundation
+
+
+var AppResponseDictionary: [String:String] = [
+    "createAccountSuccess": "Your account was created.\nClick the button to continue."
+]
+
+
+
 
 //creating error dictionary for PARSE responses so I can customize my display
 

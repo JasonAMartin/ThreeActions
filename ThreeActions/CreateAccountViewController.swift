@@ -14,6 +14,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var errorPanel: UIView!
 
+    @IBOutlet weak var accountCreatedContinueButton: UIButton!
     @IBOutlet weak var progressSpinner: UIActivityIndicatorView!
     @IBOutlet weak var errorPanelButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
@@ -23,6 +24,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     //import parseErrorDictionary
     let parseErrorDictionary = ParseErrorDictionary
+    let appResponseDictionary = AppResponseDictionary
     
     override func viewDidLoad() {
         //customize buttons
@@ -82,18 +84,44 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func createUserAccount(){
+    func userSignUpValid(){
         
+        //make sure Parse cached user!
+        
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            println("user is here!")
+            println("\n \(currentUser)")
+        } else {
+            println("lol come on")
+        }
+        
+        
+        //rest of stuff
+        
+        errorPanelButton.hidden = true
+        progressSpinner.stopAnimating()
+        errorMessage.text = appResponseDictionary["createAccountSuccess"]
+        UIViewController.buttonCreatorAction(accountCreatedContinueButton)
+        accountCreatedContinueButton.hidden = false
+        
+    }
+    
+    func createUserAccount(#username:String, #password: String, #email:String){
+        
+        //setup user
         var user = PFUser()
-        user.username = "JAM2015"
-        user.password = "@@JAMwwwip1JAM@@"
-        user.email = "revolvity@live.com"
+        user.username = username
+        user.password = password
+        user.email = email
+        
+        //attempt signup
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
             if error == nil {
                 // Hooray! Let them use the app now.
-                println( "User Signed Up")
+                self.userSignUpValid()
             } else {
                 // There's an error, so let's grab the error code and look in the ErrorDictionary
                 //Optional is returned
@@ -170,9 +198,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //set initial message & make call to bring up error panel (should be renamed to response panel!)
         errorMessage.text = "Attempting to log into your account.\n\n"
         errorPanelControl(true)
-        createUserAccount()
+        createUserAccount(username: myUsername, password: myPassword, email: myEmail)
         
     }
 
+    @IBAction func continueToMainApp(sender: AnyObject) {
+        println("main app")
+    }
 }
 

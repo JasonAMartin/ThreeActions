@@ -150,11 +150,21 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fs-d4-nrh">
                                         <rect key="frame" x="25" y="271" width="238" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="CLOSE">
+                                        <state key="normal" title="GO BACK">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="closeResponsePanel:" destination="uvT-eA-3D8" eventType="touchUpInside" id="zv8-bc-omY"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjt-tk-pe8">
+                                        <rect key="frame" x="25" y="271" width="238" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="CONTINUE">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueToMainApp:" destination="uvT-eA-3D8" eventType="touchUpInside" id="uY6-sc-6Mz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -206,6 +216,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SOR-9R-qm5"/>
                     <connections>
+                        <outlet property="accountCreatedContinueButton" destination="Tjt-tk-pe8" id="XbZ-Xf-lgO"/>
                         <outlet property="createButton" destination="r3s-mT-qv0" id="atq-im-h4Y"/>
                         <outlet property="emailTextField" destination="iQd-kH-YAG" id="m1D-wU-KRY"/>
                         <outlet property="errorMessage" destination="12Y-lT-DPQ" id="vPT-xo-OAk"/>
