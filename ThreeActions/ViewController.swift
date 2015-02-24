@@ -43,6 +43,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func loginUser(sender: AnyObject) {
+        
+        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as ThreeActionsViewController
+        
+        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
+        
+        
+        
+
+    }
 
 
 }

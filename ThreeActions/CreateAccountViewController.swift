@@ -66,6 +66,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         errorPanelControl(false)
     }
     
+    func loginDisplay(){
+        emailTextField.hidden=true
+    }
+    
     func errorPanelControl(state:Bool){
         //true = show, false = hide
         if(state){
@@ -203,7 +207,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func continueToMainApp(sender: AnyObject) {
-        println("main app")
+       let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as ThreeActionsViewController
+        
+        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
+        
+        
+
+        
+        
     }
 }
 
