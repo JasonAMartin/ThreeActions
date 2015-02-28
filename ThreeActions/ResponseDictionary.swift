@@ -12,7 +12,8 @@ import Foundation
 
 
 var AppResponseDictionary: [String:String] = [
-    "createAccountSuccess": "Your account was created.\nClick the button to continue."
+    "createAccountSuccess": "Your account was created.\nClick the button to continue.",
+    "loginAccountSuccess": "You've logged into your account.\nClick the button to contiue."
 ]
 
 
@@ -23,6 +24,7 @@ var AppResponseDictionary: [String:String] = [
 var ParseErrorDictionary: [Int:String] = [
     1: "We're sorry, but our data provider, Parse, had a server error. Please try again now and/or later.", //internal server error
     100: "Connection to Parse failed. Please try again.",
+    101: "Sorry but your username/password combination isn't valid. Please check your entry and try again.",
     102: "It looks like our app is trying to get data from a source that doesn't exist. Please try again and let us know if this problem happens again.", //invalid query
     124: "We couldn't connect to the data provider. Please try again or later if the problem persists. Thank you.", //timeout
     125: "Your email isn't valid. Please fix your email and try again. Thank you.", //invalid email

@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
-   
+    
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var errorPanel: UIView!
@@ -21,6 +21,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    
+    //receive data from login controller :: it's either login or create
+    var vcPurpose = String()
     
     //import parseErrorDictionary
     let parseErrorDictionary = ParseErrorDictionary
@@ -41,6 +44,15 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.usernameTextField.delegate = self
+        
+        if(vcPurpose != "login") {
+            vcPurpose = "create"
+        }
+        if(vcPurpose=="login"){
+            //this view is being used to login, so hide email text field and change text on button
+            self.emailTextField.hidden=true
+            self.createButton.setTitle("LOGIN", forState: UIControlState.Normal)
+        }
         
         //make sure response panel is hidden
         errorPanelControl(false)
@@ -67,7 +79,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loginDisplay(){
-        emailTextField.hidden=true
+       self.emailTextField.text="ddd"
     }
     
     func errorPanelControl(state:Bool){
@@ -90,22 +102,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func userSignUpValid(){
         
-        //make sure Parse cached user!
-        
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            println("user is here!")
-            println("\n \(currentUser)")
+        errorPanelButton.hidden = true
+        progressSpinner.stopAnimating()
+       
+        if(vcPurpose=="login"){
+             errorMessage.text = appResponseDictionary["loginAccountSuccess"]
         } else {
-            println("lol come on")
+             errorMessage.text = appResponseDictionary["createAccountSuccess"]
         }
         
         
-        //rest of stuff
-        
-        errorPanelButton.hidden = true
-        progressSpinner.stopAnimating()
-        errorMessage.text = appResponseDictionary["createAccountSuccess"]
         UIViewController.buttonCreatorAction(accountCreatedContinueButton)
         accountCreatedContinueButton.hidden = false
         
@@ -152,7 +158,53 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
+    func loginUserAccount(#username:String, #password: String){
+        
+        //attempt signup
+        
+        PFUser.logInWithUsernameInBackground(username, password:password) {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user != nil {
+                // Do stuff after successful login.
+                self.userSignUpValid()
+            } else {
+                // The login failed. 
+                
+                
+                if let signinError = self.parseErrorDictionary[error.code] {
+                    println("Error:\n")
+                    println(signinError)
+                    self.progressSpinner.stopAnimating()
+                    self.errorMessage.text = signinError
+                    
+                } else {
+                    //optional is NIL, so my error isn't defined. Return response 909090
+                    if let unknownError = self.parseErrorDictionary[909090] {
+                        println(unknownError)
+                        self.progressSpinner.stopAnimating()
+                        self.errorMessage.text = unknownError
+                        
+                    }
+                    
+                }
+                
+                
+            }
+        }
+        
+    }
+    
+    
+    
+    
     @IBAction func loginAccount(sender: AnyObject) {
+
+        
+        
+        
+        
         //if username,password and email are NOT empty, allow function to continue
         //deault bg for text fields is appLightBase
         
@@ -186,7 +238,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             self.passwordTextField.placeholder = "must enter password"
         }
        
-        if(countElements(myEmail)==0) {
+        if(countElements(myEmail)==0 && vcPurpose=="create") {
             canContinue = false
             self.emailTextField.backgroundColor = UIColor.appGold()
             self.emailTextField.text=""
@@ -200,9 +252,22 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //ALL NORMAL ACTION AFTER THIS POINT
         
         //set initial message & make call to bring up error panel (should be renamed to response panel!)
-        errorMessage.text = "Attempting to log into your account.\n\n"
+        
+        if(vcPurpose=="login"){
+            errorMessage.text = "Attempting to log into your account.\n\n"
+        }else {
+            errorMessage.text = "Attempting to create your account.\n\n"
+        }
+        
         errorPanelControl(true)
+        
+        if(vcPurpose=="create"){
         createUserAccount(username: myUsername, password: myPassword, email: myEmail)
+        }
+        
+        if(vcPurpose=="login"){
+            loginUserAccount(username: myUsername, password: myPassword)
+        }
         
     }
 

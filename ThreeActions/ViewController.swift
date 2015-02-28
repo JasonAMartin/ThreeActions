@@ -15,6 +15,26 @@ class ViewController: UIViewController {
      
     override func viewDidLoad() {
         
+        //check for logged in user. If so, go right to app.
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            signUpButton.hidden=true
+            loginButton.setTitle("CONTINUE", forState: UIControlState.Normal)
+        }
+
+        
+        
+        //detele test code
+        
+        var userdata = UserData()
+        
+        userdata.saveData(title: "My Fun Title Goes Right HERE!", description: "This is a longer description of a bunch of stuff for this action or perhaps not at all. Who knows.", status: 0, colornumber: 2, task: "newtask", owner: currentUser.username)
+        
+      //userdata.getData(userid: currentUser.username)
+        
+        //end delete
+        
+        
         //create button look.
         //I've extended UIViewController with custom methods in UIExtentions.swift
         
@@ -22,15 +42,6 @@ class ViewController: UIViewController {
         UIViewController.buttonCreatorAction(loginButton)
         
         
-        //make sure Parse cached user!
-        
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            println("user is here!")
-            println("\n \(currentUser)")
-        } else {
-            println("lol come on")
-        }
         
         
         super.viewDidLoad()
@@ -47,13 +58,28 @@ class ViewController: UIViewController {
     
     @IBAction func loginUser(sender: AnyObject) {
         
-        let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as ThreeActionsViewController
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            
+            //user is logged in, so go to main app
+            
+            let threeActionsViewControler = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as UITabBarController
+            
+            presentViewController(threeActionsViewControler, animated: true, completion: nil)
+            
+        } else {
+            
         
-        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
+        //user needs to login so go to login VC
+            
+        let createAccountViewController = storyboard?.instantiateViewControllerWithIdentifier("loginController") as CreateAccountViewController
+        
+        createAccountViewController.vcPurpose = "login"
+         
+        presentViewController(createAccountViewController, animated: true, completion: nil)
         
         
-        
-
+    }
     }
 
 

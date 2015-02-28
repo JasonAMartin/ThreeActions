@@ -43,4 +43,14 @@ extension UIViewController {
         button.setTitleColor(UIColor.appGhostWhite(), forState: UIControlState.Normal)
         button.setTitleColor(UIColor.appLightBase(), forState: UIControlState.Highlighted)
     }
+    
+    
+    class func  actionSectionButton(button:UIButton){
+        //buttons for the 3 action section in Today view
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.appDarkPlum().CGColor
+        button.layer.borderWidth = 0.5        
+    }
+    
+    
 }

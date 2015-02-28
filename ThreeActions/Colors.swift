@@ -44,4 +44,28 @@ extension UIColor {
     class func appErrorRed() -> UIColor {
         return UIColor(red: 211.0/255.0, green: 141.0/255.0, blue: 182.0/255.0, alpha: 1.0)
     }
+    
+    class func appActionOne() -> UIColor {
+        return UIColor(red: 209.0/255.0, green: 191.0/255.0, blue: 108.0/255.0, alpha: 1.0)
+    }
+    
+    class func appActionOneHighlight() -> UIColor {
+        return UIColor(red: 209.0/255.0, green: 191.0/255.0, blue: 108.0/255.0, alpha: 0.5)
+    }
+    
+    class func appActionTwo() -> UIColor {
+        return UIColor(red: 32.0/255.0, green: 95.0/255.0, blue: 119.0/255.0, alpha: 1.0)
+    }
+    
+    class func appActionTwoHighlight() -> UIColor {
+        return UIColor(red: 32.0/255.0, green: 95.0/255.0, blue: 119.0/255.0, alpha: 0.5)
+    }
+    
+    class func appActionThree() -> UIColor {
+        return UIColor(red: 246.0/255.0, green: 223.0/255.0, blue: 174.0/255.0, alpha: 1.0)
+    }
+    
+    class func appActionThreeHighLight() -> UIColor {
+        return UIColor(red: 246.0/255.0, green: 223.0/255.0, blue: 174.0/255.0, alpha: 0.5)
+    }
 }
