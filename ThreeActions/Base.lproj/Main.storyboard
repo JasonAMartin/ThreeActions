@@ -90,13 +90,11 @@
                                 <rect key="frame" x="40" y="28" width="240" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fieldEntry:" destination="pS0-gk-xCt" eventType="editingChanged" id="xzO-Fs-a6k"/>
+                                    <action selector="titleEdited:" destination="pS0-gk-xCt" eventType="valueChanged" id="s8T-gS-5fH"/>
+                                </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="action description" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="PSS-Mb-FOW">
-                                <rect key="frame" x="40" y="70" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-yv-K8z">
                                 <rect key="frame" x="52" y="230" width="48" height="30"/>
                                 <state key="normal" title="color 1">
@@ -124,7 +122,7 @@
                                     <action selector="chooseActionColor3:" destination="pS0-gk-xCt" eventType="touchUpInside" id="dHo-Gd-I7y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-yq-n50">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-yq-n50">
                                 <rect key="frame" x="137" y="473" width="47" height="30"/>
                                 <color key="backgroundColor" red="0.51971114309999999" green="0.78757195719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="submit">
@@ -132,6 +130,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAction:" destination="pS0-gk-xCt" eventType="touchUpInside" id="iGG-gX-dUq"/>
+                                    <segue destination="KH6-up-I4c" kind="modal" id="KO7-9z-5tG"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPB-HT-gjZ">
@@ -144,6 +143,18 @@
                                     <action selector="actionDateSelected:" destination="pS0-gk-xCt" eventType="valueChanged" id="KLB-7V-sb9"/>
                                 </connections>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="select all items to see button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnB-Mn-Cu5">
+                                <rect key="frame" x="23" y="459" width="220" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="pVT-TO-OVv">
+                                <rect key="frame" x="32" y="89" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -153,9 +164,10 @@
                         <outlet property="actionColorButton2" destination="HrD-qL-h3e" id="G3K-20-7Ai"/>
                         <outlet property="actionColorButton3" destination="MPY-CU-NHg" id="3oT-f9-j6M"/>
                         <outlet property="actionDatePicker" destination="kPB-HT-gjZ" id="Kve-EU-zVH"/>
-                        <outlet property="actionDescription" destination="PSS-Mb-FOW" id="k3r-8N-J0U"/>
+                        <outlet property="actionDescription" destination="pVT-TO-OVv" id="PO2-EB-60A"/>
                         <outlet property="actionTitle" destination="Upd-7X-PKx" id="ABK-gN-vWi"/>
                         <outlet property="createActionButton" destination="MMj-yq-n50" id="K7Y-FN-f9b"/>
+                        <outlet property="preButtonWarning" destination="qnB-Mn-Cu5" id="jGL-dR-1uM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqO-hM-bjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,6 +314,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auu-2e-HRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="675" y="845"/>
+        </scene>
+        <!--Network View Controller-->
+        <scene sceneID="yYc-Lf-ZrG">
+            <objects>
+                <viewController id="KH6-up-I4c" customClass="NetworkViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WqZ-8x-oeq"/>
+                        <viewControllerLayoutGuide type="bottom" id="MiK-Q1-q4r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XuL-pJ-hqN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCJ-uk-bH3">
+                                <rect key="frame" x="149" y="351" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitModal:" destination="KH6-up-I4c" eventType="touchUpInside" id="13g-uZ-qOt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="exitButton" destination="oCJ-uk-bH3" id="AH4-rd-7rK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V07-80-cFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="477"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ox7-gv-pvV">

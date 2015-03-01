@@ -79,7 +79,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loginDisplay(){
-       self.emailTextField.text="ddd"
+       self.emailTextField.text="Easter Egg!"
     }
     
     func errorPanelControl(state:Bool){
