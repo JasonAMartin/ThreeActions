@@ -77,7 +77,7 @@
         <!--Add Action-->
         <scene sceneID="LdB-hW-mYb">
             <objects>
-                <viewController title="Add Action" id="pS0-gk-xCt" sceneMemberID="viewController">
+                <viewController title="Add Action" id="pS0-gk-xCt" customClass="AddActionViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EQN-zh-Zc1"/>
                         <viewControllerLayoutGuide type="bottom" id="fZj-uG-ZeZ"/>
@@ -85,9 +85,78 @@
                     <view key="view" contentMode="scaleToFill" id="7g4-Gd-S28">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="action title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Upd-7X-PKx">
+                                <rect key="frame" x="40" y="28" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="action description" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="PSS-Mb-FOW">
+                                <rect key="frame" x="40" y="70" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-yv-K8z">
+                                <rect key="frame" x="52" y="230" width="48" height="30"/>
+                                <state key="normal" title="color 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseActionColor1:" destination="pS0-gk-xCt" eventType="touchUpInside" id="KLA-Kw-r5o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrD-qL-h3e">
+                                <rect key="frame" x="137" y="230" width="48" height="30"/>
+                                <state key="normal" title="color 2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseActionColor2:" destination="pS0-gk-xCt" eventType="touchUpInside" id="88G-ki-gDC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPY-CU-NHg">
+                                <rect key="frame" x="224" y="230" width="48" height="30"/>
+                                <state key="normal" title="color 3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseActionColor3:" destination="pS0-gk-xCt" eventType="touchUpInside" id="dHo-Gd-I7y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-yq-n50">
+                                <rect key="frame" x="137" y="473" width="47" height="30"/>
+                                <color key="backgroundColor" red="0.51971114309999999" green="0.78757195719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAction:" destination="pS0-gk-xCt" eventType="touchUpInside" id="iGG-gX-dUq"/>
+                                </connections>
+                            </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPB-HT-gjZ">
+                                <rect key="frame" x="0.0" y="281" width="320" height="162"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.83529411760000005" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <date key="date" timeIntervalSinceReferenceDate="446863098.79631501">
+                                    <!--2015-03-01 00:38:18 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="actionDateSelected:" destination="pS0-gk-xCt" eventType="valueChanged" id="KLB-7V-sb9"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="VEF-mS-bpG"/>
+                    <connections>
+                        <outlet property="actionColorButton1" destination="Llr-yv-K8z" id="7jU-OQ-ldV"/>
+                        <outlet property="actionColorButton2" destination="HrD-qL-h3e" id="G3K-20-7Ai"/>
+                        <outlet property="actionColorButton3" destination="MPY-CU-NHg" id="3oT-f9-j6M"/>
+                        <outlet property="actionDatePicker" destination="kPB-HT-gjZ" id="Kve-EU-zVH"/>
+                        <outlet property="actionDescription" destination="PSS-Mb-FOW" id="k3r-8N-J0U"/>
+                        <outlet property="actionTitle" destination="Upd-7X-PKx" id="ABK-gN-vWi"/>
+                        <outlet property="createActionButton" destination="MMj-yq-n50" id="K7Y-FN-f9b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqO-hM-bjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

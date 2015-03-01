@@ -26,9 +26,12 @@ class ViewController: UIViewController {
         
         //detele test code
         
-        var userdata = UserData()
+      //  var userdata = UserData(userAccount: currentUser.username)
         
-        userdata.saveData(title: "My Fun Title Goes Right HERE!", description: "This is a longer description of a bunch of stuff for this action or perhaps not at all. Who knows.", status: 0, colornumber: 2, task: "newtask", owner: currentUser.username)
+       //let processData = userdata.saveData(title: "My Fun Title Goes Right HERE!", description: "This is a longer description of a bunch of stuff for this action or perhaps not at all. Who knows.", status: 0, colornumber: 1, task: "newtask")
+
+        
+        
         
       //userdata.getData(userid: currentUser.username)
         

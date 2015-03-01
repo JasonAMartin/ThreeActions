@@ -33,6 +33,7 @@
 		4085A63E1AA15EDF00B59E99 /* ActionsTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */; };
 		4085A6401AA170D700B59E99 /* ExternalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A63F1AA170D700B59E99 /* ExternalAnimations.swift */; };
 		4085A6421AA2350600B59E99 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6411AA2350600B59E99 /* UserData.swift */; };
+		4085A6761AA2948A00B59E99 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6751AA2948A00B59E99 /* AddActionViewController.swift */; };
 		40B88BC91A991297008F7B5B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BC81A991297008F7B5B /* Colors.swift */; };
 		40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */; };
 		40B88BCF1A997CEF008F7B5B /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */; };
@@ -83,6 +84,7 @@
 		4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsTodayViewController.swift; sourceTree = "<group>"; };
 		4085A63F1AA170D700B59E99 /* ExternalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalAnimations.swift; sourceTree = "<group>"; };
 		4085A6411AA2350600B59E99 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		4085A6751AA2948A00B59E99 /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		40B88BC81A991297008F7B5B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				40687E4F1A98E021005673D1 /* ViewController.swift */,
 				40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */,
 				40C89F4C1A9C1FD3008F0601 /* ThreeActionsViewController.swift */,
+				4085A6751AA2948A00B59E99 /* AddActionViewController.swift */,
 				4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */,
 				40C89F4E1A9C2A92008F0601 /* Main.storyboard */,
 				4085A6411AA2350600B59E99 /* UserData.swift */,
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4085A6401AA170D700B59E99 /* ExternalAnimations.swift in Sources */,
+				4085A6761AA2948A00B59E99 /* AddActionViewController.swift in Sources */,
 				40B88BD11A998917008F7B5B /* LoginAccountViewController.swift in Sources */,
 				40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */,
 				40687E921A98E7B7005673D1 /* ResponseDictionary.swift in Sources */,

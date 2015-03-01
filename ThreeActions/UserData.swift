@@ -24,7 +24,19 @@ import Foundation
 
 class UserData {
     
-    func saveData (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #owner owner:String) {
+    let parseErrorDictionary = ParseErrorDictionary
+    
+    var userAccount: String
+    var progress = 0
+    var progressText = ""
+    
+    
+    init(userAccount:String){
+        self.userAccount = userAccount
+    }
+    
+    
+    func saveData (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String) -> Int {
         
        //date code
         
@@ -32,12 +44,14 @@ class UserData {
         let formatter = NSDateFormatter()
         //formatter.timeStyle = .ShortStyle
         formatter.dateStyle = .ShortStyle
+        
+        println(self.progress)
 
         
         //do query count to see if user already has a date and color set. If so, return error.
         
         var query = PFQuery(className:"UserActions")
-        query.whereKey("owner", equalTo:owner)
+        query.whereKey("owner", equalTo:userAccount)
         query.whereKey("actionColor", equalTo:actionColor)
         query.whereKey("date", equalTo:formatter.stringFromDate(date))
         query.countObjectsInBackgroundWithBlock {
@@ -45,8 +59,6 @@ class UserData {
             if error == nil && count==0 {
                
             //procceed
-               
-                
                 
                 var data = PFObject(className:"UserActions")
                 
@@ -57,53 +69,33 @@ class UserData {
                 data["date"] = formatter.stringFromDate(date)
                 data["creationDate"] = formatter.stringFromDate(date)
                 data["lastModified"] = date
-                data["owner"] = owner //userid
+                data["owner"] = self.userAccount //userid
                 
                 data.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
-                        println("I have succeeded")
+                        self.progress = 1
+                         println(self.progress)
                     } else {
-                        println("More work to do.")
-                        println(error.description)
+                        self.progressText = error.description
+                        self.progress = 2
+                         println(self.progress)
                     }
                 }
                 
-                
-                
-                
             } else {
-                println("Sorry, this query exists")
+                
+                self.progress = 2
+                 println(self.progress)
+                self.progressText = "The network request has resulted in an error"
+              
+                
             }
         }
-       
-        //proceed
         
-       /*
-        
-        var data = PFObject(className:"UserActions")
-        
-        data["actionTitle"] = actionTitle
-        data["actionDescription"] = actionDescription
-        data["status"] = status
-        data["actionColor"] = actionColor
-        data["date"] = formatter.stringFromDate(date)
-        data["creationDate"] = formatter.stringFromDate(date)
-        data["lastModified"] = date
-        data["owner"] = owner //userid
-        
-        data.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                println("I have succeeded")
-            } else {
-                println("More work to do.")
-                println(error.description)
-            }
-        }
-     
-*/
-        
+         println(self.progress)
+      return progress
+        //end method
         
     }
     
