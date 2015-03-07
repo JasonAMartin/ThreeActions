@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Revolvity LLC. All rights reserved.
 //
 
+//TODO: I'd like to make it so the default action that shows is either action 1 OR the next action not done. So if action 1 is done, then action 2 is shown. If action 2 done then 3 and if all 3 are done, just show default.
+
 import UIKit
 
 class ActionsTodayViewController: UIViewController {

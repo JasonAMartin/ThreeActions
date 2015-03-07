@@ -9,6 +9,11 @@
 
 class NetworkViewController: UIViewController {
     
+    let aData = String()
+    var aTitle = String()
+    let aDescrition = String()
+    
+    
     
     @IBOutlet weak var exitButton: UIButton!
     
@@ -16,6 +21,9 @@ class NetworkViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        exitButton.setTitle(aTitle, forState: .Normal)
+        println(aTitle)
         
     }
     

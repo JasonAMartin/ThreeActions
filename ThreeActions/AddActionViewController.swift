@@ -111,6 +111,14 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "networkSegue") {
+            if let networkViewController = segue.destinationViewController as? NetworkViewController{
+                networkViewController.aTitle = aTitle
+            }
+        }
+    }
+    
     func textViewDidChange(textView: UITextView!) { //Handle the text changes here
         let myField = textView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         

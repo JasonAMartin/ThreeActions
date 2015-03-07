@@ -7,14 +7,45 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-     
-    override func viewDidLoad() {
+    
+    @IBOutlet weak var logoCon: NSLayoutConstraint!
+    
+    @IBOutlet weak var logoTop: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonsCon: NSLayoutConstraint!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        logoCon.constant -= view.bounds.width
+        buttonsCon.constant -= view.bounds.height
+    
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
+            self.logoCon.constant += self.view.bounds.width
+            self.view.layoutIfNeeded()
+            
+            }, completion: nil)
+        
+        UIView.animateWithDuration(0.7, animations: {
+            self.buttonsCon.constant += self.view.bounds.height
+            self.view.layoutIfNeeded()
+            
+            }, completion: nil)
+      
+    }
+    
+    override func viewDidLoad() {
         //check for logged in user. If so, go right to app.
         var currentUser = PFUser.currentUser()
         if currentUser != nil {

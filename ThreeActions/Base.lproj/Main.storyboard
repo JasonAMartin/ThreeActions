@@ -66,7 +66,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
+                        <outlet property="buttonsCon" destination="A4u-Gn-8Hx" id="jUx-2Y-tvn"/>
                         <outlet property="loginButton" destination="oRA-An-w6C" id="Vy5-7A-Ksd"/>
+                        <outlet property="logoCon" destination="OKy-q8-dbk" id="Vuu-qd-KtT"/>
+                        <outlet property="logoTop" destination="Mb1-TV-NUS" id="AKC-m6-hxo"/>
                         <outlet property="signUpButton" destination="v5f-Zf-5Yk" id="9Eu-lv-6t4"/>
                     </connections>
                 </viewController>
@@ -130,7 +133,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAction:" destination="pS0-gk-xCt" eventType="touchUpInside" id="iGG-gX-dUq"/>
-                                    <segue destination="KH6-up-I4c" kind="modal" id="KO7-9z-5tG"/>
+                                    <segue destination="KH6-up-I4c" kind="modal" identifier="networkSegue" id="KO7-9z-5tG"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPB-HT-gjZ">
@@ -172,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqO-hM-bjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="845"/>
+            <point key="canvasLocation" x="313" y="731"/>
         </scene>
         <!--Today-->
         <scene sceneID="sPS-Wd-s9W">
@@ -313,12 +316,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auu-2e-HRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="845"/>
+            <point key="canvasLocation" x="885" y="985"/>
         </scene>
         <!--Network View Controller-->
         <scene sceneID="yYc-Lf-ZrG">
             <objects>
-                <viewController id="KH6-up-I4c" customClass="NetworkViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="networkViewController" id="KH6-up-I4c" customClass="NetworkViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WqZ-8x-oeq"/>
                         <viewControllerLayoutGuide type="bottom" id="MiK-Q1-q4r"/>
