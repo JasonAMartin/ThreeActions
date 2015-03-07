@@ -115,6 +115,9 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         if(segue.identifier == "networkSegue") {
             if let networkViewController = segue.destinationViewController as? NetworkViewController{
                 networkViewController.aTitle = aTitle
+                networkViewController.aColor = aColor
+                networkViewController.aDate = aDate
+                networkViewController.aDescription = aDescription
             }
         }
     }

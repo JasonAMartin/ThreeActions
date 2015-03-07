@@ -339,11 +339,21 @@
                                     <action selector="exitModal:" destination="KH6-up-I4c" eventType="touchUpInside" id="13g-uZ-qOt"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6iL-qu-JLb">
+                                <rect key="frame" x="142" y="152" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj3-Md-Nmg">
+                                <rect key="frame" x="39" y="232" width="242" height="104"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.39802631579999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="exitButton" destination="oCJ-uk-bH3" id="AH4-rd-7rK"/>
+                        <outlet property="networkStatusLabel" destination="yj3-Md-Nmg" id="kWZ-Hk-726"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V07-80-cFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
