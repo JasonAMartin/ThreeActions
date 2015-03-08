@@ -23,15 +23,16 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        logoCon.constant -= view.bounds.width
-        buttonsCon.constant -= view.bounds.height
+       // logoCon.constant -= view.bounds.width
+        //buttonsCon.constant -= view.bounds.height
     
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
+       /*
+UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
             self.logoCon.constant += self.view.bounds.width
             self.view.layoutIfNeeded()
             
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             
             }, completion: nil)
+        */
       
     }
     
@@ -80,7 +82,6 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         
     }
 

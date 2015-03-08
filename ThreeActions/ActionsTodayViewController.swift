@@ -12,15 +12,12 @@ import UIKit
 
 class ActionsTodayViewController: UIViewController {
     
-    
     enum ActionState {
         case First, Second, Third
-        
         init() {
             self = .First
         }
     }
-    
     
     var currentState = ActionState()
     
@@ -31,8 +28,32 @@ class ActionsTodayViewController: UIViewController {
     @IBOutlet weak var actionDetails: UITextView!
     
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+        /*
+        STEPS
+            1. Grab data for today
+            2. Display first undone action in order of 1,2,3
+                A. If no undone action exists, display 1.
+        */
+        
+        //pass in actionTitle, nextButton, previousButton, actionDetails
+        
+        var actionData = TAUsers()
+        actionData.taPullLocal()
+        
+       // actionData.getActionsData(date: "3/18/15", actionTitle: actionTitle, nextButton: nextButton, previousButton: previousButton, actionDetails: actionDetails)
+        
+        //actionData.taNewSyncAll()
+    }
+    
+    
+    
     override func viewDidLoad() {
         var blah = "ddd"
+        
         actionTitle.text = actionTitle.text?.uppercaseString
         
         //set button colors for today view to app colors

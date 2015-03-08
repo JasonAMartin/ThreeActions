@@ -134,7 +134,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     func displayButton(){
         //if all conditions for adding an action look to be met, show the button that let's the user go to networking modal
-        if(aColor != 0 && aTitle != "" && aDescription != "" && aDate != ""){
+        if(aColor != 0 && aTitle != "" && aDescription != ""){
             preButtonWarning.hidden = true
             createActionButton.hidden = false
         }
