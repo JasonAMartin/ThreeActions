@@ -11,23 +11,64 @@ import QuartzCore
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var syncSpinner: UIActivityIndicatorView!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var syncNotice: UILabel!
     @IBOutlet weak var logoCon: NSLayoutConstraint!
     
     @IBOutlet weak var logoTop: NSLayoutConstraint!
     
     @IBOutlet weak var buttonsCon: NSLayoutConstraint!
     
+    
+    func userDataSyncComplete(){
+        //this is callback when the user data is synced.
+        //stop & hide sync elements
+        syncSpinner.stopAnimating()
+        syncSpinner.hidden = true
+        syncNotice.hidden = true
+        
+        //change login button to continue and show it
+        loginButton.setTitle("CONTINUE", forState: UIControlState.Normal)
+        loginButton.hidden = false
+    }
+    
+    func syncUserData() {
+        //check for logged in user. If so, go right to app.
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            signUpButton.hidden = true
+            loginButton.hidden = true
+            //this is where sync should take place
+            
+            //show that syncing is taking place
+            syncSpinner.startAnimating()
+            syncSpinner.hidden = false
+            syncNotice.hidden = false
+            
+            //sync
+            var userData = TAUsers()
+            userData.taNewSyncAll(userDataSyncComplete)
+            //end sync
+        }
+        
+    }
+
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        syncUserData()
+
+
        // logoCon.constant -= view.bounds.width
         //buttonsCon.constant -= view.bounds.height
-    
+
+
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -48,15 +89,6 @@ UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: 
     }
     
     override func viewDidLoad() {
-        //check for logged in user. If so, go right to app.
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            signUpButton.hidden=true
-            loginButton.setTitle("CONTINUE", forState: UIControlState.Normal)
-        }
-
-        
-        
         //detele test code
         
       //  var userdata = UserData(userAccount: currentUser.username)

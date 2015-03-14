@@ -42,6 +42,12 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         
         //setup date picker to allow for date 7 days in past or 1 year in future
         let now = NSDate()
+        
+        //setting aDate to today by default
+        let formatMyDate = NSDateFormatter()
+        formatMyDate.dateStyle = .ShortStyle
+        aDate = formatMyDate.stringFromDate(now)
+        
         actionDatePicker.minimumDate = now
         let currentCalendar = NSCalendar.currentCalendar()
         let dateComponents = NSDateComponents()
@@ -112,6 +118,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        println("Oh noes---- title: \(aColor) date: \(aDate)")
         if(segue.identifier == "networkSegue") {
             if let networkViewController = segue.destinationViewController as? NetworkViewController{
                 networkViewController.aTitle = aTitle

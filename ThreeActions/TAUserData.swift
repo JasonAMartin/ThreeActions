@@ -9,7 +9,7 @@
 /*
 User data model
 
-date : date for the action
+actionDate : date for the action
 actionTitle : action's title
 actionDescription : longer text for the action
 status : 0 for pending or 1 for complete
@@ -43,23 +43,38 @@ struct TAUsers {
                 //for object in objects {
                 //  object.pinInBackground()
                 //}
+                
             }
-            
-            
-            
+        }
+    }
+
+    
+    func taRemoveLocal(){
+        //This method dumps ALL objects from UserActions
+        let pull = PFQuery(className:"UserActions")
+        pull.fromLocalDatastore()
+        pull.whereKey("owner", equalTo:self.userAccount)
+        pull.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects {
+                  object.unpinInBackground()
+                }
+            }
         }
     }
     
-    func taNewSyncAll(){
-        
-        
-        
-      
+    
+    func taNewSyncAll(completion: (() -> Void)!){
         
         //1. get all objects
         //2. dump local db
         //3. populate
         
+        //remove local
+        taRemoveLocal()
+        
+        //grab objects and populate new local
         var query = PFQuery(className:"UserActions")
         query.whereKey("owner", equalTo:userAccount)
         query.findObjectsInBackgroundWithBlock {
@@ -71,11 +86,10 @@ struct TAUsers {
                 for object in objects {
                     object.pinInBackground()
                 }
+                //callback after syncing data. This also works if there are 0 items
+                completion()
             }
-            
         }
-        
-        
     }
     
     func checkAction (#colornumber actionColor:Int, #date actionDate:String) -> Bool {
@@ -90,7 +104,7 @@ struct TAUsers {
         
         var query = PFQuery(className:"UserActions")
         query.whereKey("owner", equalTo:userAccount)
-        query.whereKey("date", equalTo: actionDate)
+        query.whereKey("actionDate", equalTo: actionDate)
         query.whereKey("actionColor", equalTo: actionColor)
         query.findObjects()
         
@@ -105,7 +119,8 @@ struct TAUsers {
     }
     
     
-    func saveAction (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel) {
+  
+func saveAction (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel) {
         
         //date code
         
@@ -122,7 +137,7 @@ struct TAUsers {
                 data["actionDescription"] = actionDescription
                 data["status"] = status
                 data["actionColor"] = actionColor
-                data["date"] = actionDate
+                data["actionDate"] = actionDate
                 data["creationDate"] = formatter.stringFromDate(date)
                 data["lastModified"] = date
                 data["owner"] = self.userAccount //userid
@@ -151,13 +166,13 @@ struct TAUsers {
     }
     
     
-    func getActionsData (#date actionDate:String, actionTitle:UILabel, nextButton:UIButton,previousButton:UIButton,actionDetails:UITextView) {
-        
+    func getActionsData (#date actionDate:String, actionTitle:UILabel, nextButton:UIButton,previousButton:UIButton,actionDetails:UITextView)->Int {
+        var myNumber = 0
         var responseArray: [Dictionary<String, String>] = []
         var query = PFQuery(className:"UserActions")
-        
+        query.fromLocalDatastore()
         query.whereKey("owner", equalTo:userAccount)
-        query.whereKey("date", equalTo: actionDate)
+        query.whereKey("actionDate", equalTo: actionDate)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
@@ -165,12 +180,13 @@ struct TAUsers {
                 NSLog("Successfully retrieved \(objects.count) actions.")
                 // Do something with the found objects
                 for object in objects {
+                    println(object)
                    //make a dictionary then push to responseArray
     
                     responseArray.append([
                         "actionTitle": object.valueForKey("actionTitle") as String,
                         "actionDescription": object.valueForKey("actionDescription") as String,
-                        "actionDate": object.valueForKey("date") as String,
+                        "actionDate": object.valueForKey("actionDate") as String,
                         "objectId":object.valueForKey("objectId") as String,
                         "status":toString(object.valueForKey("status") as Int),
                         "actionColor":toString(object.valueForKey("actionColor") as Int)
@@ -180,15 +196,16 @@ struct TAUsers {
                 //response is complete. Send data to display method to display whatever
                let finalData =  self.displayTodayActions(responseArray)
                 
-                
+                myNumber = 3
                 //if let hey = finalData[1]?["actionDescription"]{
                
             } else {
                 // Log details of the failure
                 NSLog("Error: %@ %@", error, error.userInfo!)
+                myNumber = 4
             }
         }
-        
+        return myNumber
     }
 
     func displayTodayActions(responseData: [Dictionary<String,String>]) -> Dictionary<Int,Dictionary<String,String>>{

@@ -35,6 +35,7 @@ class NetworkViewController: UIViewController {
         
         //setup network call & try to save action
         var person = TAUsers()
+        println("-----------\(aDate)-------")
         person.saveAction(title: aTitle, description: aDescription, status: aColor, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel)
                 
     }

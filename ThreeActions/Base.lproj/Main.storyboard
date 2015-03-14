@@ -2,13 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Three Actions Entry-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Three Actions Entry" id="vXZ-lx-hvc" customClass="ViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Loader" title="Three Actions Entry" id="vXZ-lx-hvc" customClass="ViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WPH-1Z-9Ed"/>
                         <viewControllerLayoutGuide type="bottom" id="e2J-nk-CPv"/>
@@ -48,19 +50,37 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreeActionsLogo-BIG" translatesAutoresizingMaskIntoConstraints="NO" id="agT-aX-hzS">
                                 <rect key="frame" x="8" y="132" width="584" height="192"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FIK-da-e8Q">
+                                <rect key="frame" x="282" y="395" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing data . . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-pL-uWJ">
+                                <rect key="frame" x="235" y="467" width="130" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="CWx-n9-4nq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.68627450980392157" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.27843137254901962" green="0.24313725490196078" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GEp-pL-uWJ" firstAttribute="centerX" secondItem="oRA-An-w6C" secondAttribute="centerX" id="02V-TV-miJ"/>
                             <constraint firstItem="oRA-An-w6C" firstAttribute="leading" secondItem="v5f-Zf-5Yk" secondAttribute="leading" id="2rU-VJ-4rB"/>
                             <constraint firstItem="agT-aX-hzS" firstAttribute="centerX" secondItem="v5f-Zf-5Yk" secondAttribute="centerX" id="40y-Vs-xn6"/>
+                            <constraint firstItem="FIK-da-e8Q" firstAttribute="centerY" secondItem="v5f-Zf-5Yk" secondAttribute="centerY" id="5YX-Db-jY9"/>
                             <constraint firstItem="oRA-An-w6C" firstAttribute="trailing" secondItem="v5f-Zf-5Yk" secondAttribute="trailing" id="5ej-uE-8Mc"/>
                             <constraint firstItem="oRA-An-w6C" firstAttribute="top" secondItem="v5f-Zf-5Yk" secondAttribute="bottom" constant="33" id="8kf-u7-dJj"/>
                             <constraint firstItem="v5f-Zf-5Yk" firstAttribute="top" secondItem="agT-aX-hzS" secondAttribute="bottom" constant="74" id="A4u-Gn-8Hx"/>
                             <constraint firstItem="agT-aX-hzS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-8" id="AdG-dW-qWL"/>
                             <constraint firstItem="agT-aX-hzS" firstAttribute="top" secondItem="WPH-1Z-9Ed" secondAttribute="bottom" constant="112" id="Mb1-TV-NUS"/>
                             <constraint firstItem="agT-aX-hzS" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="OKy-q8-dbk"/>
+                            <constraint firstItem="FIK-da-e8Q" firstAttribute="centerX" secondItem="v5f-Zf-5Yk" secondAttribute="centerX" id="Udc-W2-C07"/>
+                            <constraint firstItem="GEp-pL-uWJ" firstAttribute="baseline" secondItem="oRA-An-w6C" secondAttribute="baseline" id="fgK-xs-NcZ"/>
+                            <constraint firstItem="GEp-pL-uWJ" firstAttribute="baseline" secondItem="oRA-An-w6C" secondAttribute="firstBaseline" id="mgY-MR-RCf"/>
                             <constraint firstItem="e2J-nk-CPv" firstAttribute="top" secondItem="v5f-Zf-5Yk" secondAttribute="bottom" constant="171" id="oHW-5q-K0h"/>
+                            <constraint firstItem="GEp-pL-uWJ" firstAttribute="centerY" secondItem="oRA-An-w6C" secondAttribute="centerY" id="vOW-5V-c2c"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -71,6 +91,8 @@
                         <outlet property="logoCon" destination="OKy-q8-dbk" id="Vuu-qd-KtT"/>
                         <outlet property="logoTop" destination="Mb1-TV-NUS" id="AKC-m6-hxo"/>
                         <outlet property="signUpButton" destination="v5f-Zf-5Yk" id="9Eu-lv-6t4"/>
+                        <outlet property="syncNotice" destination="GEp-pL-uWJ" id="ETb-Ke-zv0"/>
+                        <outlet property="syncSpinner" destination="FIK-da-e8Q" id="7WT-L3-g6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

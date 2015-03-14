@@ -19,7 +19,13 @@ class ActionsTodayViewController: UIViewController {
         }
     }
     
+    //creating 3 dictionaries, which will hold each color's action in whatever order needed
+    var actionOne = [String:String]()
+    var actionTwo = [String:String]()
+    var actionThree = [String:String]()
+    
     var currentState = ActionState()
+    var viewingDate = ""
     
     @IBOutlet weak var actionTitle: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -28,9 +34,55 @@ class ActionsTodayViewController: UIViewController {
     @IBOutlet weak var actionDetails: UITextView!
     
     
+    func actionData(#actionDate:String){
+        //get the 3 actions for the date specified
+        var queryDate = actionDate
+        if(actionDate==""){
+            //actionDate wasn't passed, so show today
+            let now = NSDate()
+            let formatMyDate = NSDateFormatter()
+            formatMyDate.dateStyle = .ShortStyle
+            queryDate = formatMyDate.stringFromDate(now)
+        }
+        
+        //remove
+        queryDate = "3/22/15"
+        var userData = TAUsers()
+        var query = PFQuery(className:"UserActions")
+        query.fromLocalDatastore()
+        query.whereKey("owner", equalTo:userData.userAccount)
+        query.whereKey("actionDate", equalTo: queryDate)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("Daddy retrieved \(objects.count) actions.")
+                // Do something with the found objects
+                for object in objects {
+                    //object(s) found so set it up.
+                    
+                }
+                
+                //if objects = 0, hide stuff, change display
+                if(objects.count<=0){
+                    
+                    self.actionTitle.text = "No actions for today!"
+                    self.nextButton.hidden = true
+                    self.previousButton.hidden = true
+                    self.actionDetails.hidden = true
+                    
+                }
+                
+                
+            }
+        }
+    }
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        actionData(actionDate: viewingDate)
         
         /*
         STEPS
@@ -41,18 +93,15 @@ class ActionsTodayViewController: UIViewController {
         
         //pass in actionTitle, nextButton, previousButton, actionDetails
         
-        var actionData = TAUsers()
-        actionData.taPullLocal()
-        
-       // actionData.getActionsData(date: "3/18/15", actionTitle: actionTitle, nextButton: nextButton, previousButton: previousButton, actionDetails: actionDetails)
-        
-        //actionData.taNewSyncAll()
+     //  var actionData = TAUsers()
+        //actionData.taPullLocal()
+      // var todayInfo = actionData.getActionsData(date: "3/14/15", actionTitle: actionTitle, nextButton: nextButton, previousButton: previousButton, actionDetails: actionDetails)
+              //actionData.taNewSyncAll()
     }
     
     
     
     override func viewDidLoad() {
-        var blah = "ddd"
         
         actionTitle.text = actionTitle.text?.uppercaseString
         
