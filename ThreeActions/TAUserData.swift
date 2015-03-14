@@ -19,9 +19,22 @@ lastModified : the date of last modification
 */
 
 
-struct TAUsers {
+class TAUsers {
+    
+    //SINGLETON Weeeeee
+    class var sharedInstance: TAUsers {
+        //2
+        struct Singleton {
+            //3
+            static let instance = TAUsers()
+        }
+        //4
+        return Singleton.instance
+    }
     
     var userAccount: String
+    var actionDB = [String: AnyObject]()
+    
     
     //INIT
     init(){
@@ -29,6 +42,22 @@ struct TAUsers {
         self.userAccount = PFUser.currentUser().username
     }
     //METHODS
+    
+    func setInstanceDB(#data:AnyObject){
+        //passing in each DB object for storing in the Singleton
+        //key is date + action color int so: "3/14/15-2"
+        
+       var actionDate = data.valueForKey("actionDate") as String
+       var actionColor = toString(data.valueForKey("actionColor") as Int)
+        
+        if(actionDate != "" && actionColor != ""){
+            var newKey = actionDate+"-"+actionColor
+                //put in dictionary
+                ///TAUsers.sharedInstance.actionDB.updateValue(data, forKey: newKey)
+            TAUsers.sharedInstance.actionDB[newKey] = data
+        }
+    
+    }
     
     func taPullLocal(){
         let pull = PFQuery(className:"UserActions")
@@ -64,7 +93,6 @@ struct TAUsers {
         }
     }
     
-    
     func taNewSyncAll(completion: (() -> Void)!){
         
         //1. get all objects
@@ -85,6 +113,11 @@ struct TAUsers {
                 // Do something with the found objects
                 for object in objects {
                     object.pinInBackground()
+                    
+                    //add this for singleton
+                    
+                    self.setInstanceDB(data: object)
+                    
                 }
                 //callback after syncing data. This also works if there are 0 items
                 completion()

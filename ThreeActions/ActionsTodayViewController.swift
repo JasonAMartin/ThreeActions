@@ -19,111 +19,57 @@ class ActionsTodayViewController: UIViewController {
         }
     }
     
-    //creating 3 dictionaries, which will hold each color's action in whatever order needed
-    var actionOne = [String:String]()
-    var actionTwo = [String:String]()
-    var actionThree = [String:String]()
+    
     
     var currentState = ActionState()
     var viewingDate = ""
+
+    //keys for DB lookup
+    var dbKey1 = ""
+    var dbKey2 = ""
+    var dbKey3 = ""
     
     @IBOutlet weak var actionTitle: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     
     @IBOutlet weak var actionDetails: UITextView!
+
     
-    
-    func actionData(#actionDate:String){
-        //get the 3 actions for the date specified
-        var queryDate = actionDate
-        if(actionDate==""){
-            //actionDate wasn't passed, so show today
-            let now = NSDate()
-            let formatMyDate = NSDateFormatter()
-            formatMyDate.dateStyle = .ShortStyle
-            queryDate = formatMyDate.stringFromDate(now)
+    func viewActions(){
+        
+        var queryDate = self.viewingDate
+        
+        if(queryDate == ""){
+            let today = NSDate()
+            let customFormat = NSDateFormatter()
+            //formatter.timeStyle = .ShortStyle
+            customFormat.dateStyle = .ShortStyle
+            queryDate = customFormat.stringFromDate(today)
         }
         
-        //remove
-        queryDate = "3/22/15"
-        var userData = TAUsers()
-        var query = PFQuery(className:"UserActions")
-        query.fromLocalDatastore()
-        query.whereKey("owner", equalTo:userData.userAccount)
-        query.whereKey("actionDate", equalTo: queryDate)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                // The find succeeded.
-                NSLog("Daddy retrieved \(objects.count) actions.")
-                // Do something with the found objects
-                for object in objects {
-                    //object(s) found so set it up.
-                    
-                }
-                
-                //if objects = 0, hide stuff, change display
-                if(objects.count<=0){
-                    
-                    self.actionTitle.text = "No actions for today!"
-                    self.nextButton.hidden = true
-                    self.previousButton.hidden = true
-                    self.actionDetails.hidden = true
-                    
-                }
-                
-                
-            }
-        }
+        //get 3 actions for today
+        self.dbKey1 = queryDate+"-1"
+        self.dbKey2 = queryDate+"-2"
+        self.dbKey3 = queryDate+"-3"
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
-        actionData(actionDate: viewingDate)
-        
-        /*
-        STEPS
-            1. Grab data for today
-            2. Display first undone action in order of 1,2,3
-                A. If no undone action exists, display 1.
-        */
-        
-        //pass in actionTitle, nextButton, previousButton, actionDetails
-        
-     //  var actionData = TAUsers()
-        //actionData.taPullLocal()
-      // var todayInfo = actionData.getActionsData(date: "3/14/15", actionTitle: actionTitle, nextButton: nextButton, previousButton: previousButton, actionDetails: actionDetails)
-              //actionData.taNewSyncAll()
+        viewActions()
+        swapActions()
     }
     
-    
-    
     override func viewDidLoad() {
-        
-        actionTitle.text = actionTitle.text?.uppercaseString
-        
-        //set button colors for today view to app colors
-        
-        view.backgroundColor = UIColor.appActionOne()
-        
-        actionDetails.backgroundColor = UIColor.appActionOne()
-        
-        nextButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
-        previousButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        //formatting
+        actionTitle.text = actionTitle.text?.uppercaseString
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     
     @IBAction func goNext(sender: AnyObject) {
@@ -137,7 +83,7 @@ class ActionsTodayViewController: UIViewController {
             case .Third:
                 currentState = .First
             default:
-                currentState = .First
+                currentState = .Second
             }
         
         swapActions()
@@ -146,39 +92,78 @@ class ActionsTodayViewController: UIViewController {
     @IBAction func goPrevious(sender: AnyObject) {
         switch currentState {
         case .First:
-            currentState = .Second
-        case .Second:
             currentState = .Third
+        case .Second:
+            currentState = .First
         case .Third:
-            currentState = .First
+            currentState = .Second
         default:
-            currentState = .First
+            currentState = .Third
         }
         swapActions()
     }
     
-    func swapActions(){
-        switch currentState {
-        case .First:
+    
+    func changeData(slot:Int){
+        
+        var myKey = ""
+        
+        if(slot==1){
+            myKey = self.dbKey1
             view.backgroundColor = UIColor.appActionOne()
             actionDetails.backgroundColor = UIColor.appActionOne()
             nextButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
-        case .Second:
+        } else if (slot==2){
+            myKey = self.dbKey2
             view.backgroundColor = UIColor.appActionTwo()
             actionDetails.backgroundColor = UIColor.appActionTwo()
             nextButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionOne(), forState: UIControlState.Normal)
-        case .Third:
+        } else if (slot==3){
+            myKey = self.dbKey3
             view.backgroundColor = UIColor.appActionThree()
-             actionDetails.backgroundColor = UIColor.appActionThree()
+            actionDetails.backgroundColor = UIColor.appActionThree()
             nextButton.setTitleColor(UIColor.appActionOne(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
+        }
+        
+        
+        
+        if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
+            self.actionTitle.text = toString(cdActionTitle)
+        }
+        
+        if let cdActionColor = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionColor") {
+            //self.actionTitle.text = toString(cdActionTitle)
+        }
+        
+        if let cdActionDescription = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionDescription") {
+            self.actionDetails.text = toString(cdActionDescription)
+        }
+        
+        if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
+            println(actionTitle)
+        }
+        
+    
+    //   println( TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") as String)
+        
+    }
+    
+    
+    func swapActions(){
+        //this function is handling display and formatting as the user views actions 1,2,3
+        
+        switch currentState {
+        case .First:
+            changeData(1)
+        case .Second:
+            changeData(2)
+        case .Third:
+            changeData(3)
         default:
-            view.backgroundColor = UIColor.appActionOne()
-            actionDetails.backgroundColor = UIColor.appActionOne()
-            nextButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
-            previousButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
+            changeData(1)
         
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var syncSpinner: UIActivityIndicatorView!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -50,6 +50,7 @@ class ViewController: UIViewController {
             
             //sync
             var userData = TAUsers()
+            let vc = ActionsTodayViewController.self
             userData.taNewSyncAll(userDataSyncComplete)
             //end sync
         }
