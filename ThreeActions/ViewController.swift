@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        view.backgroundColor = UIColor.appColorBackground()
         syncUserData()
 
 
@@ -72,6 +72,11 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //set formatting for tab bar
+        UITabBar.appearance().tintColor = UIColor.appActionTwo()
+        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
+        UITabBar.appearance().barTintColor = UIColor.appColorButtonNormal()
         
        /*
 UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {

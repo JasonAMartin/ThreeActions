@@ -226,21 +226,21 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         
         if(countElements(myUsername)==0){
             canContinue = false
-            self.usernameTextField.backgroundColor = UIColor.appGold()
+            self.usernameTextField.backgroundColor = UIColor.appActionTwo()
             self.usernameTextField.text=""
             self.usernameTextField.placeholder = "must enter username"
         }
         
         if(countElements(myPassword)==0){
             canContinue = false
-            self.passwordTextField.backgroundColor = UIColor.appGold()
+            self.passwordTextField.backgroundColor = UIColor.appActionTwo()
             self.passwordTextField.text=""
             self.passwordTextField.placeholder = "must enter password"
         }
        
         if(countElements(myEmail)==0 && vcPurpose=="create") {
             canContinue = false
-            self.emailTextField.backgroundColor = UIColor.appGold()
+            self.emailTextField.backgroundColor = UIColor.appActionTwo()
             self.emailTextField.text=""
             self.emailTextField.placeholder = "must enter email"
         }

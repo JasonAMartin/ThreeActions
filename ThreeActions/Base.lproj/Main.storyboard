@@ -47,7 +47,7 @@
                                     <action selector="loginUser:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GV7-KR-8Fp"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreeActionsLogo-BIG" translatesAutoresizingMaskIntoConstraints="NO" id="agT-aX-hzS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3Actions02" translatesAutoresizingMaskIntoConstraints="NO" id="agT-aX-hzS">
                                 <rect key="frame" x="8" y="132" width="584" height="192"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FIK-da-e8Q">
@@ -63,7 +63,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.27843137254901962" green="0.24313725490196078" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GEp-pL-uWJ" firstAttribute="centerX" secondItem="oRA-An-w6C" secondAttribute="centerX" id="02V-TV-miJ"/>
@@ -108,7 +107,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fZj-uG-ZeZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7g4-Gd-S28">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="action title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Upd-7X-PKx">
@@ -183,7 +182,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="VEF-mS-bpG"/>
+                    <tabBarItem key="tabBarItem" image="icon-add-white" id="VEF-mS-bpG">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="actionColorButton1" destination="Llr-yv-K8z" id="7jU-OQ-ldV"/>
                         <outlet property="actionColorButton2" destination="HrD-qL-h3e" id="G3K-20-7Ai"/>
@@ -208,7 +209,7 @@
                         <viewControllerLayoutGuide type="bottom" id="EZJ-jK-djx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="af2-v0-65J">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.79999999999999982" tag="1" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-bv-9Bt">
@@ -269,8 +270,8 @@
                             <constraint firstItem="bDx-wk-dil" firstAttribute="top" secondItem="682-1Z-oBb" secondAttribute="bottom" constant="177" id="p3F-nO-rdU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="TODAY" image="FlagIcon" id="8Bm-ZZ-dTe">
-                        <inset key="imageInsets" minX="0.0" minY="41" maxX="0.0" maxY="0.0"/>
+                    <tabBarItem key="tabBarItem" tag="1" image="icon-today-white" id="8Bm-ZZ-dTe">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="actionDetails" destination="U4q-XA-5OQ" id="JBn-GU-sYP"/>
@@ -292,11 +293,13 @@
                         <viewControllerLayoutGuide type="bottom" id="oQE-oR-PDa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YxB-Xj-Zwa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="2dr-SV-7xZ"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="icon-cal-80-white" id="2dr-SV-7xZ">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unf-yk-Xpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,11 +314,13 @@
                         <viewControllerLayoutGuide type="bottom" id="yvn-zg-n30"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FnH-OG-IDl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="o0Y-Hj-TZZ"/>
+                    <tabBarItem key="tabBarItem" image="icon-gear-white" id="o0Y-Hj-TZZ">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9o-eH-96p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,11 +335,13 @@
                         <viewControllerLayoutGuide type="bottom" id="NCD-mM-HqQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dZe-8J-2ga">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="Hf5-bC-SEL"/>
+                    <tabBarItem key="tabBarItem" image="icon-stats-white" id="Hf5-bC-SEL">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auu-2e-HRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,7 +378,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.39802631579999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.18823529411764706" blue="0.12941176470588237" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="exitButton" destination="oCJ-uk-bH3" id="AH4-rd-7rK"/>
@@ -382,17 +389,18 @@
             </objects>
             <point key="canvasLocation" x="1085" y="477"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MainAppTabBarController-->
         <scene sceneID="ox7-gv-pvV">
             <objects>
-                <tabBarController storyboardIdentifier="ThreeActionsMainApp" id="E4a-1r-pfW" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ThreeActionsMainApp" title="MainAppTabBarController" id="E4a-1r-pfW" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="Enb-fg-eHN">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="Enb-fg-eHN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.30196078430000001" green="0.15686274510000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.2145463675" green="0.023200840560000002" blue="0.023099831880000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.30196078430000001" green="0.15686274510000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.39802631579999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="DPI-W1-h2T" kind="relationship" relationship="viewControllers" id="uf0-7J-eAM"/>
@@ -706,13 +714,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3Actions02" width="1145" height="842"/>
         <image name="FlagIcon" width="612" height="792"/>
         <image name="ThreeActionsLogo-BIG" width="1145" height="842"/>
+        <image name="icon-add-white" width="80" height="80"/>
+        <image name="icon-cal-80-white" width="82" height="80"/>
+        <image name="icon-gear-white" width="80" height="80"/>
+        <image name="icon-stats-white" width="99" height="80"/>
+        <image name="icon-today-white" width="80" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
