@@ -56,6 +56,10 @@ class ActionsTodayViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        //formatting
+        actionTitle.textColor = UIColor.appColorBackground()
+        actionDetails.textColor = UIColor.appColorBackground()
+        
         viewActions()
         swapActions()
     }
@@ -114,18 +118,26 @@ class ActionsTodayViewController: UIViewController {
             actionDetails.backgroundColor = UIColor.appActionOne()
             nextButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
+            nextButton.backgroundColor = UIColor.appActionTwo()
+            previousButton.backgroundColor = UIColor.appActionThree()
         } else if (slot==2){
             myKey = self.dbKey2
             view.backgroundColor = UIColor.appActionTwo()
             actionDetails.backgroundColor = UIColor.appActionTwo()
             nextButton.setTitleColor(UIColor.appActionThree(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionOne(), forState: UIControlState.Normal)
+            nextButton.backgroundColor = UIColor.appActionThree()
+            previousButton.backgroundColor = UIColor.appActionOne()
+
         } else if (slot==3){
             myKey = self.dbKey3
             view.backgroundColor = UIColor.appActionThree()
             actionDetails.backgroundColor = UIColor.appActionThree()
             nextButton.setTitleColor(UIColor.appActionOne(), forState: UIControlState.Normal)
             previousButton.setTitleColor(UIColor.appActionTwo(), forState: UIControlState.Normal)
+            nextButton.backgroundColor = UIColor.appActionOne()
+            previousButton.backgroundColor = UIColor.appActionTwo()
+
         }
         
         
