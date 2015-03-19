@@ -109,7 +109,7 @@ class TAUsers {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 // The find succeeded.
-                NSLog("Successfully retrieved \(objects.count) actions.")
+                NSLog("Syncing..... [\(self.userAccount)] Successfully retrieved \(objects.count) actions.")
                 // Do something with the found objects
                 for object in objects {
                     object.pinInBackground()
@@ -210,7 +210,7 @@ func saveAction (#title actionTitle:String, #description actionDescription:Strin
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 // The find succeeded.
-                NSLog("Successfully retrieved \(objects.count) actions.")
+                NSLog("Successfully retrieved \(objects.count) actions for date: \(actionDate) and user: \(self.userAccount) .")
                 // Do something with the found objects
                 for object in objects {
                     println(object)

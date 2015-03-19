@@ -39,7 +39,7 @@ extension UIColor {
     }
     /*
     class func grayScaleColor(grayScale : CGFloat) -> UIColor {
-        return UIColor(red: grayScale/255.0, green: grayScale/255.0, blue: grayScale/255.0, alpha: 1.0)
+        return UIColor(red: grayScale/255.0, green: grayScale/255.0, blue: grayScale/255.0, alpha: 0.5)
     }
     class func appGold() -> UIColor {
         return UIColor(red: 209.0/255.0, green: 191.0/255.0, blue: 108.0/255.0, alpha: 1.0)
@@ -82,5 +82,9 @@ extension UIColor {
     
     class func appColorButtonNormal() -> UIColor {
         return UIColor(red: 52.0/255.0, green: 25.0/255.0, blue: 56.0/255.0, alpha: 1)
+    }
+    
+    class func appGrayFade() -> UIColor {
+        return UIColor(red: 130.0/255.0, green: 109.0/255.0, blue: 118.0/255.0, alpha: 0.3)
     }
 }

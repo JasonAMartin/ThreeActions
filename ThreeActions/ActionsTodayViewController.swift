@@ -13,6 +13,10 @@ import Snap
 
 class ActionsTodayViewController: UIViewController {
     
+    
+    
+    
+    
     enum ActionState {
         case First, Second, Third
         init() {
@@ -57,6 +61,7 @@ class ActionsTodayViewController: UIViewController {
     var actionLabelTwo = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var actionLabelThree = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var actionLabelDate = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    var hBarLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
 
     
     
@@ -130,22 +135,35 @@ class ActionsTodayViewController: UIViewController {
         let actionImageDoneFile = "icon-star-80"
         let actionImageDone = UIImage(named: actionImageDoneFile)
         
+        
+        //icon for forward action
+        let actionViewFile = "icon-arrow"
+        let actionViewImage = UIImage(named: actionViewFile)
+        
+        
         //action labels
         actionLabelOne.center = CGPointMake(160, 284)
         actionLabelOne.textAlignment = NSTextAlignment.Center
+        
         actionLabelTwo.center = CGPointMake(160, 284)
         actionLabelTwo.textAlignment = NSTextAlignment.Center
+        
         actionLabelThree.center = CGPointMake(160, 284)
         actionLabelThree.textAlignment = NSTextAlignment.Center
+        
         actionLabelDate.center = CGPointMake(160, 284)
         actionLabelDate.textAlignment = NSTextAlignment.Center
         actionLabelDate.backgroundColor = UIColor.appColorBackground()
         actionLabelDate.textColor = UIColor.appGhostWhite()
         
+        hBarLabel.backgroundColor = UIColor.appGrayFade()
     
         let actionIconOne = UIImageView(image: actionImageDone!)
         let actionIconTwo = UIImageView(image: actionImageDone!)
         let actionIconThree = UIImageView(image: actionImageDone!)
+        let actionViewOne = UIImageView(image: actionViewImage!)
+        let actionViewTwo = UIImageView(image: actionViewImage!)
+        let actionViewThree = UIImageView(image: actionViewImage!)
         
         actionIconOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionIconOne.contentMode = UIViewContentMode.ScaleToFill
@@ -153,6 +171,16 @@ class ActionsTodayViewController: UIViewController {
         actionIconTwo.contentMode = UIViewContentMode.ScaleToFill
         actionIconThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionIconThree.contentMode = UIViewContentMode.ScaleToFill
+        
+        actionViewOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionViewOne.contentMode = UIViewContentMode.ScaleToFill
+        actionViewOne.alpha = 0.6
+        actionViewTwo.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionViewTwo.contentMode = UIViewContentMode.ScaleToFill
+        actionViewTwo.alpha = 0.6
+        actionViewThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionViewThree.contentMode = UIViewContentMode.ScaleToFill
+        actionViewThree.alpha = 0.6
         
 //put these in layer order
         
@@ -168,7 +196,12 @@ class ActionsTodayViewController: UIViewController {
         self.view.addSubview(actionLabelTwo)
         self.view.addSubview(actionLabelThree)
         self.view.addSubview(actionLabelDate)
-
+        self.view.addSubview(hBarLabel)
+    
+        self.view.addSubview(actionViewOne)
+        self.view.addSubview(actionViewTwo)
+        self.view.addSubview(actionViewThree)
+        
         
         layout(actionButtonOne, view) { actionButtonOne, view in
             actionButtonOne.top == view.top
@@ -191,6 +224,34 @@ class ActionsTodayViewController: UIViewController {
             imageView.left == imageView.superview!.left + 10
         }
         
+        layout(actionViewOne, actionButtonOne) { imageView, actionButtonOne in
+            imageView.width  == 20
+            imageView.height == 20
+            imageView.top == actionButtonOne.centerY - 10
+            imageView.right == imageView.superview!.right - 10
+        }
+        
+        
+        layout(actionViewTwo, actionButtonTwo) { imageView, actionButtonTwo in
+            imageView.width  == 20
+            imageView.height == 20
+            imageView.top == actionButtonTwo.centerY - 10
+            imageView.right == imageView.superview!.right - 10
+        }
+        
+        layout(actionViewThree, actionButtonThree) { imageView, actionButtonThree in
+            imageView.width  == 20
+            imageView.height == 20
+            imageView.top == actionButtonThree.centerY - 10
+            imageView.right == imageView.superview!.right - 10
+        }
+        
+        
+        layout(hBarLabel, view) { hBarLabel, view in
+            hBarLabel.width == 1
+            hBarLabel.height == view.height
+            hBarLabel.left == view.left + 60
+        }
       
         
         layout(actionButtonTwo, actionButtonOne, view) { actionButtonTwo, actionButtonOne, view in
@@ -224,19 +285,19 @@ class ActionsTodayViewController: UIViewController {
         
         layout(actionLabelOne, actionButtonOne, view) {actionLabelOne, actionButtonOne, view in
             actionLabelOne.top == actionButtonOne.centerY - 10
-            actionLabelOne.left == view.left + 60
+            actionLabelOne.left == view.left + 80
             actionLabelOne.width == 180
         }
         
         layout(actionLabelTwo, actionButtonTwo, view) {actionLabelTwo, actionButtonTwo, view in
             actionLabelTwo.top == actionButtonTwo.centerY - 10
-            actionLabelTwo.left == view.left + 60
+            actionLabelTwo.left == view.left + 80
             actionLabelTwo.width == 180
         }
         
         layout(actionLabelThree, actionButtonThree, view) {actionLabelThree, actionButtonThree, view in
             actionLabelThree.top == actionButtonThree.centerY - 10
-            actionLabelThree.left == view.left + 60
+            actionLabelThree.left == view.left + 80
             actionLabelThree.width == 180
         }
         
