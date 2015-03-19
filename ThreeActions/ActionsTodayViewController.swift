@@ -6,16 +6,10 @@
 //  Copyright (c) 2015 Revolvity LLC. All rights reserved.
 //
 
-//TODO: I'd like to make it so the default action that shows is either action 1 OR the next action not done. So if action 1 is done, then action 2 is shown. If action 2 done then 3 and if all 3 are done, just show default.
-
 import UIKit
 import Snap
 
 class ActionsTodayViewController: UIViewController {
-    
-    
-    
-    
     
     enum ActionState {
         case First, Second, Third
@@ -23,8 +17,6 @@ class ActionsTodayViewController: UIViewController {
             self = .First
         }
     }
-    
-    
     
     var currentState = ActionState()
     var viewingDate = ""
@@ -34,24 +26,7 @@ class ActionsTodayViewController: UIViewController {
     var dbKey2 = ""
     var dbKey3 = ""
     
-    @IBOutlet weak var actionThreeButton: UIButton!
-    @IBOutlet weak var actionDateLabel: UILabel!
-    @IBOutlet weak var actionOneButton: UIButton!
-    @IBOutlet weak var actionTwoButton: UIButton!
-    @IBOutlet weak var actionOneTitle: UILabel!
-    @IBOutlet weak var actionTwoTitle: UILabel!
-    @IBOutlet weak var actionThreeTitle: UILabel!
-    
-    @IBOutlet weak var actionOneImage: UIImageView!
-    @IBOutlet weak var actionTwoImage: UIImageView!
-    @IBOutlet weak var actionThreeImage: UIImageView!
-    
-    
-    @IBOutlet weak var actionOneArrow: UIImageView!
-    @IBOutlet weak var actionTwoArrow: UIImageView!
-    @IBOutlet weak var actionThreeArrow: UIImageView!
-    
-    
+
     //create action labels
     
     
@@ -63,12 +38,7 @@ class ActionsTodayViewController: UIViewController {
     var actionLabelDate = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var hBarLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
 
-    
-    
-    
-    
-    
-    
+
     
     func viewActions(){
         
@@ -135,21 +105,33 @@ class ActionsTodayViewController: UIViewController {
         let actionImageDoneFile = "icon-star-80"
         let actionImageDone = UIImage(named: actionImageDoneFile)
         
+        //icon for not done action
+        let actionImageNotDoneFile = "icon-undone-80-fade"
+        let actionImageNotDone = UIImage(named: actionImageNotDoneFile)
+        
+        
         
         //icon for forward action
         let actionViewFile = "icon-arrow"
         let actionViewImage = UIImage(named: actionViewFile)
         
         
+        
         //action labels
         actionLabelOne.center = CGPointMake(160, 284)
-        actionLabelOne.textAlignment = NSTextAlignment.Center
+        actionLabelOne.textAlignment = NSTextAlignment.Justified
+        actionLabelOne.font = UIFont (name: "HelveticaNeue", size: 20)
+        actionLabelOne.numberOfLines = 2
         
         actionLabelTwo.center = CGPointMake(160, 284)
-        actionLabelTwo.textAlignment = NSTextAlignment.Center
+        actionLabelTwo.textAlignment = NSTextAlignment.Justified
+        actionLabelTwo.font = UIFont (name: "HelveticaNeue", size: 20)
+        actionLabelTwo.numberOfLines = 2
         
         actionLabelThree.center = CGPointMake(160, 284)
-        actionLabelThree.textAlignment = NSTextAlignment.Center
+        actionLabelThree.textAlignment = NSTextAlignment.Justified
+        actionLabelThree.font = UIFont (name: "HelveticaNeue", size: 20)
+        actionLabelThree.numberOfLines = 2
         
         actionLabelDate.center = CGPointMake(160, 284)
         actionLabelDate.textAlignment = NSTextAlignment.Center
@@ -161,6 +143,12 @@ class ActionsTodayViewController: UIViewController {
         let actionIconOne = UIImageView(image: actionImageDone!)
         let actionIconTwo = UIImageView(image: actionImageDone!)
         let actionIconThree = UIImageView(image: actionImageDone!)
+        
+        let actionPendingIconOne = UIImageView(image: actionImageNotDone!)
+        let actionPendingIconTwo = UIImageView(image: actionImageNotDone!)
+        let actionPendingIconThree = UIImageView(image: actionImageNotDone!)
+        
+        
         let actionViewOne = UIImageView(image: actionViewImage!)
         let actionViewTwo = UIImageView(image: actionViewImage!)
         let actionViewThree = UIImageView(image: actionViewImage!)
@@ -171,6 +159,14 @@ class ActionsTodayViewController: UIViewController {
         actionIconTwo.contentMode = UIViewContentMode.ScaleToFill
         actionIconThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionIconThree.contentMode = UIViewContentMode.ScaleToFill
+        
+        
+        actionPendingIconOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionPendingIconOne.contentMode = UIViewContentMode.ScaleToFill
+        actionPendingIconTwo.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionPendingIconTwo.contentMode = UIViewContentMode.ScaleToFill
+        actionPendingIconThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        actionPendingIconThree.contentMode = UIViewContentMode.ScaleToFill
         
         actionViewOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionViewOne.contentMode = UIViewContentMode.ScaleToFill
@@ -189,8 +185,12 @@ class ActionsTodayViewController: UIViewController {
         self.view.addSubview(actionButtonThree)
 
         self.view.addSubview(actionIconOne)
-        self.view.addSubview(actionIconTwo)
+       // self.view.addSubview(actionIconTwo)
         self.view.addSubview(actionIconThree)
+        
+        //self.view.addSubview(actionPendingIconOne)
+        self.view.addSubview(actionPendingIconTwo)
+       // self.view.addSubview(actionPendingIconThree)
         
         self.view.addSubview(actionLabelOne)
         self.view.addSubview(actionLabelTwo)
@@ -268,13 +268,23 @@ class ActionsTodayViewController: UIViewController {
             actionButtonThree.width == view.width
             actionButtonThree.height == (view.height/3)
         }
-        
+        /*
         layout(actionIconTwo, actionButtonTwo) { imageView, actionButtonTwo in
             imageView.width  == 40
             imageView.height == 40
             imageView.top == actionButtonTwo.centerY - 20
             imageView.left == imageView.superview!.left + 10
         }
+        */
+        
+        layout(actionPendingIconTwo, actionButtonTwo) { imageView, actionButtonTwo in
+            imageView.width  == 40
+            imageView.height == 40
+            imageView.top == actionButtonTwo.centerY - 20
+            imageView.left == imageView.superview!.left + 10
+        }
+        
+        
         
         layout(actionIconThree, actionButtonThree) { imageView, actionButtonThree in
             imageView.width  == 40
@@ -286,95 +296,24 @@ class ActionsTodayViewController: UIViewController {
         layout(actionLabelOne, actionButtonOne, view) {actionLabelOne, actionButtonOne, view in
             actionLabelOne.top == actionButtonOne.centerY - 10
             actionLabelOne.left == view.left + 80
-            actionLabelOne.width == 180
+            actionLabelOne.width == 300
         }
         
         layout(actionLabelTwo, actionButtonTwo, view) {actionLabelTwo, actionButtonTwo, view in
             actionLabelTwo.top == actionButtonTwo.centerY - 10
             actionLabelTwo.left == view.left + 80
-            actionLabelTwo.width == 180
+            actionLabelTwo.width == 300
         }
         
         layout(actionLabelThree, actionButtonThree, view) {actionLabelThree, actionButtonThree, view in
             actionLabelThree.top == actionButtonThree.centerY - 10
             actionLabelThree.left == view.left + 80
-            actionLabelThree.width == 180
+            actionLabelThree.width == 300
         }
         
-        /*
-        layout(actionOneButton, actionOneImage, view){ actionOneButton, actionOneImage, view in
-            actionOneButton.top == view.top + 20
-            actionOneButton.width == view.width
-            actionOneButton.height == (view.height-40)/3
-            actionOneImage.top == view.top
-        }
-        
-        layout(actionOneImage, view) { actionOneImage, view in
-            actionOneImage.top == view.top + 200
-            actionOneImage.left == view.left + 50
-            
-        }
-        
-        layout(imageView, actionOneButton, view) { imageView, actionOneButton, view in
-            var demo = actionOneButton.top
-                imageView.top == demo
-            imageView.left == view.left + 80
-        }
-        
-        layout(actionOneButton, actionTwoButton) { actionOneButton, actionTwoButton in
-            
-            actionTwoButton.top == actionOneButton.bottom
-            actionTwoButton.width == actionOneButton.width
-            actionTwoButton.height == actionOneButton.height
-            
-        }
-        
-        layout(actionTwoButton, actionThreeButton) { actionTwoButton, actionThreeButton in
-            
-            actionThreeButton.width == actionTwoButton.width
-            actionThreeButton.height == actionTwoButton.height
-            actionThreeButton.top == actionTwoButton.bottom
-            
-        }
-        
-        layout(actionThreeButton, actionDateLabel) { actionThreeButton, actionDateLabel in
-            
-            actionDateLabel.width == actionThreeButton.width
-            actionDateLabel.height == 20
-            actionDateLabel.top == actionThreeButton.bottom
-            
-        }
-    
-        
-        layout(actionTwoImage, actionThreeImage) {actionTwoImage, actionThreeImage in
-            
-            actionThreeImage.top == actionTwoImage.bottom + 100
-            actionThreeImage.left == actionTwoImage.left
-            
-        }
-*/
-
         
         //END CARTOGRAPHY
         
-        
-       /*
-//formatting
-        actionOneTitle.textColor = UIColor.appColorBackground()
-         actionTwoTitle.textColor = UIColor.blackColor()
-         actionThreeTitle.textColor = UIColor.blackColor()
-        actionOneButton.backgroundColor = UIColor.appActionOne()
-        actionTwoButton.backgroundColor = UIColor.appActionTwo()
-        actionThreeButton.backgroundColor = UIColor.appActionThree()
-        
-        actionOneTitle.text = actionOneTitle.text?.uppercaseString
-        actionTwoTitle.text = actionTwoTitle.text?.uppercaseString
-        actionThreeTitle.text = actionThreeTitle.text?.uppercaseString
-        
-        actionOneImage.image = UIImage(named: "icon-star-80")
-        actionTwoImage.image = UIImage(named: "icon-undone-80-fade")
-        actionThreeImage.image = UIImage(named: "icon-star-80")
-       */
         viewActions()
         swapActions()
     }
