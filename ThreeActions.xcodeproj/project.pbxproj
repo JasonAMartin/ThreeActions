@@ -36,10 +36,33 @@
 		4085A6421AA2350600B59E99 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6411AA2350600B59E99 /* UserData.swift */; };
 		4085A6761AA2948A00B59E99 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6751AA2948A00B59E99 /* AddActionViewController.swift */; };
 		4085A6781AA2A18600B59E99 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6771AA2A18600B59E99 /* NetworkViewController.swift */; };
+		40AE07841AB7D797008FAAB7 /* Snap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40AE07811AB7D75B008FAAB7 /* Snap.framework */; };
+		40AE07851AB7D797008FAAB7 /* Snap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 40AE07811AB7D75B008FAAB7 /* Snap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40B88BC91A991297008F7B5B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BC81A991297008F7B5B /* Colors.swift */; };
 		40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */; };
 		40B88BCF1A997CEF008F7B5B /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */; };
 		40B88BD11A998917008F7B5B /* LoginAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */; };
+		40BD44041AB7B7EF0048A170 /* Align.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43EE1AB7B7EF0048A170 /* Align.swift */; };
+		40BD44051AB7B7EF0048A170 /* Coefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F01AB7B7EF0048A170 /* Coefficients.swift */; };
+		40BD44061AB7B7EF0048A170 /* Compound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F11AB7B7EF0048A170 /* Compound.swift */; };
+		40BD44071AB7B7EF0048A170 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F21AB7B7EF0048A170 /* Constraint.swift */; };
+		40BD44081AB7B7EF0048A170 /* ConstraintGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F31AB7B7EF0048A170 /* ConstraintGroup.swift */; };
+		40BD44091AB7B7EF0048A170 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F41AB7B7EF0048A170 /* Context.swift */; };
+		40BD440A1AB7B7EF0048A170 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F51AB7B7EF0048A170 /* Dimension.swift */; };
+		40BD440B1AB7B7EF0048A170 /* Distribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F61AB7B7EF0048A170 /* Distribute.swift */; };
+		40BD440C1AB7B7EF0048A170 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F71AB7B7EF0048A170 /* Edge.swift */; };
+		40BD440D1AB7B7EF0048A170 /* Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F81AB7B7EF0048A170 /* Edges.swift */; };
+		40BD440E1AB7B7EF0048A170 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43F91AB7B7EF0048A170 /* Expression.swift */; };
+		40BD440F1AB7B7EF0048A170 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43FA1AB7B7EF0048A170 /* Extensions.swift */; };
+		40BD44101AB7B7EF0048A170 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40BD43FB1AB7B7EF0048A170 /* Info.plist */; };
+		40BD44111AB7B7EF0048A170 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43FC1AB7B7EF0048A170 /* Layout.swift */; };
+		40BD44121AB7B7EF0048A170 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43FD1AB7B7EF0048A170 /* LayoutProxy.swift */; };
+		40BD44131AB7B7EF0048A170 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43FE1AB7B7EF0048A170 /* Point.swift */; };
+		40BD44141AB7B7EF0048A170 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD43FF1AB7B7EF0048A170 /* Priority.swift */; };
+		40BD44151AB7B7EF0048A170 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD44001AB7B7EF0048A170 /* Property.swift */; };
+		40BD44161AB7B7EF0048A170 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD44011AB7B7EF0048A170 /* Size.swift */; };
+		40BD44171AB7B7EF0048A170 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD44021AB7B7EF0048A170 /* View.swift */; };
+		40BD44181AB7B7EF0048A170 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD44031AB7B7EF0048A170 /* ViewUtils.swift */; };
 		40C89F4D1A9C1FD3008F0601 /* ThreeActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C89F4C1A9C1FD3008F0601 /* ThreeActionsViewController.swift */; };
 		40C89F501A9C2A92008F0601 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C89F4E1A9C2A92008F0601 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -52,7 +75,42 @@
 			remoteGlobalIDString = 40687E471A98E021005673D1;
 			remoteInfo = ThreeActions;
 		};
+		40AE07801AB7D75B008FAAB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9D819CC627D0083B827;
+			remoteInfo = Snap;
+		};
+		40AE07821AB7D75B008FAAB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9E219CC627E0083B827;
+			remoteInfo = SnapTests;
+		};
+		40AE07861AB7D797008FAAB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
+			remoteInfo = Snap;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		40AE07881AB7D797008FAAB7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				40AE07851AB7D797008FAAB7 /* Snap.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		401201291AAB6A5200AFC69A /* TAUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAUserData.swift; sourceTree = "<group>"; };
@@ -89,10 +147,33 @@
 		4085A6411AA2350600B59E99 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4085A6751AA2948A00B59E99 /* AddActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		4085A6771AA2A18600B59E99 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Snap.xcodeproj; path = ../../../../Dropbox/Dev/ThreeActions/Snap/Snap.xcodeproj; sourceTree = "<group>"; };
 		40B88BC81A991297008F7B5B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		40B88BCE1A997CEF008F7B5B /* UIExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
 		40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAccountViewController.swift; sourceTree = "<group>"; };
+		40BD43EE1AB7B7EF0048A170 /* Align.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Align.swift; sourceTree = "<group>"; };
+		40BD43EF1AB7B7EF0048A170 /* Cartography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cartography.h; sourceTree = "<group>"; };
+		40BD43F01AB7B7EF0048A170 /* Coefficients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coefficients.swift; sourceTree = "<group>"; };
+		40BD43F11AB7B7EF0048A170 /* Compound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compound.swift; sourceTree = "<group>"; };
+		40BD43F21AB7B7EF0048A170 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		40BD43F31AB7B7EF0048A170 /* ConstraintGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintGroup.swift; sourceTree = "<group>"; };
+		40BD43F41AB7B7EF0048A170 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		40BD43F51AB7B7EF0048A170 /* Dimension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		40BD43F61AB7B7EF0048A170 /* Distribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distribute.swift; sourceTree = "<group>"; };
+		40BD43F71AB7B7EF0048A170 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		40BD43F81AB7B7EF0048A170 /* Edges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edges.swift; sourceTree = "<group>"; };
+		40BD43F91AB7B7EF0048A170 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		40BD43FA1AB7B7EF0048A170 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		40BD43FB1AB7B7EF0048A170 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40BD43FC1AB7B7EF0048A170 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		40BD43FD1AB7B7EF0048A170 /* LayoutProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutProxy.swift; sourceTree = "<group>"; };
+		40BD43FE1AB7B7EF0048A170 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		40BD43FF1AB7B7EF0048A170 /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		40BD44001AB7B7EF0048A170 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		40BD44011AB7B7EF0048A170 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		40BD44021AB7B7EF0048A170 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		40BD44031AB7B7EF0048A170 /* ViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		40C89F4C1A9C1FD3008F0601 /* ThreeActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeActionsViewController.swift; sourceTree = "<group>"; };
 		40C89F4F1A9C2A92008F0601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +186,7 @@
 				40687E901A98E3A5005673D1 /* libsqlite3.dylib in Frameworks */,
 				40687E8E1A98E397005673D1 /* libz.dylib in Frameworks */,
 				40687E8C1A98E38F005673D1 /* SystemConfiguration.framework in Frameworks */,
+				40AE07841AB7D797008FAAB7 /* Snap.framework in Frameworks */,
 				40687E8A1A98E381005673D1 /* StoreKit.framework in Frameworks */,
 				40687E881A98E37C005673D1 /* Security.framework in Frameworks */,
 				40687E861A98E372005673D1 /* QuartzCore.framework in Frameworks */,
@@ -134,6 +216,7 @@
 		40687E3F1A98E021005673D1 = {
 			isa = PBXGroup;
 			children = (
+				40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */,
 				40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */,
 				40687E8D1A98E397005673D1 /* libz.dylib */,
 				40687E8B1A98E38F005673D1 /* SystemConfiguration.framework */,
@@ -164,6 +247,7 @@
 		40687E4A1A98E021005673D1 /* ThreeActions */ = {
 			isa = PBXGroup;
 			children = (
+				40BD43ED1AB7B7EF0048A170 /* Cartography */,
 				40687E4D1A98E021005673D1 /* AppDelegate.swift */,
 				40687E4F1A98E021005673D1 /* ViewController.swift */,
 				40B88BCC1A9976C7008F7B5B /* CreateAccountViewController.swift */,
@@ -225,6 +309,44 @@
 			path = "parse-library-1";
 			sourceTree = "<group>";
 		};
+		40AE077C1AB7D75B008FAAB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40AE07811AB7D75B008FAAB7 /* Snap.framework */,
+				40AE07831AB7D75B008FAAB7 /* SnapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40BD43ED1AB7B7EF0048A170 /* Cartography */ = {
+			isa = PBXGroup;
+			children = (
+				40BD43EE1AB7B7EF0048A170 /* Align.swift */,
+				40BD43EF1AB7B7EF0048A170 /* Cartography.h */,
+				40BD43F01AB7B7EF0048A170 /* Coefficients.swift */,
+				40BD43F11AB7B7EF0048A170 /* Compound.swift */,
+				40BD43F21AB7B7EF0048A170 /* Constraint.swift */,
+				40BD43F31AB7B7EF0048A170 /* ConstraintGroup.swift */,
+				40BD43F41AB7B7EF0048A170 /* Context.swift */,
+				40BD43F51AB7B7EF0048A170 /* Dimension.swift */,
+				40BD43F61AB7B7EF0048A170 /* Distribute.swift */,
+				40BD43F71AB7B7EF0048A170 /* Edge.swift */,
+				40BD43F81AB7B7EF0048A170 /* Edges.swift */,
+				40BD43F91AB7B7EF0048A170 /* Expression.swift */,
+				40BD43FA1AB7B7EF0048A170 /* Extensions.swift */,
+				40BD43FB1AB7B7EF0048A170 /* Info.plist */,
+				40BD43FC1AB7B7EF0048A170 /* Layout.swift */,
+				40BD43FD1AB7B7EF0048A170 /* LayoutProxy.swift */,
+				40BD43FE1AB7B7EF0048A170 /* Point.swift */,
+				40BD43FF1AB7B7EF0048A170 /* Priority.swift */,
+				40BD44001AB7B7EF0048A170 /* Property.swift */,
+				40BD44011AB7B7EF0048A170 /* Size.swift */,
+				40BD44021AB7B7EF0048A170 /* View.swift */,
+				40BD44031AB7B7EF0048A170 /* ViewUtils.swift */,
+			);
+			path = Cartography;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,10 +357,12 @@
 				40687E441A98E021005673D1 /* Sources */,
 				40687E451A98E021005673D1 /* Frameworks */,
 				40687E461A98E021005673D1 /* Resources */,
+				40AE07881AB7D797008FAAB7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				40AE07871AB7D797008FAAB7 /* PBXTargetDependency */,
 			);
 			name = ThreeActions;
 			productName = ThreeActions;
@@ -292,6 +416,12 @@
 			mainGroup = 40687E3F1A98E021005673D1;
 			productRefGroup = 40687E491A98E021005673D1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 40AE077C1AB7D75B008FAAB7 /* Products */;
+					ProjectRef = 40AE077B1AB7D75B008FAAB7 /* Snap.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				40687E471A98E021005673D1 /* ThreeActions */,
@@ -300,11 +430,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		40AE07811AB7D75B008FAAB7 /* Snap.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Snap.framework;
+			remoteRef = 40AE07801AB7D75B008FAAB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		40AE07831AB7D75B008FAAB7 /* SnapTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SnapTests.xctest;
+			remoteRef = 40AE07821AB7D75B008FAAB7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		40687E461A98E021005673D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40BD44101AB7B7EF0048A170 /* Info.plist in Resources */,
 				40C89F501A9C2A92008F0601 /* Main.storyboard in Resources */,
 				40687E581A98E021005673D1 /* LaunchScreen.xib in Resources */,
 				40687E551A98E021005673D1 /* Images.xcassets in Resources */,
@@ -326,19 +474,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				4085A6401AA170D700B59E99 /* ExternalAnimations.swift in Sources */,
+				40BD44121AB7B7EF0048A170 /* LayoutProxy.swift in Sources */,
+				40BD440F1AB7B7EF0048A170 /* Extensions.swift in Sources */,
+				40BD44041AB7B7EF0048A170 /* Align.swift in Sources */,
+				40BD44171AB7B7EF0048A170 /* View.swift in Sources */,
+				40BD440C1AB7B7EF0048A170 /* Edge.swift in Sources */,
 				4085A6761AA2948A00B59E99 /* AddActionViewController.swift in Sources */,
+				40BD440B1AB7B7EF0048A170 /* Distribute.swift in Sources */,
+				40BD44091AB7B7EF0048A170 /* Context.swift in Sources */,
 				40B88BD11A998917008F7B5B /* LoginAccountViewController.swift in Sources */,
+				40BD44061AB7B7EF0048A170 /* Compound.swift in Sources */,
 				40B88BCD1A9976C7008F7B5B /* CreateAccountViewController.swift in Sources */,
 				40687E921A98E7B7005673D1 /* ResponseDictionary.swift in Sources */,
+				40BD44141AB7B7EF0048A170 /* Priority.swift in Sources */,
+				40BD440D1AB7B7EF0048A170 /* Edges.swift in Sources */,
+				40BD44151AB7B7EF0048A170 /* Property.swift in Sources */,
 				4085A6781AA2A18600B59E99 /* NetworkViewController.swift in Sources */,
 				40B88BC91A991297008F7B5B /* Colors.swift in Sources */,
+				40BD440E1AB7B7EF0048A170 /* Expression.swift in Sources */,
 				40687E501A98E021005673D1 /* ViewController.swift in Sources */,
+				40BD44081AB7B7EF0048A170 /* ConstraintGroup.swift in Sources */,
+				40BD44181AB7B7EF0048A170 /* ViewUtils.swift in Sources */,
 				4085A6421AA2350600B59E99 /* UserData.swift in Sources */,
 				40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */,
+				40BD44161AB7B7EF0048A170 /* Size.swift in Sources */,
 				4012012A1AAB6A5200AFC69A /* TAUserData.swift in Sources */,
 				4085A63E1AA15EDF00B59E99 /* ActionsTodayViewController.swift in Sources */,
 				40C89F4D1A9C1FD3008F0601 /* ThreeActionsViewController.swift in Sources */,
+				40BD44051AB7B7EF0048A170 /* Coefficients.swift in Sources */,
 				40B88BCF1A997CEF008F7B5B /* UIExtentions.swift in Sources */,
+				40BD44071AB7B7EF0048A170 /* Constraint.swift in Sources */,
+				40BD44131AB7B7EF0048A170 /* Point.swift in Sources */,
+				40BD44111AB7B7EF0048A170 /* Layout.swift in Sources */,
+				40BD440A1AB7B7EF0048A170 /* Dimension.swift in Sources */,
 				40687E6F1A98E06D005673D1 /* ParseReq.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +526,11 @@
 			isa = PBXTargetDependency;
 			target = 40687E471A98E021005673D1 /* ThreeActions */;
 			targetProxy = 40687E5E1A98E021005673D1 /* PBXContainerItemProxy */;
+		};
+		40AE07871AB7D797008FAAB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Snap;
+			targetProxy = 40AE07861AB7D797008FAAB7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -463,6 +636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1",
@@ -480,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1",

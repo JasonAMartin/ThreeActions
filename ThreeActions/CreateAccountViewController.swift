@@ -272,13 +272,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func continueToMainApp(sender: AnyObject) {
-       let threeActionsMainAppController = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as ThreeActionsViewController
+       
+        let threeActionsViewControler = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as UITabBarController
         
-        presentViewController(threeActionsMainAppController, animated: true, completion: nil)
-        
+        presentViewController(threeActionsViewControler, animated: true, completion: nil)
         
 
-        
         
     }
 }

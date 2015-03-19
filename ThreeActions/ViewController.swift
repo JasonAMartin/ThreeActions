@@ -132,8 +132,8 @@ UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: 
     @IBAction func loginUser(sender: AnyObject) {
         
         var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            
+       if currentUser != nil {
+        
             //user is logged in, so go to main app
             
             let threeActionsViewControler = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as UITabBarController

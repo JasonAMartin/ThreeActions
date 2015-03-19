@@ -10,6 +10,8 @@
 	<string>ThreeActions</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>https://github.com/Masonry/Snap.git</string>
 		<key>D0F12530054028086D5BC2FF87F1987F44A6F016</key>
 		<string>https://github.com/JasonAMartin/ThreeActions.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>ThreeActions.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</key>
+		<string>../../../../../../Dropbox/Dev/ThreeActions/Snap</string>
 		<key>D0F12530054028086D5BC2FF87F1987F44A6F016</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>D0F12530054028086D5BC2FF87F1987F44A6F016</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3AF18F9C6F5D633BAA0B3F935459E0C777C82047</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Snap</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
