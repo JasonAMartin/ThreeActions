@@ -10,11 +10,7 @@ import UIKit
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var errorPanel: UIView!
     @IBOutlet weak var accountCreatedContinueButton: UIButton!
-    @IBOutlet weak var progressSpinner: UIActivityIndicatorView!
-    @IBOutlet weak var errorPanelButton: UIButton!
-    @IBOutlet weak var errorMessage: UILabel!
     
     
     
@@ -29,6 +25,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     //making elements
     let exitButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     let createButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    let errorPanel=UIView(frame: CGRectMake(100, 200, 100, 100))
+    let errorPanelButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    var errorMessage = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    let closeNoticeButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    var accountSpinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+    let continueButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+
+
+
+
     
     var emailTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
      var passwordTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
@@ -48,15 +54,38 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         exitButton.setTitleColor(UIColor.appGhostWhite(), forState: .Normal)
         exitButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         
+        
+        closeNoticeButton.setTitle("GO BACK", forState: .Normal)
+        closeNoticeButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
+        closeNoticeButton.setTitleColor(UIColor.appGhostWhite(), forState: .Normal)
+        closeNoticeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        closeNoticeButton.hidden = true
+        
+        
         createButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        
+        continueButton.setTitle("CONTINUE", forState: .Normal)
+        continueButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        continueButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        continueButton.hidden = true
+
         
         view.backgroundColor = UIColor.appColorBackground()
         
+        accountSpinner.center = self.view.center
+        accountSpinner.hidesWhenStopped = true
+        accountSpinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        accountSpinner.stopAnimating()
         
         
         
-        exitButton.setTitleColor(UIColor.appShadyGhost(), forState: UIControlState.Normal)
-        exitButton.setTitleColor(UIColor.appMidnight(), forState: UIControlState.Highlighted)
+        errorMessage.hidden = true
+        errorMessage.textAlignment = .Center
+        errorMessage.textColor = UIColor.appMidnight()
+        errorMessage.numberOfLines = 6
+        
+        
+//        exitButton.setTitleColor(UIColor.appMidnight(), forState: UIControlState.Highlighted)
         
         UIViewController.buttonCreatorAction(createButton)
         UIViewController.buttonCreator(errorPanelButton)
@@ -99,6 +128,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.layer.cornerRadius = 5.0
         usernameTextField.textAlignment = .Center
         
+        errorPanel.hidden = true
+        errorPanel.layer.cornerRadius = 5.0
+        errorPanel.backgroundColor = UIColor.appActionThree()
+        errorPanel.alpha = 0.4
+        
         //add views
         
         self.view.addSubview(logo)
@@ -107,11 +141,19 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(emailTextField)
         self.view.addSubview(usernameTextField)
         self.view.addSubview(passwordTextField)
+        self.view.addSubview(errorPanel)
+        self.view.addSubview(errorMessage)
+        self.view.addSubview(closeNoticeButton)
+        self.view.addSubview(accountSpinner)
+        self.view.addSubview(continueButton)
+
         
         //button funcs
         
         exitButton.addTarget(self, action: "removeModal:", forControlEvents: UIControlEvents.TouchUpInside)
         createButton.addTarget(self, action: "startUserAccountProcess:", forControlEvents: UIControlEvents.TouchUpInside)
+        closeNoticeButton.addTarget(self, action: "closeNotice:", forControlEvents: UIControlEvents.TouchUpInside)
+        continueButton.addTarget(self, action: "continueToMainApp:", forControlEvents: UIControlEvents.TouchUpInside)
         
         //layout
 
@@ -129,6 +171,19 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             exitButton.width == view.width
         
         }
+        
+        layout(accountSpinner, logo, view) {accountSpinner, logo, view in
+            accountSpinner.top == logo.bottom + 50
+            accountSpinner.centerX == view.centerX
+        }
+        
+        layout(closeNoticeButton, view) { closeNoticeButton, view in
+            closeNoticeButton.left == view.left + 30
+            closeNoticeButton.bottom == view.bottom - 20
+            closeNoticeButton.width == view.width
+            
+        }
+        
         
         layout(createButton, view) { createButton, view in
             createButton.centerX == view.centerX
@@ -160,6 +215,29 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.top == logo.bottom + 100
             passwordTextField.height == 40
         }
+        
+        layout(errorPanel, logo, view) {errorPanel, logo, view in
+            errorPanel.centerX == view.centerX
+            errorPanel.width == view.width - 80
+            errorPanel.top == logo.bottom + 40
+            errorPanel.height == (logo.height)
+        }
+        
+        layout(continueButton, view) { continueButton, view in
+            continueButton.centerX == view.centerX
+            continueButton.height == 40
+            continueButton.width == 200
+            continueButton.bottom == view.bottom - 100
+        }
+        
+        
+        layout(errorMessage, logo, view) {errorMessage, logo, view in
+            errorMessage.top == logo.bottom + 80
+            errorMessage.width == view.width - 110
+            errorMessage.centerX == view.centerX
+            errorMessage.height == 100
+        }
+        
 
     }
     
@@ -183,9 +261,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true);
         return false;
     }
+
+
     
-    
-    @IBAction func closeResponsePanel(sender: AnyObject) {
+    func closeNotice(sender: AnyObject) {
         errorPanelControl(false)
     }
     
@@ -197,14 +276,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //true = show, false = hide
         if(state){
             //show things
-            progressSpinner.startAnimating()
+            accountSpinner.startAnimating()
             errorPanel.hidden = false
             errorPanelButton.hidden = false
             errorMessage.hidden = false
             
         } else {
             //hide things
-            progressSpinner.stopAnimating()
+            accountSpinner.stopAnimating()
             errorPanel.hidden = true
             errorPanelButton.hidden = true
             errorMessage.hidden = true
@@ -216,7 +295,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     func userSignUpValid(){
         
         errorPanelButton.hidden = true
-        progressSpinner.stopAnimating()
+        accountSpinner.stopAnimating()
        
         if(vcPurpose=="login"){
              errorMessage.text = appResponseDictionary["loginAccountSuccess"]
@@ -225,8 +304,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        UIViewController.buttonCreatorAction(accountCreatedContinueButton)
-        accountCreatedContinueButton.hidden = false
+        UIViewController.buttonCreatorAction(continueButton)
+        continueButton.hidden = false
+        closeNoticeButton.hidden = true
         
     }
     
@@ -252,14 +332,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 if let signinError = self.parseErrorDictionary[error.code] {
                     println("Error:\n")
                     println(signinError)
-                    self.progressSpinner.stopAnimating()
+                    self.accountSpinner.stopAnimating()
                     self.errorMessage.text = signinError
                     
                 } else {
                     //optional is NIL, so my error isn't defined. Return response 909090
                     if let unknownError = self.parseErrorDictionary[909090] {
                         println(unknownError)
-                        self.progressSpinner.stopAnimating()
+                        self.accountSpinner.stopAnimating()
                         self.errorMessage.text = unknownError
                         
                     }
@@ -289,14 +369,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 if let signinError = self.parseErrorDictionary[error.code] {
                     println("Error:\n")
                     println(signinError)
-                    self.progressSpinner.stopAnimating()
+                    self.accountSpinner.stopAnimating()
                     self.errorMessage.text = signinError
                     
                 } else {
                     //optional is NIL, so my error isn't defined. Return response 909090
                     if let unknownError = self.parseErrorDictionary[909090] {
                         println(unknownError)
-                        self.progressSpinner.stopAnimating()
+                        self.accountSpinner.stopAnimating()
                         self.errorMessage.text = unknownError
                         
                     }
@@ -371,9 +451,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         showHideElements(state: "hide")
         
         if(vcPurpose=="login"){
-            errorMessage.text = "Attempting to log into your account.\n\n"
+         //   errorMessage.text = "Attempting to log into your account.\n\n"
         }else {
-            errorMessage.text = "Attempting to create your account.\n\n"
+          //  errorMessage.text = "Attempting to create your account.\n\n"
         }
         
         errorPanelControl(true)
@@ -397,6 +477,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             emailTextField.hidden = true
             createButton.hidden  = true
             exitButton.hidden = true
+            closeNoticeButton.hidden = false
         }
         
         if(state=="show"){
@@ -404,13 +485,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.hidden = false
             createButton.hidden  = false
             exitButton.hidden = false
+            closeNoticeButton.hidden = true
             if(vcPurpose=="create"){
                 emailTextField.hidden = false
             }
         }
     }
 
-    @IBAction func continueToMainApp(sender: AnyObject) {
+   func continueToMainApp(sender: AnyObject) {
        
         let threeActionsViewControler = storyboard?.instantiateViewControllerWithIdentifier("ThreeActionsMainApp") as UITabBarController
         

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Revolvity LLC. All rights reserved.
 //
 
+//TODO: Syncing goes through if PFUser is on device EVEN IF the user is deleted from cloud. I should make this do a login check
+
 import UIKit
 import QuartzCore
 

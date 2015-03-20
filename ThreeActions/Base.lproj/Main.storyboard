@@ -286,49 +286,6 @@
                     <view key="view" contentMode="scaleToFill" id="pX9-FJ-eQW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" id="dSu-LB-GeE">
-                                <rect key="frame" x="16" y="246" width="288" height="309"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hhh" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="12Y-lT-DPQ">
-                                        <rect key="frame" x="8" y="66" width="272" height="197"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="16"/>
-                                        <color key="textColor" red="0.89009232949999995" green="0.89009232949999995" blue="0.89009232949999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Fs-d4-nrh">
-                                        <rect key="frame" x="25" y="271" width="238" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="GO BACK">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closeResponsePanel:" destination="uvT-eA-3D8" eventType="touchUpInside" id="zv8-bc-omY"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tjt-tk-pe8">
-                                        <rect key="frame" x="25" y="271" width="238" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="CONTINUE">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="continueToMainApp:" destination="uvT-eA-3D8" eventType="touchUpInside" id="uY6-sc-6Mz"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.30196078430000001" green="0.15686274510000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="wZd-Bf-TcI">
-                                <rect key="frame" x="150" y="269" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="0.8980392157" green="0.83529411760000005" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.15686274510000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
@@ -336,13 +293,6 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="SOR-9R-qm5"/>
-                    <connections>
-                        <outlet property="accountCreatedContinueButton" destination="Tjt-tk-pe8" id="XbZ-Xf-lgO"/>
-                        <outlet property="errorMessage" destination="12Y-lT-DPQ" id="vPT-xo-OAk"/>
-                        <outlet property="errorPanel" destination="dSu-LB-GeE" id="JZg-UF-DOm"/>
-                        <outlet property="errorPanelButton" destination="6Fs-d4-nrh" id="FPq-bx-ycX"/>
-                        <outlet property="progressSpinner" destination="wZd-Bf-TcI" id="ew4-0J-v0m"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pj4-wH-4ro" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="FcC-2X-RHn"/>
