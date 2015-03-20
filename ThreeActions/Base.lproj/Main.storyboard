@@ -287,20 +287,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreeActionsLogo-BIG" id="ZnW-vb-hwD">
-                                <rect key="frame" x="-132" y="31" width="584" height="192"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sl5-Ji-VxM">
-                                <rect key="frame" x="16" y="518" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="EXIT">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="removeModal:" destination="uvT-eA-3D8" eventType="touchUpInside" id="aH5-Dc-KoS"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter username" textAlignment="center" minimumFontSize="17" id="cXh-bW-c1Y">
                                 <rect key="frame" x="41" y="262" width="238" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -389,7 +375,6 @@
                         <outlet property="errorMessage" destination="12Y-lT-DPQ" id="vPT-xo-OAk"/>
                         <outlet property="errorPanel" destination="dSu-LB-GeE" id="JZg-UF-DOm"/>
                         <outlet property="errorPanelButton" destination="6Fs-d4-nrh" id="FPq-bx-ycX"/>
-                        <outlet property="exitButton" destination="Sl5-Ji-VxM" id="7JY-Yn-hs5"/>
                         <outlet property="passwordTextField" destination="D7u-8n-EEE" id="P7P-KW-5KT"/>
                         <outlet property="progressSpinner" destination="wZd-Bf-TcI" id="ew4-0J-v0m"/>
                         <outlet property="usernameTextField" destination="cXh-bW-c1Y" id="pDi-32-T47"/>

@@ -10,7 +10,6 @@ import UIKit
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var errorPanel: UIView!
 
@@ -28,6 +27,57 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     //import parseErrorDictionary
     let parseErrorDictionary = ParseErrorDictionary
     let appResponseDictionary = AppResponseDictionary
+    
+    
+    //making elements
+    let exitButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //icon for done action
+        let logoFile = "3Actions02"
+        let logoImage = UIImage(named: logoFile)
+        let logo = UIImageView(image: logoImage!)
+        
+        
+        exitButton.setTitle("GO BACK", forState: .Normal)
+        exitButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
+        exitButton.setTitleColor(UIColor.appGhostWhite(), forState: .Normal)
+        exitButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        
+        view.backgroundColor = UIColor.appColorBackground()
+        
+        //add views
+        
+        self.view.addSubview(logo)
+        self.view.addSubview(exitButton)
+        
+        //button funcs
+        
+        exitButton.addTarget(self, action: "removeModal:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //layout
+
+        layout(logo,view) {logo, view in
+            logo.width == (view.width - 40)
+            logo.height == (view.height / 3)
+            logo.top == view.top + 60
+            logo.left == view.left + 20
+            logo.right == view.right - 20
+        }
+        
+        layout(exitButton, view) { exitButton, view in
+            exitButton.left == view.left + 30
+            exitButton.bottom == view.bottom - 20
+            exitButton.width == view.width
+        
+        }
+
+
+    }
     
     override func viewDidLoad() {
         //customize buttons
@@ -63,7 +113,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func removeModal(sender: AnyObject) {
+   func removeModal(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
 
     }

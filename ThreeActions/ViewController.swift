@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     func userDataSyncComplete(){
         //this is callback when the user data is synced.
         //stop & hide sync elements
+       
         syncSpinner.stopAnimating()
         syncSpinner.hidden = true
         syncNotice.hidden = true
@@ -81,21 +82,23 @@ class ViewController: UIViewController {
         loginButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
         signupButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
         
-        syncUserData()
+        syncNotice.text = "Syncing your data . . "
+        syncNotice.textAlignment = .Center
+        syncNotice.textColor = UIColor.appGhostWhite()
+        syncNotice.hidden = true
+    
         
         syncSpinner.center = self.view.center
         syncSpinner.hidesWhenStopped = true
-        syncSpinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        syncSpinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         syncSpinner.stopAnimating()
         
         
-        
-        
-        self.view.addSubview(syncSpinner)
-        self.view.addSubview(syncNotice)
         self.view.addSubview(signupButton)
         self.view.addSubview(loginButton)
         self.view.addSubview(logo)
+        self.view.addSubview(syncSpinner)
+        self.view.addSubview(syncNotice)
         
         
         //layout
@@ -109,19 +112,32 @@ class ViewController: UIViewController {
         }
         
         layout(loginButton, view) { loginButton, view in
-            loginButton.top == view.centerY + 40
+            loginButton.top == view.centerY + 80
             loginButton.width == 200
             loginButton.height == 40
             loginButton.centerX == view.centerX
         }
         
         layout(signupButton, view) { signupButton, view in
-            signupButton.top == view.centerY + 100
+            signupButton.top == view.centerY + 140
             signupButton.width == 200
             signupButton.height == 40
             signupButton.centerX == view.centerX
         }
-
+        
+        layout(syncNotice, logo, view) {syncNotice, logo, view in
+            syncNotice.top == logo.bottom + 80
+            syncNotice.width == view.width
+        }
+        
+        layout(syncSpinner, logo, view) {syncSpinner, logo, view in
+            syncSpinner.top == logo.bottom + 40
+            syncSpinner.centerX == view.centerX
+        }
+  
+        
+        
+        syncUserData()
     }
 
     override func viewDidAppear(animated: Bool) {
