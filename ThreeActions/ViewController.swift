@@ -188,7 +188,7 @@ class ViewController: UIViewController {
     func createAccount(sender: AnyObject){
         let createAccountViewController = storyboard?.instantiateViewControllerWithIdentifier("loginController") as CreateAccountViewController
         
-        createAccountViewController.vcPurpose = "createaccount"
+        createAccountViewController.vcPurpose = "create"
         
         presentViewController(createAccountViewController, animated: true, completion: nil)
 

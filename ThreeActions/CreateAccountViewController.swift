@@ -10,16 +10,13 @@ import UIKit
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var errorPanel: UIView!
-
     @IBOutlet weak var accountCreatedContinueButton: UIButton!
     @IBOutlet weak var progressSpinner: UIActivityIndicatorView!
     @IBOutlet weak var errorPanelButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
+    
+    
     
     //receive data from login controller :: it's either login or create
     var vcPurpose = String()
@@ -31,9 +28,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     //making elements
     let exitButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    let createButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     
-    
-    
+    var emailTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
+     var passwordTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
+     var usernameTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -48,16 +48,70 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         exitButton.setTitleColor(UIColor.appGhostWhite(), forState: .Normal)
         exitButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         
+        createButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        
         view.backgroundColor = UIColor.appColorBackground()
+        
+        
+        
+        
+        exitButton.setTitleColor(UIColor.appShadyGhost(), forState: UIControlState.Normal)
+        exitButton.setTitleColor(UIColor.appMidnight(), forState: UIControlState.Highlighted)
+        
+        UIViewController.buttonCreatorAction(createButton)
+        UIViewController.buttonCreator(errorPanelButton)
+        
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.usernameTextField.delegate = self
+        
+        if(vcPurpose != "login") {
+            vcPurpose = "create"
+        }
+        
+        if(vcPurpose=="login"){
+            //this view is being used to login, so hide email text field and change text on button
+            self.emailTextField.hidden=true
+            self.createButton.setTitle("LOGIN", forState: UIControlState.Normal)
+        } else {
+            self.createButton.setTitle("CREATE ACCOUNT", forState: UIControlState.Normal)
+
+        }
+        
+        //make sure response panel is hidden
+        errorPanelControl(false)
+
+        
+        emailTextField.backgroundColor = UIColor.appActionTwo()
+        emailTextField.placeholder = "enter your email"
+        emailTextField.layer.cornerRadius = 5.0
+        emailTextField.textAlignment = .Center
+        
+        passwordTextField.backgroundColor = UIColor.appActionTwo()
+        passwordTextField.placeholder = "enter password"
+        passwordTextField.layer.cornerRadius = 5.0
+        passwordTextField.textAlignment = .Center
+        
+        usernameTextField.backgroundColor = UIColor.appActionTwo()
+        usernameTextField.placeholder = "enter username"
+        usernameTextField.layer.cornerRadius = 5.0
+        usernameTextField.textAlignment = .Center
         
         //add views
         
         self.view.addSubview(logo)
         self.view.addSubview(exitButton)
+        self.view.addSubview(createButton)
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(usernameTextField)
+        self.view.addSubview(passwordTextField)
         
         //button funcs
         
         exitButton.addTarget(self, action: "removeModal:", forControlEvents: UIControlEvents.TouchUpInside)
+        createButton.addTarget(self, action: "startUserAccountProcess:", forControlEvents: UIControlEvents.TouchUpInside)
         
         //layout
 
@@ -75,7 +129,37 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             exitButton.width == view.width
         
         }
+        
+        layout(createButton, view) { createButton, view in
+            createButton.centerX == view.centerX
+            createButton.height == 40
+            createButton.width == 200
+            createButton.bottom == view.bottom - 60
+        }
 
+        layout(emailTextField, logo, view) {emailTextField, logo, view in
+            emailTextField.centerX == view.centerX
+          //  emailTextField.centerY == view.centerY
+            emailTextField.width == view.width - 80
+            emailTextField.top == logo.bottom + 160
+            emailTextField.height == 40
+        }
+        
+        layout(usernameTextField, logo, view) {usernameTextField, logo, view in
+            usernameTextField.centerX == view.centerX
+            //  emailTextField.centerY == view.centerY
+            usernameTextField.width == view.width - 80
+            usernameTextField.top == logo.bottom + 40
+            usernameTextField.height == 40
+        }
+        
+        layout(passwordTextField, logo, view) {passwordTextField, logo, view in
+            passwordTextField.centerX == view.centerX
+            //  emailTextField.centerY == view.centerY
+            passwordTextField.width == view.width - 80
+            passwordTextField.top == logo.bottom + 100
+            passwordTextField.height == 40
+        }
 
     }
     
@@ -83,29 +167,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //customize buttons
         //UIViewController.buttonCreatorDismiss(exitButton)
         
-        exitButton.setTitleColor(UIColor.appShadyGhost(), forState: UIControlState.Normal)
-        exitButton.setTitleColor(UIColor.appMidnight(), forState: UIControlState.Highlighted)
-        
-        UIViewController.buttonCreatorAction(createButton)
-        UIViewController.buttonCreator(errorPanelButton)
-        
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
-        self.usernameTextField.delegate = self
-        
-        if(vcPurpose != "login") {
-            vcPurpose = "create"
-        }
-        if(vcPurpose=="login"){
-            //this view is being used to login, so hide email text field and change text on button
-            self.emailTextField.hidden=true
-            self.createButton.setTitle("LOGIN", forState: UIControlState.Normal)
-        }
-        
-        //make sure response panel is hidden
-        errorPanelControl(false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -147,6 +208,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             errorPanel.hidden = true
             errorPanelButton.hidden = true
             errorMessage.hidden = true
+            //show elements
+            showHideElements(state: "show")
         }
     }
     
@@ -249,7 +312,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func loginAccount(sender: AnyObject) {
+    func startUserAccountProcess(sender: AnyObject) {
 
         
         
@@ -303,6 +366,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         
         //set initial message & make call to bring up error panel (should be renamed to response panel!)
         
+        
+        //hide elements
+        showHideElements(state: "hide")
+        
         if(vcPurpose=="login"){
             errorMessage.text = "Attempting to log into your account.\n\n"
         }else {
@@ -312,13 +379,35 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         errorPanelControl(true)
         
         if(vcPurpose=="create"){
-        createUserAccount(username: myUsername, password: myPassword, email: myEmail)
+            createUserAccount(username: myUsername, password: myPassword, email: myEmail)
         }
         
         if(vcPurpose=="login"){
             loginUserAccount(username: myUsername, password: myPassword)
         }
         
+    }
+    
+    func showHideElements(#state:String){
+        
+        
+        if(state=="hide"){
+            usernameTextField.hidden = true
+            passwordTextField.hidden = true
+            emailTextField.hidden = true
+            createButton.hidden  = true
+            exitButton.hidden = true
+        }
+        
+        if(state=="show"){
+            usernameTextField.hidden = false
+            passwordTextField.hidden = false
+            createButton.hidden  = false
+            exitButton.hidden = false
+            if(vcPurpose=="create"){
+                emailTextField.hidden = false
+            }
+        }
     }
 
     @IBAction func continueToMainApp(sender: AnyObject) {
