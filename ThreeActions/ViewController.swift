@@ -11,17 +11,17 @@ import QuartzCore
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var syncSpinner: UIActivityIndicatorView!
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+
     
-    @IBOutlet weak var syncNotice: UILabel!
-    @IBOutlet weak var logoCon: NSLayoutConstraint!
+    //making elements
+    let signupButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
+    let loginButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     
-    @IBOutlet weak var logoTop: NSLayoutConstraint!
+    var syncSpinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+    var syncNotice = UILabel(frame: CGRectMake(0, 0, 200, 21))
     
-    @IBOutlet weak var buttonsCon: NSLayoutConstraint!
     
+   //--> @IBOutlet weak var syncNotice: UILabel!
     
     func userDataSyncComplete(){
         //this is callback when the user data is synced.
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         //check for logged in user. If so, go right to app.
         var currentUser = PFUser.currentUser()
         if currentUser != nil {
-            signUpButton.hidden = true
+            signupButton.hidden = true
             loginButton.hidden = true
             //this is where sync should take place
             
@@ -60,13 +60,67 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //icon for done action
+        let logoFile = "3Actions02"
+        let logoImage = UIImage(named: logoFile)
+        let logo = UIImageView(image: logoImage!)
+
+        
+        
+        UIViewController.buttonCreatorAction(signupButton)
+        UIViewController.buttonCreatorAction(loginButton)
         view.backgroundColor = UIColor.appColorBackground()
+        
+        loginButton.addTarget(self, action: "loginUser:", forControlEvents: UIControlEvents.TouchUpInside)
+        signupButton.addTarget(self, action: "createAccount:", forControlEvents: UIControlEvents.TouchUpInside)
+
+        loginButton.setTitle("LOGIN", forState: .Normal)
+        signupButton.setTitle("CREATE ACCOUNT", forState: .Normal)
+        
+        loginButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        signupButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        
         syncUserData()
-
-
-       // logoCon.constant -= view.bounds.width
-        //buttonsCon.constant -= view.bounds.height
-
+        
+        syncSpinner.center = self.view.center
+        syncSpinner.hidesWhenStopped = true
+        syncSpinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        syncSpinner.stopAnimating()
+        
+        
+        
+        
+        self.view.addSubview(syncSpinner)
+        self.view.addSubview(syncNotice)
+        self.view.addSubview(signupButton)
+        self.view.addSubview(loginButton)
+        self.view.addSubview(logo)
+        
+        
+        //layout
+        
+        layout(logo,view) {logo, view in
+            logo.width == (view.width - 40)
+            logo.height == (view.height / 3)
+            logo.top == view.top + 60
+            logo.left == view.left + 20
+            logo.right == view.right - 20
+        }
+        
+        layout(loginButton, view) { loginButton, view in
+            loginButton.top == view.centerY + 40
+            loginButton.width == 200
+            loginButton.height == 40
+            loginButton.centerX == view.centerX
+        }
+        
+        layout(signupButton, view) { signupButton, view in
+            signupButton.top == view.centerY + 100
+            signupButton.width == 200
+            signupButton.height == 40
+            signupButton.centerX == view.centerX
+        }
 
     }
 
@@ -77,50 +131,10 @@ class ViewController: UIViewController {
         UITabBar.appearance().tintColor = UIColor.appActionTwo()
         UITabBar.appearance().backgroundColor = UIColor.whiteColor()
         UITabBar.appearance().barTintColor = UIColor.appColorButtonNormal()
-        
-       /*
-UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: {
-            self.logoCon.constant += self.view.bounds.width
-            self.view.layoutIfNeeded()
-            
-            }, completion: nil)
-        
-        UIView.animateWithDuration(0.7, animations: {
-            self.buttonsCon.constant += self.view.bounds.height
-            self.view.layoutIfNeeded()
-            
-            }, completion: nil)
-        */
-      
     }
     
     override func viewDidLoad() {
-        //detele test code
-        
-      //  var userdata = UserData(userAccount: currentUser.username)
-        
-       //let processData = userdata.saveData(title: "My Fun Title Goes Right HERE!", description: "This is a longer description of a bunch of stuff for this action or perhaps not at all. Who knows.", status: 0, colornumber: 1, task: "newtask")
-
-        
-        
-        
-      //userdata.getData(userid: currentUser.username)
-        
-        //end delete
-        
-        
-        //create button look.
-        //I've extended UIViewController with custom methods in UIExtentions.swift
-        
-        UIViewController.buttonCreatorAction(signUpButton)
-        UIViewController.buttonCreatorAction(loginButton)
-        
-        
-        
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,7 +143,7 @@ UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: 
     }
     
     
-    @IBAction func loginUser(sender: AnyObject) {
+    func loginUser(sender: AnyObject) {
         
         var currentUser = PFUser.currentUser()
        if currentUser != nil {
@@ -153,6 +167,15 @@ UIView.animateWithDuration(0.5, delay: 0.3, options: .CurveEaseOut, animations: 
         
         
     }
+    }
+    
+    func createAccount(sender: AnyObject){
+        let createAccountViewController = storyboard?.instantiateViewControllerWithIdentifier("loginController") as CreateAccountViewController
+        
+        createAccountViewController.vcPurpose = "createaccount"
+        
+        presentViewController(createAccountViewController, animated: true, completion: nil)
+
     }
 
 

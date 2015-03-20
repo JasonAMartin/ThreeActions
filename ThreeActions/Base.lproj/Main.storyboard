@@ -12,56 +12,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v5f-Zf-5Yk">
-                                <rect key="frame" x="167" y="398" width="267" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50588235290000005" green="0.25490196079999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="CREATE ACCOUNT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uvT-eA-3D8" kind="modal" id="bX1-rT-epg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oRA-An-w6C">
-                                <rect key="frame" x="167" y="462" width="267" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50588235290000005" green="0.25490196079999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="LOGIN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginUser:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GV7-KR-8Fp"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3Actions02" id="agT-aX-hzS">
-                                <rect key="frame" x="8" y="132" width="584" height="192"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="FIK-da-e8Q">
                                 <rect key="frame" x="282" y="395" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing data . . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GEp-pL-uWJ">
-                                <rect key="frame" x="235" y="467" width="130" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.68627450980392157" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
-                        <outlet property="loginButton" destination="oRA-An-w6C" id="Vy5-7A-Ksd"/>
-                        <outlet property="signUpButton" destination="v5f-Zf-5Yk" id="9Eu-lv-6t4"/>
-                        <outlet property="syncNotice" destination="GEp-pL-uWJ" id="ETb-Ke-zv0"/>
                         <outlet property="syncSpinner" destination="FIK-da-e8Q" id="7WT-L3-g6b"/>
                     </connections>
                 </viewController>
@@ -538,7 +498,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3Actions02" width="1145" height="842"/>
         <image name="ThreeActionsLogo-BIG" width="1145" height="842"/>
         <image name="icon-add-white" width="80" height="80"/>
         <image name="icon-cal-80-white" width="82" height="80"/>
