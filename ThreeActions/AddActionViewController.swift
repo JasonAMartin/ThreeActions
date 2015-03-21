@@ -17,11 +17,6 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     var aDescription:String = ""
     var passActionColor = 0
     
-    
-    
-   // @IBOutlet weak var actionDatePicker: UIDatePicker!
-    
-    
     //make elements
     let actionColorButton1:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     let actionColorButton2:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
@@ -55,6 +50,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         //style items
         
         actionDatePicker.datePickerMode = UIDatePickerMode.Date
+        actionDatePicker.addTarget(self, action: Selector("actionDateSelected:"), forControlEvents: UIControlEvents.ValueChanged)
+
         
         actionColorButton1.backgroundColor = UIColor.appActionOne()
         actionColorButton1.setTitle("ACTION ONE", forState: .Normal)
@@ -78,6 +75,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         createActionButton.setTitle("CREATE ACTION", forState: .Normal)
         createActionButton.hidden = true
         UIViewController.buttonCreatorAction(createActionButton)
+        createActionButton.addTarget(self, action: "createAction:", forControlEvents: UIControlEvents.TouchUpInside)
+
         
         actionTitleTextField.backgroundColor = UIColor.appActionTwo()
         actionTitleTextField.placeholder = "Enter action title"
@@ -201,7 +200,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func actionDateSelected(sender: AnyObject) {
+    func actionDateSelected(sender: AnyObject) {
+        println("DATE PICK")
         
         if let currentDate = sender.date {
             let formatter = NSDateFormatter()
@@ -212,8 +212,11 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
             
              displayButton()
         }
-        
     }
+    
+    
+    
+    
     
     
     func textFieldshouldChangeCharactersInRange(textField: UITextField!) {    //delegate method
@@ -254,11 +257,6 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         displayButton()
     }
     
-    func createAction(sender: AnyObject) {
-        
-        //call network VC and rock it
-        
-    }
     
     func fieldEntry(sender: AnyObject) {
         let myField = actionTitleTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -286,18 +284,17 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func createAction(sender: AnyObject){
+        //send action
+
+        let networkVC = storyboard?.instantiateViewControllerWithIdentifier("networkViewController") as NetworkViewController
         
-        println("Oh noes---- title: \(aColor) date: \(aDate)")
-        if(segue.identifier == "networkSegue") {
-            if let networkViewController = segue.destinationViewController as? NetworkViewController{
-                networkViewController.aTitle = aTitle
-                networkViewController.aColor = aColor
-                networkViewController.aDate = aDate
-                networkViewController.aDescription = aDescription
-            }
-        }
+        networkVC.aTitle = aTitle
+        networkVC.aColor = aColor
+        networkVC.aDate = aDate
+        networkVC.aDescription = aDescription
+        networkVC.networkingPurpose = .CreateAction
+        presentViewController(networkVC, animated: true, completion: nil)
     }
     
     func textViewDidChange(textView: UITextView!) { //Handle the text changes here
@@ -311,7 +308,6 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     
     func displayButton(){
-        println("calling display button")
         //if all conditions for adding an action look to be met, show the button that let's the user go to networking modal
         
         //NOTE: removed && aDescription != "" as I decided description should be optional.

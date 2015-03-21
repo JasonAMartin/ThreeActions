@@ -9,10 +9,16 @@
 
 class NetworkViewController: UIViewController {
     
+    
+    enum NetworkAction {
+        case CreateAction, DeleteAction, Sync, Pending
+    }
+    
     var aDate = String()
     var aTitle = String()
     var aDescription = String()
     var aColor = Int()
+    var networkingPurpose = NetworkAction.Pending
     
     
     @IBOutlet weak var networkStatusLabel: UILabel!
