@@ -52,5 +52,11 @@ extension UIViewController {
         button.layer.borderWidth = 0.5        
     }
     
+    class func roundedButton(button:UIButton){
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
+        button.layer.borderWidth = 0.1
+    }
+    
     
 }

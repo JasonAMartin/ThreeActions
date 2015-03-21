@@ -388,6 +388,7 @@ class ActionsTodayViewController: UIViewController {
             let addActionVC = storyboard?.instantiateViewControllerWithIdentifier("AddAction") as AddActionViewController
             
             addActionVC.passActionColor = actionColor
+          //  addActionVC.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             
             presentViewController(addActionVC, animated: true, completion: nil)
 
