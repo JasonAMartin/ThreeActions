@@ -85,19 +85,19 @@ class ActionsTodayViewController: UIViewController {
         
         let actionButtonOne:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
         actionButtonOne.backgroundColor = UIColor.appActionOne()
-        actionButtonOne.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        actionButtonOne.addTarget(self, action: "showSingleAction:", forControlEvents: UIControlEvents.TouchUpInside)
         actionButtonOne.tag = 10;
         
  
         let actionButtonTwo:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
         actionButtonTwo.backgroundColor = UIColor.appActionTwo()
-        actionButtonTwo.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        actionButtonTwo.addTarget(self, action: "showSingleAction:", forControlEvents: UIControlEvents.TouchUpInside)
         actionButtonTwo.tag = 11;
         
         
         let actionButtonThree:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
         actionButtonThree.backgroundColor = UIColor.appActionThree()
-        actionButtonThree.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        actionButtonThree.addTarget(self, action: "showSingleAction:", forControlEvents: UIControlEvents.TouchUpInside)
         actionButtonThree.tag = 12;
         
         
@@ -328,35 +328,62 @@ class ActionsTodayViewController: UIViewController {
     }
     
     
-    @IBAction func goNext(sender: AnyObject) {
+    func showSingleAction(sender: AnyObject){
         
-        //switch state
-            switch currentState {
-            case .First:
-               currentState = .Second
-            case .Second:
-                currentState = .Third
-            case .Third:
-                currentState = .First
-            default:
-                currentState = .Second
+        var state = false
+        var actionColor = 0
+        var actionTitle = ""
+        var actionDescription = ""
+        var actionStatus = 44
+        var actionDate = ""
+        var myDBKey = self.dbKey1
+        
+        if let tag = sender.tag {
+            state = true
+            if(tag == 10) {
+                actionColor = 1
+                myDBKey = self.dbKey1
             }
-        
-        swapActions()
-    }
-    
-    @IBAction func goPrevious(sender: AnyObject) {
-        switch currentState {
-        case .First:
-            currentState = .Third
-        case .Second:
-            currentState = .First
-        case .Third:
-            currentState = .Second
-        default:
-            currentState = .Third
+            if(tag == 11) {
+                actionColor = 2
+                myDBKey = self.dbKey2
+            }
+            if(tag == 12) {
+                actionColor = 3
+                myDBKey = self.dbKey3
+            }
         }
-        swapActions()
+        
+   
+        if let cdActionTitle = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionTitle") {
+            actionTitle = toString(cdActionTitle)
+        }
+        
+        if let cdActionDescription = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionDescription") {
+            actionDescription = toString(cdActionDescription)
+        }
+        
+        
+        if let cdActionStatus = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("status") {
+            actionStatus = cdActionStatus.integerValue
+        }
+        
+        if let cdActionDate = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionDate") {
+            actionDate = toString(cdActionDate)
+        }
+        
+        if(state) {
+            let singleActionVC = storyboard?.instantiateViewControllerWithIdentifier("SingleActionViewController") as SingleActionViewController
+            singleActionVC.actionColor = actionColor
+            
+            singleActionVC.actionTitle = actionTitle
+            singleActionVC.actionDescription = actionDescription
+            singleActionVC.actionStatus = actionStatus
+            singleActionVC.actionDate = actionDate
+            singleActionVC.actionColor = actionColor
+            
+            presentViewController(singleActionVC, animated: true, completion: nil)
+        }
     }
     
     
