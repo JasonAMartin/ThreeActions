@@ -31,7 +31,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        view.backgroundColor = UIColor.appShadyGhost()
+
         if(passActionColor == 1){
             view.backgroundColor = UIColor.appActionOne()
             aColor = 1
@@ -51,24 +52,25 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         
         actionDatePicker.datePickerMode = UIDatePickerMode.Date
         actionDatePicker.addTarget(self, action: Selector("actionDateSelected:"), forControlEvents: UIControlEvents.ValueChanged)
+        actionDatePicker.tintColor = UIColor.appGhostWhite()
 
         
         actionColorButton1.backgroundColor = UIColor.appActionOne()
-        actionColorButton1.setTitle("ACTION ONE", forState: .Normal)
+        actionColorButton1.setTitle("ACTION 1", forState: .Normal)
         actionColorButton1.addTarget(self, action: "chooseActionColor1:", forControlEvents: UIControlEvents.TouchUpInside)
-        actionColorButton1.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
+        actionColorButton1.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 12)
         UIViewController.roundedButton(actionColorButton1)
         
         actionColorButton2.backgroundColor = UIColor.appActionTwo()
-        actionColorButton2.setTitle("ACTION TWO", forState: .Normal)
+        actionColorButton2.setTitle("ACTION 2", forState: .Normal)
         actionColorButton2.addTarget(self, action: "chooseActionColor2:", forControlEvents: UIControlEvents.TouchUpInside)
-        actionColorButton2.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
+        actionColorButton2.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 12)
         UIViewController.roundedButton(actionColorButton2)
         
         actionColorButton3.backgroundColor = UIColor.appActionThree()
-        actionColorButton3.setTitle("ACTION THREE", forState: .Normal)
+        actionColorButton3.setTitle("ACTION 3", forState: .Normal)
         actionColorButton3.addTarget(self, action: "chooseActionColor3:", forControlEvents: UIControlEvents.TouchUpInside)
-        actionColorButton3.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
+        actionColorButton3.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 12)
         UIViewController.roundedButton(actionColorButton3)
         
         createActionButton.backgroundColor = UIColor.appColorButtonNormal()
@@ -78,12 +80,12 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         createActionButton.addTarget(self, action: "createAction:", forControlEvents: UIControlEvents.TouchUpInside)
 
         
-        actionTitleTextField.backgroundColor = UIColor.appActionTwo()
+        actionTitleTextField.backgroundColor = UIColor.appGhostWhiteFade()
         actionTitleTextField.placeholder = "Enter action title"
         actionTitleTextField.layer.cornerRadius = 5.0
         actionTitleTextField.textAlignment = .Center
         
-        actionDescriptionTextField.backgroundColor = UIColor.appErrorRed()
+        actionDescriptionTextField.backgroundColor = UIColor.appGhostWhiteFade()
         actionDescriptionTextField.layer.cornerRadius = 5.0
         actionDescriptionTextField.textAlignment = .Left
         
@@ -110,20 +112,20 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
             preButtonWarning.width == view.width
             preButtonWarning.height == 40
             preButtonWarning.centerX == view.centerX
-            preButtonWarning.bottom == view.bottom - 30
+            preButtonWarning.bottom == view.bottom - 20
         }
         
         
-        layout(actionTitleTextField, view) { actionTitleTextField, view in
+        layout(actionTitleTextField, actionColorButton1, view) { actionTitleTextField, actionColorButton1, view in
             actionTitleTextField.width == view.width - 80
             actionTitleTextField.height == 40
             actionTitleTextField.centerX == view.centerX
-            actionTitleTextField.top == view.top + 30
+            actionTitleTextField.top == actionColorButton1.bottom + 20
         }
         
-        layout(actionDescriptionTextField, view) { actionDescriptionTextField, view in
+        layout(actionDescriptionTextField, actionTitleTextField, view) { actionDescriptionTextField, actionTitleTextField, view in
             actionDescriptionTextField.width == view.width - 80
-            actionDescriptionTextField.top == view.top + 80
+            actionDescriptionTextField.top == actionTitleTextField.bottom + 20
             actionDescriptionTextField.height == 100
             actionDescriptionTextField.centerX == view.centerX
         }
@@ -131,7 +133,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         layout(createActionButton, view) { createActionButton, view in
             createActionButton.width == 200
             createActionButton.height == 40
-            createActionButton.bottom == view.bottom - 30
+            createActionButton.bottom == view.bottom - 20
             createActionButton.centerX == view.centerX
         }
         
@@ -139,7 +141,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
             actionColorButton1.width ==  (view.width - 100) / 3
             actionColorButton1.height == 30
             actionColorButton1.left == view.left + 40
-            actionColorButton1.top == actionDescriptionTextField.bottom + 10
+            actionColorButton1.top == view.top + 30
         }
         
         layout(actionColorButton2, actionColorButton1, view) { actionColorButton2, actionColorButton1, view in
@@ -156,10 +158,10 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
             actionColorButton3.top == actionColorButton2.top
         }
         
-        layout(actionDatePicker, actionColorButton2, view) { actionDatePicker, actionColorButton1, view in
+        layout(actionDatePicker, actionDescriptionTextField, view) { actionDatePicker, actionDescriptionTextField, view in
             actionDatePicker.width ==  view.width - 80
             actionDatePicker.centerX == view.centerX
-            actionDatePicker.top == actionColorButton1.bottom + 20
+            actionDatePicker.top == actionDescriptionTextField.bottom + 10
         }
         
     }
@@ -215,10 +217,6 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     
-    
-    
-    
-    
     func textFieldshouldChangeCharactersInRange(textField: UITextField!) {    //delegate method
         //println("hey")
         
@@ -243,18 +241,29 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         aColor = 1
         view.backgroundColor = UIColor.appActionOne()
         displayButton()
+        
+        actionTitleTextField.backgroundColor = UIColor.appGhostWhiteFade()
+        actionDescriptionTextField.backgroundColor = UIColor.appGhostWhiteFade()
+        preButtonWarning.textColor = UIColor.appGhostWhite()
     }
 
     func chooseActionColor2(sender: AnyObject) {
         aColor = 2
         view.backgroundColor = UIColor.appActionTwo()
         displayButton()
+        
+        actionTitleTextField.backgroundColor = UIColor.appGrayFade()
+        actionDescriptionTextField.backgroundColor = UIColor.appGrayFade()
+        preButtonWarning.textColor = UIColor.appMidnight()
     }
     
     func chooseActionColor3(sender: AnyObject) {
         aColor = 3
         view.backgroundColor = UIColor.appActionThree()
         displayButton()
+        actionTitleTextField.backgroundColor = UIColor.appGrayFade()
+        actionDescriptionTextField.backgroundColor = UIColor.appGrayFade()
+        preButtonWarning.textColor = UIColor.appMidnight()
     }
     
     
@@ -283,10 +292,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         return true
     }
     
-    
     func createAction(sender: AnyObject){
         //send action
-
         let networkVC = storyboard?.instantiateViewControllerWithIdentifier("networkViewController") as NetworkViewController
         
         networkVC.aTitle = aTitle
@@ -306,7 +313,6 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         }
     }
     
-    
     func displayButton(){
         //if all conditions for adding an action look to be met, show the button that let's the user go to networking modal
         
@@ -317,4 +323,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         }
     }
     
+    func removeThisModal() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

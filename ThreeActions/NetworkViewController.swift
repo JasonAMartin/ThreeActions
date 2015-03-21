@@ -19,14 +19,15 @@ class NetworkViewController: UIViewController {
     var aDescription = String()
     var aColor = Int()
     var networkingPurpose = NetworkAction.Pending
-    
+    var callingVC = AddActionViewController()
     
     @IBOutlet weak var networkStatusLabel: UILabel!
     @IBOutlet weak var exitButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
+        view.backgroundColor = UIColor.appColorBackground()
+
         /*STEPS:
         
         1. Make sure we have all required data
@@ -42,8 +43,9 @@ class NetworkViewController: UIViewController {
         //setup network call & try to save action
         var person = TAUsers()
         println("-----------\(aDate)-------")
-        person.saveAction(title: aTitle, description: aDescription, status: aColor, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel)
-                
+        person.saveAction(title: aTitle, description: aDescription, status: aColor, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+        
+        
     }
     
     override func viewDidLoad() {
@@ -55,9 +57,20 @@ class NetworkViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func networkUpdateComplete(){
+        println("I am done.....")
+    }
+    
     
     @IBAction func exitModal(sender: AnyObject) {
-     self.dismissViewControllerAnimated(true, completion: {});
         
+      // self.parentViewController?.dismissViewControllerAnimated(true, completion: {})
+        
+      // self.parentViewController!.tabBarController!.selectedIndex = 2
+      //  self.callingVC.tabBarController!.selectedIndex=2
+        
+       // self.callingVC.navigationController?.popToRootViewControllerAnimated(false)
+
+    self.dismissViewControllerAnimated(true, completion: {})
     }
 }

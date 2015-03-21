@@ -125,6 +125,38 @@ class TAUsers {
         }
     }
     
+    
+    func taSyncDay(actionDate: String, completion: (() -> Void)!){
+        
+        //This method is for syncing while the app is running. We want to just sync whatever day and populate objects.
+        
+        //grab objects and populate new local
+        var query = PFQuery(className:"UserActions")
+        query.whereKey("owner", equalTo:userAccount)
+        query.whereKey("actionDate", equalTo: actionDate)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("Date syncing object(s)..... [\(self.userAccount)] Successfully retrieved \(objects.count) actions.")
+                // Do something with the found objects
+                for object in objects {
+                    object.pinInBackground()
+                    
+                    //add this for singleton
+                    
+                    self.setInstanceDB(data: object)
+                    
+                }
+                //callback after syncing data. This also works if there are 0 items
+                completion()
+            }
+        }
+    }
+    
+    
+    
     func checkAction (#colornumber actionColor:Int, #date actionDate:String) -> Bool {
         
         //This function will check if an action exists for the date & color specified and return either true or false. True = item exists.
@@ -153,7 +185,7 @@ class TAUsers {
     
     
   
-func saveAction (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel) {
+    func saveAction (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
         
         //date code
         
@@ -178,8 +210,9 @@ func saveAction (#title actionTitle:String, #description actionDescription:Strin
                 data.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
-                        responseLabel.text = "boom goes the dyamite!"
+                       //responseLabel.text = "boom goes the dyamite!"
                        //self.completedNetworkRequest(true)
+                        self.taSyncDay(actionDate, completion: complete)
                     } else {
                        responseLabel.text = "I just failed in data saving."
                         //self.completedNetworkRequest(false)

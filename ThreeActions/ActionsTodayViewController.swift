@@ -78,8 +78,8 @@ class ActionsTodayViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         let view = self.view
+        
         
         //CARTOGRAPHY
         
@@ -385,12 +385,19 @@ class ActionsTodayViewController: UIViewController {
             presentViewController(singleActionVC, animated: true, completion: nil)
         } else {
             
-            let addActionVC = storyboard?.instantiateViewControllerWithIdentifier("AddAction") as AddActionViewController
+            //noting is here so go to add actions vc!
             
-            addActionVC.passActionColor = actionColor
+            //let addActionVC = storyboard?.instantiateViewControllerWithIdentifier("AddAction") as AddActionViewController
+            
+           // addActionVC.passActionColor = actionColor
+           let vc = AddActionViewController()
+            vc.passActionColor = actionColor
+            
+            tabBarController?.selectedIndex = 1
+        
           //  addActionVC.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             
-            presentViewController(addActionVC, animated: true, completion: nil)
+          //  presentViewController(addActionVC, animated: true, completion: nil)
 
         }
     }

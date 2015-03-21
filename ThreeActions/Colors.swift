@@ -20,6 +20,11 @@ extension UIColor {
     class func appGhostWhite() -> UIColor {
         return UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
+    
+    class func appGhostWhiteFade() -> UIColor {
+        return UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 0.3)
+    }
+    
     class func appShadyGhost() -> UIColor {
         return UIColor(red: 209.0/255.0, green: 209.0/255.0, blue: 209.0/255.0, alpha: 1.0)
     }
@@ -29,6 +34,11 @@ extension UIColor {
     class func appDustyWall() -> UIColor {
         return UIColor(red: 130.0/255.0, green: 109.0/255.0, blue: 118.0/255.0, alpha: 1.0)
     }
+    
+    class func appDustyWallFade() -> UIColor {
+        return UIColor(red: 130.0/255.0, green: 109.0/255.0, blue: 118.0/255.0, alpha: 0.3)
+    }
+    
     /*
     class func appDarkBase() -> UIColor {
         return UIColor(red: 215.0/255.0, green: 182.0/255.0, blue: 199.0/255.0, alpha: 1.0)
