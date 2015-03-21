@@ -126,7 +126,7 @@ class TAUsers {
     }
     
     
-    func taSyncDay(actionDate: String, completion: (() -> Void)!){
+    func taSyncDay(responseLabel: UILabel, actionDate: String, completion: (() -> Void)!){
         
         //This method is for syncing while the app is running. We want to just sync whatever day and populate objects.
         
@@ -150,6 +150,7 @@ class TAUsers {
                     
                 }
                 //callback after syncing data. This also works if there are 0 items
+                responseLabel.text = "Syncing complete."
                 completion()
             }
         }
@@ -212,14 +213,20 @@ class TAUsers {
                     if (success) {
                        //responseLabel.text = "boom goes the dyamite!"
                        //self.completedNetworkRequest(true)
-                        self.taSyncDay(actionDate, completion: complete)
-                    } else {
-                       responseLabel.text = "I just failed in data saving."
-                        //self.completedNetworkRequest(false)
+                      //  self.taSyncDay(responseLabel: responseLabel, actionDate: actionDate, completion: complete)
+                        
+                        responseLabel.text = "New action created.\nSyncing Data . . ."
+                        self.taSyncDay(responseLabel, actionDate: actionDate, completion: complete)
+
+                        
+                        } else {
+                       responseLabel.text = "Looks like there was an error saving the data. Are you connected to a network? Please go back and try again."
+                        complete()
                     }
                 }
         } else {
-            responseLabel.text = "Cha Cha Cha I failed from the start"
+            responseLabel.text = "Sorry, but it looks like you already have an action for this date and action slot setup already. Please go back and select a new date and/or action slot or delete/modify the one you already have."
+            complete()
         }
         
         //end saveAction
