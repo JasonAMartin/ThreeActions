@@ -254,7 +254,9 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         displayButton()
     }
     
-    @IBAction func createAction(sender: AnyObject) {
+    func createAction(sender: AnyObject) {
+        
+        //call network VC and rock it
         
     }
     
@@ -266,6 +268,24 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
             displayButton()
         }
     }
+    
+    
+    func textField(textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+        var txtAfterUpdate:NSString = self.actionTitleTextField.text as NSString
+        txtAfterUpdate = txtAfterUpdate.stringByReplacingCharactersInRange(range, withString: string)
+        
+        let myField = actionTitleTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        if(countElements(myField)>0){
+            self.aTitle = myField
+            displayButton()
+        }
+
+        //self.callMyMethod(txtAfterUpdate)
+        return true
+    }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
