@@ -372,7 +372,7 @@ class ActionsTodayViewController: UIViewController {
             actionDate = toString(cdActionDate)
         }
         
-        if(state) {
+        if(state && actionTitle != "" && actionDescription != "") {
             let singleActionVC = storyboard?.instantiateViewControllerWithIdentifier("SingleActionViewController") as SingleActionViewController
             singleActionVC.actionColor = actionColor
             
@@ -383,6 +383,14 @@ class ActionsTodayViewController: UIViewController {
             singleActionVC.actionColor = actionColor
             
             presentViewController(singleActionVC, animated: true, completion: nil)
+        } else {
+            
+            let addActionVC = storyboard?.instantiateViewControllerWithIdentifier("AddAction") as AddActionViewController
+            
+            addActionVC.passActionColor = actionColor
+            
+            presentViewController(addActionVC, animated: true, completion: nil)
+
         }
     }
     

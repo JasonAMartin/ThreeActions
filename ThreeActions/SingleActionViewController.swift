@@ -69,7 +69,8 @@ class SingleActionViewController: UIViewController {
         
         completeButton.setTitle("MARK AS COMPLETED", forState: UIControlState.Normal)
         completeButton.hidden = false
-        UIViewController.actionSectionButton(completeButton)
+        UIViewController.buttonCreator(completeButton)
+         completeButton.addTarget(self, action: "completeAction:", forControlEvents: UIControlEvents.TouchUpInside)
 
         if(actionStatus != 0) {
             completeButton.hidden = true
@@ -137,6 +138,11 @@ class SingleActionViewController: UIViewController {
     
     func hideDisplay(sender:AnyObject){
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func completeAction(sender:AnyObject) {
+        //push data to UserData model and re-sync
+        println("heythere")
     }
     
     

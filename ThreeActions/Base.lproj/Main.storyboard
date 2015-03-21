@@ -32,7 +32,7 @@
         <!--Add Action-->
         <scene sceneID="LdB-hW-mYb">
             <objects>
-                <viewController title="Add Action" id="pS0-gk-xCt" customClass="AddActionViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAction" title="Add Action" id="pS0-gk-xCt" customClass="AddActionViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7g4-Gd-S28">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
         <!--Settings-->
         <scene sceneID="ZZq-UA-hQF">
             <objects>
-                <viewController title="Settings" id="84S-jX-VP2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" title="Settings" id="84S-jX-VP2" customClass="SettingsViewController" customModule="ThreeActions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FnH-OG-IDl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

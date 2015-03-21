@@ -32,6 +32,7 @@
 		40687E901A98E3A5005673D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */; };
 		40687E921A98E7B7005673D1 /* ResponseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E911A98E7B7005673D1 /* ResponseDictionary.swift */; };
 		40827F901ABD020E00118EC8 /* SingleActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40827F8F1ABD020E00118EC8 /* SingleActionViewController.swift */; };
+		40827F931ABDC57D00118EC8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40827F921ABDC57D00118EC8 /* SettingsViewController.swift */; };
 		4085A63E1AA15EDF00B59E99 /* ActionsTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */; };
 		4085A6401AA170D700B59E99 /* ExternalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A63F1AA170D700B59E99 /* ExternalAnimations.swift */; };
 		4085A6421AA2350600B59E99 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085A6411AA2350600B59E99 /* UserData.swift */; };
@@ -144,6 +145,7 @@
 		40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		40687E911A98E7B7005673D1 /* ResponseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseDictionary.swift; sourceTree = "<group>"; };
 		40827F8F1ABD020E00118EC8 /* SingleActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleActionViewController.swift; sourceTree = "<group>"; };
+		40827F921ABDC57D00118EC8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsTodayViewController.swift; sourceTree = "<group>"; };
 		4085A63F1AA170D700B59E99 /* ExternalAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalAnimations.swift; sourceTree = "<group>"; };
 		4085A6411AA2350600B59E99 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				4085A6771AA2A18600B59E99 /* NetworkViewController.swift */,
 				4085A6411AA2350600B59E99 /* UserData.swift */,
 				401201291AAB6A5200AFC69A /* TAUserData.swift */,
+				40827F921ABDC57D00118EC8 /* SettingsViewController.swift */,
 				40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */,
 				40687E911A98E7B7005673D1 /* ResponseDictionary.swift */,
 				40B88BC81A991297008F7B5B /* Colors.swift */,
@@ -501,6 +504,7 @@
 				40BD44181AB7B7EF0048A170 /* ViewUtils.swift in Sources */,
 				4085A6421AA2350600B59E99 /* UserData.swift in Sources */,
 				40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */,
+				40827F931ABDC57D00118EC8 /* SettingsViewController.swift in Sources */,
 				40BD44161AB7B7EF0048A170 /* Size.swift in Sources */,
 				4012012A1AAB6A5200AFC69A /* TAUserData.swift in Sources */,
 				4085A63E1AA15EDF00B59E99 /* ActionsTodayViewController.swift in Sources */,

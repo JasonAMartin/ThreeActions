@@ -15,6 +15,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     var aDate:String = ""
     var aTitle:String = ""
     var aDescription:String = ""
+    var passActionColor = 0
     
     
     @IBOutlet weak var actionTitle: UITextField!
@@ -34,6 +35,22 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     @IBOutlet weak var actionDescription: UITextView!
 
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if(passActionColor == 1){
+            actionColorButton1.backgroundColor = UIColor.appErrorRed()
+        }
+        
+        if(passActionColor == 2){
+            actionColorButton2.backgroundColor = UIColor.appErrorRed()
+        }
+        
+        if(passActionColor == 3){
+            actionColorButton3.backgroundColor = UIColor.appErrorRed()
+        }
+        
+    }
     
     override func viewDidLoad() {
         
