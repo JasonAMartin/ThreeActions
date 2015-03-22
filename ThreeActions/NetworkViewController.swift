@@ -13,7 +13,7 @@ class NetworkViewController: UIViewController {
     
     
     enum NetworkAction {
-        case CreateAction, DeleteAction, Sync, Pending
+        case CreateAction, DeleteAction, ModifyAction, Sync, Pending
     }
     
     var aDate = String()
@@ -22,6 +22,7 @@ class NetworkViewController: UIViewController {
     var aColor = Int()
     var networkingPurpose = NetworkAction.Pending
     var callingVC = AddActionViewController()
+    var objectID = ""
     
     
     //creating elements
@@ -111,8 +112,16 @@ class NetworkViewController: UIViewController {
         
         //setup network call & try to save action
         var person = TAUsers()
-        person.saveAction(title: aTitle, description: aDescription, status: aColor, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         
+        
+        
+        if(networkingPurpose == .CreateAction) {
+            person.saveAction(title: aTitle, description: aDescription, status: 0, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+        }else if networkingPurpose == .ModifyAction {
+            person.modifyAction(objectID: objectID, title: "My New Title", description: "Some New desc right here", status: 0, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+        }else if networkingPurpose == .DeleteAction {
+            person.deleteAction(objectID: objectID, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+        }
         
     }
     

@@ -117,6 +117,7 @@ class TAUsers {
                     //add this for singleton
                     
                     self.setInstanceDB(data: object)
+                 //   println(object.objectId)
                     
                 }
                 //callback after syncing data. This also works if there are 0 items
@@ -143,7 +144,6 @@ class TAUsers {
                 // Do something with the found objects
                 for object in objects {
                     object.pinInBackground()
-                    
                     //add this for singleton
                     
                     self.setInstanceDB(data: object)
@@ -165,9 +165,6 @@ class TAUsers {
         //Also note, this is using SYNC method. To go aSync, I need to use findObjectsInBackgroundWithBlock
         
         var foundItem = false
-        
-        println("\n----- QUERY\n owner: \(userAccount)\n date: \(actionDate)\n Color: \(actionColor)\n\n-------")
-        
         var query = PFQuery(className:"UserActions")
         query.whereKey("owner", equalTo:userAccount)
         query.whereKey("actionDate", equalTo: actionDate)
@@ -184,6 +181,19 @@ class TAUsers {
         return false
     }
     
+    func checkDataObject (#objectID objectID:String) -> Bool {
+        var foundItem = false
+        var query = PFQuery(className:"UserActions")
+        query.whereKey("owner", equalTo:userAccount)
+        query.whereKey("objectId", equalTo: objectID)
+        query.findObjects()
+        
+        if(query.countObjects()>0) {
+            foundItem = true
+            return true
+        }
+        return false
+    }
     
   
     func saveAction (#title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
@@ -201,7 +211,7 @@ class TAUsers {
                 var data = PFObject(className:"UserActions")
                 data["actionTitle"] = actionTitle
                 data["actionDescription"] = actionDescription
-                data["status"] = status
+                data["actionStatus"] = status
                 data["actionColor"] = actionColor
                 data["actionDate"] = actionDate
                 data["creationDate"] = formatter.stringFromDate(date)
@@ -230,6 +240,78 @@ class TAUsers {
         }
         
         //end saveAction
+    }
+    
+    func modifyAction (#objectID: String, #title actionTitle:String, #description actionDescription:String, #status status:Int, #colornumber actionColor:Int, #task task:String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
+        
+        //1. lookup object ID
+        //2. modify item
+        //3. day sync
+        
+        var query = PFQuery(className:"UserActions")
+        query.getObjectInBackgroundWithId(objectID) {
+            (userActions: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                println(error)
+            } else {
+                userActions["actionTitle"] = actionTitle
+                userActions["actionDescription"] = actionDescription
+                userActions["actionColor"] = actionColor
+                userActions["actionStatus"] = status
+                userActions.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) {
+                        //responseLabel.text = "boom goes the dyamite!"
+                        //self.completedNetworkRequest(true)
+                        //  self.taSyncDay(responseLabel: responseLabel, actionDate: actionDate, completion: complete)
+                        
+                        responseLabel.text = "Action modified.\nSyncing Data . . ."
+                        self.taSyncDay(responseLabel, actionDate: actionDate, completion: complete)
+                    } else {
+                        responseLabel.text = "Looks like there was an error saving the data. Are you connected to a network? Please go back and try again."
+                        complete()
+                    }
+                }
+            }
+        }
+        
+        //end modify action
+    }
+
+    
+    
+    func deleteAction (#objectID: String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
+        
+        //1. lookup object ID
+        //2. modify item
+        //3. day sync
+        
+        var query = PFQuery(className:"UserActions")
+        query.getObjectInBackgroundWithId(objectID) {
+            (userActions: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                println(error)
+            } else {
+      
+                userActions.deleteInBackgroundWithBlock {
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) {
+                        //responseLabel.text = "boom goes the dyamite!"
+                        //self.completedNetworkRequest(true)
+                        //  self.taSyncDay(responseLabel: responseLabel, actionDate: actionDate, completion: complete)
+                        
+                        responseLabel.text = "Action deleted.\nSyncing Data . . ."
+                       self.taSyncDay(responseLabel, actionDate: actionDate, completion: complete)
+
+                    } else {
+                        responseLabel.text = "Looks like there was an error deleting/syncing the data. Are you connected to a network? Please go back and try again."
+                        complete()
+                    }
+                }
+            }
+        }
+        
+        //end delete action
     }
     
     func completedNetworkRequest(status: Bool) -> Bool{

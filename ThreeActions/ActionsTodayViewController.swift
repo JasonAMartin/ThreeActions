@@ -337,6 +337,7 @@ class ActionsTodayViewController: UIViewController {
         var actionStatus = 44
         var actionDate = ""
         var myDBKey = self.dbKey1
+        var objectID = ""
         
         if let tag = sender.tag {
             state = true
@@ -354,7 +355,7 @@ class ActionsTodayViewController: UIViewController {
             }
         }
         
-   
+        
         if let cdActionTitle = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionTitle") {
             actionTitle = toString(cdActionTitle)
         }
@@ -372,6 +373,10 @@ class ActionsTodayViewController: UIViewController {
             actionDate = toString(cdActionDate)
         }
         
+        if let cdObjectID = TAUsers.sharedInstance.actionDB[myDBKey]?.objectId {
+            objectID = toString(cdObjectID)
+        }
+        
         if(state && actionTitle != "" && actionDescription != "") {
             let singleActionVC = storyboard?.instantiateViewControllerWithIdentifier("SingleActionViewController") as SingleActionViewController
             singleActionVC.actionColor = actionColor
@@ -381,6 +386,7 @@ class ActionsTodayViewController: UIViewController {
             singleActionVC.actionStatus = actionStatus
             singleActionVC.actionDate = actionDate
             singleActionVC.actionColor = actionColor
+            singleActionVC.objectID = objectID
             
             presentViewController(singleActionVC, animated: true, completion: nil)
         } else {
