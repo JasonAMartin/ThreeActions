@@ -43,6 +43,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "endEditing:")
+        view.addGestureRecognizer(tapRecognizer)
+        
         //icon for done action
         let logoFile = "3Actions02"
         let logoImage = UIImage(named: logoFile)

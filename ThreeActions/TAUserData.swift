@@ -12,7 +12,7 @@ User data model
 actionDate : date for the action
 actionTitle : action's title
 actionDescription : longer text for the action
-status : 0 for pending or 1 for complete
+actionStatus : 0 for pending or 1 for complete
 actionColor : 1,2 or 3 for color assignment
 creationDate : the date the user created the object
 lastModified : the date of last modification
@@ -286,6 +286,31 @@ class TAUsers {
     }
 
     
+    func completeAction (#objectID: String, #status status:Int, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
+        
+        
+        var query = PFQuery(className:"UserActions")
+        query.getObjectInBackgroundWithId(objectID) {
+            (userActions: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                println("No object found.")
+            } else {
+                userActions["actionStatus"] = status
+                userActions.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) {
+                        responseLabel.text = "Marked action as complete!\nSyncing Data . . ."
+                        self.taSyncDay(responseLabel, actionDate: actionDate, completion: complete)
+                    } else {
+                        responseLabel.text = "Looks like there was an error saving the data. Are you connected to a network? Please go back and try again."
+                        complete()
+                    }
+                }
+            }
+        }
+        
+        //end complete action
+    }
     
     func deleteAction (#key: String, #objectID: String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
         

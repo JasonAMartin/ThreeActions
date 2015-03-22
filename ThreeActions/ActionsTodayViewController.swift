@@ -26,9 +26,13 @@ class ActionsTodayViewController: UIViewController {
     var dbKey2 = ""
     var dbKey3 = ""
     
+    //state of actions
+    var actionOneState = 0
+    var actionTwoState = 0
+    var actionThreeState = 0
+    
 
     //create action labels
-    
     
     
     //title labels
@@ -37,61 +41,21 @@ class ActionsTodayViewController: UIViewController {
     var actionLabelThree = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var actionLabelDate = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var hBarLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    var quoteLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
 
-    func cleanData(){
-       // setting all items to empty on load to prevent deleted items from re-showing
-        actionLabelOne.text = ""
-        actionLabelTwo.text = ""
-        actionLabelThree.text = ""
-        actionLabelDate.text = ""
-    }
-    
-    func viewActions(){
-        
-        var queryDate = self.viewingDate
-        var labelDate = queryDate
-        
-        if(queryDate == ""){
-            let today = NSDate()
-            let customFormat = NSDateFormatter()
-            //formatter.timeStyle = .ShortStyle
-            customFormat.dateStyle = .ShortStyle
-            queryDate = customFormat.stringFromDate(today)
-        }
-        
-        //get 3 actions for today
-        self.dbKey1 = queryDate+"-1"
-        self.dbKey2 = queryDate+"-2"
-        self.dbKey3 = queryDate+"-3"
-        
-        //set label date
-        
-        let todayLabel = NSDate()
-        let customFormat = NSDateFormatter()
-        customFormat.dateStyle = .ShortStyle
-        queryDate = customFormat.stringFromDate(todayLabel)
-        
-        if(todayLabel == queryDate){
-            labelDate = "TODAY"
-        } else {
-            labelDate = queryDate
-        }
 
-       
-       self.actionLabelDate.text = labelDate
-        
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         let view = self.view
+        
+        
         cleanData()
         viewActions()
-          changeData(0)
+        changeData()
           
 
-        
-        //CARTOGRAPHY
+        //style
         
         let actionButtonOne:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
         actionButtonOne.backgroundColor = UIColor.appActionOne()
@@ -149,15 +113,23 @@ class ActionsTodayViewController: UIViewController {
         actionLabelDate.textColor = UIColor.appGhostWhite()
         
         hBarLabel.backgroundColor = UIColor.appGrayFade()
+        
+        quoteLabel.backgroundColor = UIColor.appGrayFade()
+        quoteLabel.textAlignment = NSTextAlignment.Center
+        quoteLabel.textColor = UIColor.appDustyWall()
+        quoteLabel.numberOfLines = 6
+        quoteLabel.adjustsFontSizeToFitWidth = true
+        quoteLabel.font = UIFont (name: "HelveticaNeue", size: 14)
+        quoteLabel.text = randomQuote()
+        
+        
+        let actionOneStatusIcon = setIcon(actionOneState, done: actionImageDone!, notDone: actionImageNotDone!)
+        let actionTwoStatusIcon = setIcon(actionTwoState, done: actionImageDone!, notDone: actionImageNotDone!)
+        let actionThreeStatusIcon = setIcon(actionThreeState, done: actionImageDone!, notDone: actionImageNotDone!)
     
-        let actionIconOne = UIImageView(image: actionImageDone!)
-        let actionIconTwo = UIImageView(image: actionImageDone!)
-        let actionIconThree = UIImageView(image: actionImageDone!)
-        
-        let actionPendingIconOne = UIImageView(image: actionImageNotDone!)
-        let actionPendingIconTwo = UIImageView(image: actionImageNotDone!)
-        let actionPendingIconThree = UIImageView(image: actionImageNotDone!)
-        
+        let actionIconOne = UIImageView(image: actionOneStatusIcon)
+        let actionIconTwo = UIImageView(image: actionTwoStatusIcon)
+        let actionIconThree = UIImageView(image: actionThreeStatusIcon)
         
         let actionViewOne = UIImageView(image: actionViewImage!)
         let actionViewTwo = UIImageView(image: actionViewImage!)
@@ -171,13 +143,6 @@ class ActionsTodayViewController: UIViewController {
         actionIconThree.contentMode = UIViewContentMode.ScaleToFill
         
         
-        actionPendingIconOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        actionPendingIconOne.contentMode = UIViewContentMode.ScaleToFill
-        actionPendingIconTwo.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        actionPendingIconTwo.contentMode = UIViewContentMode.ScaleToFill
-        actionPendingIconThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-        actionPendingIconThree.contentMode = UIViewContentMode.ScaleToFill
-        
         actionViewOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionViewOne.contentMode = UIViewContentMode.ScaleToFill
         actionViewOne.alpha = 0.6
@@ -188,6 +153,10 @@ class ActionsTodayViewController: UIViewController {
         actionViewThree.contentMode = UIViewContentMode.ScaleToFill
         actionViewThree.alpha = 0.6
         
+        //create 3 icons spaces
+        
+        
+        
 //put these in layer order
         
         self.view.addSubview(actionButtonOne)
@@ -195,13 +164,8 @@ class ActionsTodayViewController: UIViewController {
         self.view.addSubview(actionButtonThree)
 
         self.view.addSubview(actionIconOne)
-       // self.view.addSubview(actionIconTwo)
+        self.view.addSubview(actionIconTwo)
         self.view.addSubview(actionIconThree)
-        
-        //self.view.addSubview(actionPendingIconOne)
-        self.view.addSubview(actionPendingIconTwo)
-       // self.view.addSubview(actionPendingIconThree)
-        
         self.view.addSubview(actionLabelOne)
         self.view.addSubview(actionLabelTwo)
         self.view.addSubview(actionLabelThree)
@@ -211,13 +175,14 @@ class ActionsTodayViewController: UIViewController {
         self.view.addSubview(actionViewOne)
         self.view.addSubview(actionViewTwo)
         self.view.addSubview(actionViewThree)
+        self.view.addSubview(quoteLabel)
         
         
         layout(actionButtonOne, view) { actionButtonOne, view in
             actionButtonOne.top == view.top
             actionButtonOne.left == view.left
             actionButtonOne.width == view.width
-            actionButtonOne.height == (view.height/3)
+            actionButtonOne.height == (view.height/4)
         }
         
         layout(actionLabelDate, view) { actionLabelDate, view in
@@ -259,7 +224,7 @@ class ActionsTodayViewController: UIViewController {
         
         layout(hBarLabel, view) { hBarLabel, view in
             hBarLabel.width == 1
-            hBarLabel.height == view.height
+            hBarLabel.height == (view.height/4) * 3
             hBarLabel.left == view.left + 60
         }
       
@@ -268,7 +233,7 @@ class ActionsTodayViewController: UIViewController {
             actionButtonTwo.top == actionButtonOne.bottom
             actionButtonTwo.left == view.left
             actionButtonTwo.width == view.width
-            actionButtonTwo.height == (view.height/3)
+            actionButtonTwo.height == (view.height/4)
         }
         
         
@@ -276,25 +241,23 @@ class ActionsTodayViewController: UIViewController {
             actionButtonThree.top == actionButtonTwo.bottom
             actionButtonThree.left == view.left
             actionButtonThree.width == view.width
-            actionButtonThree.height == (view.height/3)
+            actionButtonThree.height == (view.height/4)
         }
-        /*
+        
+        layout(quoteLabel, actionButtonThree, view) { quoteLabel, actionButtonThree, view in
+            quoteLabel.top == actionButtonThree.bottom
+            quoteLabel.left == view.left
+            quoteLabel.width == view.width
+            quoteLabel.height == (view.height/4) - 20
+        }
+        
+        
         layout(actionIconTwo, actionButtonTwo) { imageView, actionButtonTwo in
             imageView.width  == 40
             imageView.height == 40
             imageView.top == actionButtonTwo.centerY - 20
             imageView.left == imageView.superview!.left + 10
         }
-        */
-        
-        layout(actionPendingIconTwo, actionButtonTwo) { imageView, actionButtonTwo in
-            imageView.width  == 40
-            imageView.height == 40
-            imageView.top == actionButtonTwo.centerY - 20
-            imageView.left == imageView.superview!.left + 10
-        }
-        
-        
         
         layout(actionIconThree, actionButtonThree) { imageView, actionButtonThree in
             imageView.width  == 40
@@ -306,19 +269,19 @@ class ActionsTodayViewController: UIViewController {
         layout(actionLabelOne, actionButtonOne, view) {actionLabelOne, actionButtonOne, view in
             actionLabelOne.top == actionButtonOne.centerY - 10
             actionLabelOne.left == view.left + 80
-            actionLabelOne.width == 300
+            actionLabelOne.width == (view.width / 6) * 3.8
         }
         
         layout(actionLabelTwo, actionButtonTwo, view) {actionLabelTwo, actionButtonTwo, view in
             actionLabelTwo.top == actionButtonTwo.centerY - 10
             actionLabelTwo.left == view.left + 80
-            actionLabelTwo.width == 300
+            actionLabelTwo.width == (view.width / 6) * 3.8
         }
         
         layout(actionLabelThree, actionButtonThree, view) {actionLabelThree, actionButtonThree, view in
             actionLabelThree.top == actionButtonThree.centerY - 10
             actionLabelThree.left == view.left + 80
-            actionLabelThree.width == 300
+            actionLabelThree.width == (view.width / 6) * 3.8
         }
         
         
@@ -373,7 +336,7 @@ class ActionsTodayViewController: UIViewController {
         }
         
         
-        if let cdActionStatus = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("status") {
+        if let cdActionStatus = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionStatus") {
             actionStatus = cdActionStatus.integerValue
         }
         
@@ -417,7 +380,7 @@ class ActionsTodayViewController: UIViewController {
     }
     
     
-    func changeData(slot:Int){
+    func changeData(){
         var myKey = ""
         
         for index in 1...3 {
@@ -431,7 +394,7 @@ class ActionsTodayViewController: UIViewController {
                 }
                 
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
-                    //println(actionTitle)
+                    actionOneState = cdActionStatus as Int
                 }
                 
 
@@ -444,7 +407,7 @@ class ActionsTodayViewController: UIViewController {
                     self.actionLabelTwo.text = toString(cdActionTitle)
                 }
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
-                    //println(actionTitle)
+                    actionTwoState = cdActionStatus as Int
                 }
                 
                 
@@ -456,7 +419,7 @@ class ActionsTodayViewController: UIViewController {
                     self.actionLabelThree.text = toString(cdActionTitle)
                 }
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
-                    //println(actionTitle)
+                    actionThreeState = cdActionStatus as Int
                 }
                 
             }
@@ -469,22 +432,73 @@ class ActionsTodayViewController: UIViewController {
         
     }
     
-    
-    func swapActions(){
-        //println(TAUsers.sharedInstance.actionDB)
-        //this function is handling display and formatting as the user views actions 1,2,3
+    func setIcon(status: Int, done: UIImage, notDone: UIImage) -> UIImage {
         
-        switch currentState {
-        case .First:
-            changeData(1)
-        case .Second:
-            changeData(2)
-        case .Third:
-            changeData(3)
-        default:
-            changeData(1)
-        
+        if(status==0){
+            return notDone
+        } else if (status==1){
+            return done
+        } else {
+            return notDone
         }
+        
+    }
+    
+    func cleanData(){
+        // setting all items to empty on load to prevent deleted items from re-showing
+        actionLabelOne.text = ""
+        actionLabelTwo.text = ""
+        actionLabelThree.text = ""
+        actionLabelDate.text = ""
+    }
+    
+    func viewActions(){
+        
+        var queryDate = self.viewingDate
+        var labelDate = queryDate
+        
+        if(queryDate == ""){
+            let today = NSDate()
+            let customFormat = NSDateFormatter()
+            //formatter.timeStyle = .ShortStyle
+            customFormat.dateStyle = .ShortStyle
+            queryDate = customFormat.stringFromDate(today)
+        }
+        
+        //get 3 actions for today
+        self.dbKey1 = queryDate+"-1"
+        self.dbKey2 = queryDate+"-2"
+        self.dbKey3 = queryDate+"-3"
+        
+        //set label date
+        
+        let todayLabel = NSDate()
+        let customFormat = NSDateFormatter()
+        customFormat.dateStyle = .ShortStyle
+        queryDate = customFormat.stringFromDate(todayLabel)
+        
+        if(todayLabel == queryDate){
+            labelDate = "TODAY"
+        } else {
+            labelDate = queryDate
+        }
+        
+        
+        self.actionLabelDate.text = labelDate
+        
+    }
+    
+    func randomQuote() -> String {
+        let quoteCount = QuoteDictionary.count
+        let randomNumber = Int(arc4random_uniform(UInt32(quoteCount)))
+        var key : String = Array(QuoteDictionary.keys)[randomNumber]
+        var speaker = QuoteDictionary[key]
+        var masterQuote = key
+        
+        if let quoteSpeaker = speaker? {
+            masterQuote = key + "\n" + quoteSpeaker
+        }
+        return masterQuote
     }
     
 }

@@ -31,6 +31,14 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        //tap for keyboard
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: "didTapView")
+        self.view.addGestureRecognizer(tapRecognizer)
+        //end tap for keyboard
+        
         view.backgroundColor = UIColor.appShadyGhost()
 
         if(passActionColor == 1){
@@ -232,10 +240,23 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     func textViewShouldEndEditing(textView: UITextView) {
-        view.endEditing(true)
+        self.view.endEditing(true)
         fieldEntry(self)
     }
     
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func didTapView(){
+        self.view.endEditing(true)
+    }
     
     func chooseActionColor1(sender: AnyObject) {
         aColor = 1

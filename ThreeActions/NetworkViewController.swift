@@ -13,7 +13,7 @@ class NetworkViewController: UIViewController {
     
     
     enum NetworkAction {
-        case CreateAction, DeleteAction, ModifyAction, Sync, Pending
+        case CreateAction, DeleteAction, ModifyAction, CompleteAction, Sync, Pending
     }
     
     var aDate = String()
@@ -121,6 +121,8 @@ class NetworkViewController: UIViewController {
             person.modifyAction(objectID: objectID, title: "My New Title", description: "Some New desc right here", status: 0, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         }else if networkingPurpose == .DeleteAction {
             person.deleteAction(key: myKey, objectID: objectID, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+        } else if networkingPurpose == .CompleteAction {
+            person.completeAction(objectID: objectID, status: 1, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         }
         
     }

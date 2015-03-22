@@ -67,17 +67,21 @@ class SingleActionViewController: UIViewController {
         actionTitleLabel.textAlignment = .Center
         actionTitleLabel.textColor = UIColor.appMidnight()
         actionTitleLabel.numberOfLines = 3
+        actionTitleLabel.font = UIFont(name: "HelveticaNeue", size: 28)
+        actionTitleLabel.adjustsFontSizeToFitWidth = true
         
 
         actionDateLabel.text = actionDate
         actionDateLabel.textAlignment = .Center
         actionDateLabel.textColor = UIColor.appMidnight()
         actionDateLabel.numberOfLines = 1
+        actionDateLabel.font = UIFont(name: "HelveticaNeue", size: 12)
         
         actionDescriptionLabel.text = actionDescription
         actionDescriptionLabel.textAlignment = .Center
         actionDescriptionLabel.textColor = UIColor.appMidnight()
         actionDescriptionLabel.numberOfLines = 6
+        actionDescriptionLabel.font = UIFont(name: "HelveticaNeue", size: 12)
         
         completeButton.setTitle("MARK AS COMPLETED", forState: UIControlState.Normal)
         completeButton.backgroundColor = UIColor.appDustyWall()
@@ -85,6 +89,7 @@ class SingleActionViewController: UIViewController {
         completeButton.addTarget(self, action: "completeAction:", forControlEvents: UIControlEvents.TouchUpInside)
 
         if(actionStatus != 0) {
+            println("I'm seeing status of: \(actionStatus)")
             completeButton.hidden = true
         }
         println(actionStatus)
@@ -102,29 +107,28 @@ class SingleActionViewController: UIViewController {
         
         
         layout(logo,view) {logo, view in
-            logo.width == (view.width - 40)
-            logo.height == (view.height / 3)
-            logo.top == view.top + 30
-            logo.left == view.left + 20
-            logo.right == view.right - 20
+            logo.width == (view.width / 2)
+            logo.height == (view.height / 6)
+            logo.top == view.top + 26
+            logo.centerX == view.centerX
         }
 
         
         
         layout(exitButton, view) {exitButton, view in
-            exitButton.bottom == view.bottom - 20
+            exitButton.bottom == view.bottom - 12
             exitButton.width == view.width
         }
         
         layout(completeButton, deleteButton, view) {completeButton, deleteButton, view in
-            completeButton.bottom == deleteButton.top - 40
+            completeButton.bottom == deleteButton.top - 30
             completeButton.width == 200
             completeButton.height == 40
             completeButton.centerX == view.centerX
         }
         
         layout(deleteButton, view) {completeButton, view in
-            completeButton.bottom == view.bottom - 80
+            completeButton.bottom == view.bottom - 60
             completeButton.width == 200
             completeButton.height == 40
             completeButton.centerX == view.centerX
@@ -132,14 +136,14 @@ class SingleActionViewController: UIViewController {
         
         layout(actionTitleLabel, logo, view) {actionTitleLabel, logo, view in
             actionTitleLabel.top == logo.bottom + 30
-            actionTitleLabel.width == view.width
+            actionTitleLabel.width == view.width - 40
             actionTitleLabel.centerX == view.centerX
         }
         
         
-        layout(actionDescriptionLabel, actionTitleLabel, view) {actionDescriptionLabel, actionTitleLabel, view in
-            actionDescriptionLabel.top == actionTitleLabel.top + 40
-            actionDescriptionLabel.width == view.width
+        layout(actionDescriptionLabel, completeButton, view) {actionDescriptionLabel, completeButton, view in
+            actionDescriptionLabel.bottom == completeButton.top - 30
+            actionDescriptionLabel.width == view.width - 40
             actionDescriptionLabel.centerX == view.centerX
         }
         
@@ -173,11 +177,16 @@ class SingleActionViewController: UIViewController {
     }
     
     func completeAction(sender:AnyObject) {
-        //push data to UserData model and re-sync
-        println("heythere")
+        let networkVC = storyboard?.instantiateViewControllerWithIdentifier("networkViewController") as NetworkViewController
+        networkVC.networkingPurpose = .CompleteAction
+        networkVC.objectID = objectID
+        networkVC.aDate = actionDate
+        networkVC.aColor = actionColor
+        deleteButton.hidden = true //hiding so if user goes back these are gone
+        completeButton.hidden = true //hiding so if user goes back, these are gone.
+        presentViewController(networkVC, animated: true, completion: nil)
     }
-    
-    
+
     func deleteAction(sender:AnyObject){
         if(self.deleteConfirm==0){
             deleteButton.setTitle("YOU SURE?", forState: .Normal)
