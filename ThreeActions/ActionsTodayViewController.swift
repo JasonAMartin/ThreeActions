@@ -38,7 +38,13 @@ class ActionsTodayViewController: UIViewController {
     var actionLabelDate = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var hBarLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
 
-
+    func cleanData(){
+       // setting all items to empty on load to prevent deleted items from re-showing
+        actionLabelOne.text = ""
+        actionLabelTwo.text = ""
+        actionLabelThree.text = ""
+        actionLabelDate.text = ""
+    }
     
     func viewActions(){
         
@@ -79,7 +85,11 @@ class ActionsTodayViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         let view = self.view
-        
+        cleanData()
+        viewActions()
+          changeData(0)
+          
+
         
         //CARTOGRAPHY
         
@@ -314,8 +324,6 @@ class ActionsTodayViewController: UIViewController {
         
         //END CARTOGRAPHY
         
-        viewActions()
-        swapActions()
     }
     
     override func viewDidLoad() {
@@ -415,14 +423,11 @@ class ActionsTodayViewController: UIViewController {
         for index in 1...3 {
             
             if(index==1){
-                println("first item")
                 myKey = self.dbKey1
-                println("key: \(myKey)")
                 
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
-                    println("I am inside")
+                    println("inside 1 -- \(cdActionTitle)")
                     self.actionLabelOne.text = toString(cdActionTitle)
-                    println(toString(cdActionTitle))
                 }
                 
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
@@ -434,6 +439,8 @@ class ActionsTodayViewController: UIViewController {
                 myKey = self.dbKey2
                 
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
+                    println("inside 2 -- \(cdActionTitle)")
+
                     self.actionLabelTwo.text = toString(cdActionTitle)
                 }
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
@@ -444,6 +451,8 @@ class ActionsTodayViewController: UIViewController {
             } else if (index==3){
                 myKey = self.dbKey3
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
+                    println("inside 3 -- \(cdActionTitle)")
+
                     self.actionLabelThree.text = toString(cdActionTitle)
                 }
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
@@ -462,6 +471,7 @@ class ActionsTodayViewController: UIViewController {
     
     
     func swapActions(){
+        //println(TAUsers.sharedInstance.actionDB)
         //this function is handling display and formatting as the user views actions 1,2,3
         
         switch currentState {

@@ -59,6 +59,13 @@ class TAUsers {
     
     }
     
+    func removeInstanceDBItem(key: String){
+        println("trying to delete")
+        println("key: \(key)")
+        TAUsers.sharedInstance.actionDB.removeValueForKey(key)
+        println(TAUsers.sharedInstance.actionDB[key])
+    }
+    
     func taPullLocal(){
         let pull = PFQuery(className:"UserActions")
         pull.fromLocalDatastore()
@@ -280,7 +287,7 @@ class TAUsers {
 
     
     
-    func deleteAction (#objectID: String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
+    func deleteAction (#key: String, #objectID: String, #date actionDate:String, #responseLabel:UILabel, #complete:()->Void) {
         
         //1. lookup object ID
         //2. modify item
@@ -292,15 +299,16 @@ class TAUsers {
             if error != nil {
                 println(error)
             } else {
-      
+                
                 userActions.deleteInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
-                        //responseLabel.text = "boom goes the dyamite!"
-                        //self.completedNetworkRequest(true)
-                        //  self.taSyncDay(responseLabel: responseLabel, actionDate: actionDate, completion: complete)
+                        //remove from singleton
+                        println("stage two key: \(key)")
+                        self.removeInstanceDBItem(key)
                         
                         responseLabel.text = "Action deleted.\nSyncing Data . . ."
+                        //sync
                        self.taSyncDay(responseLabel, actionDate: actionDate, completion: complete)
 
                     } else {

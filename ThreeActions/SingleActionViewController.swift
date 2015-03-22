@@ -189,6 +189,12 @@ class SingleActionViewController: UIViewController {
             let networkVC = storyboard?.instantiateViewControllerWithIdentifier("networkViewController") as NetworkViewController
             networkVC.networkingPurpose = .DeleteAction
             networkVC.objectID = objectID
+            networkVC.aDate = actionDate
+            networkVC.aColor = actionColor
+            deleteButton.hidden = true //hiding so if user goes back these are gone
+            completeButton.hidden = true //hiding so if user goes back, these are gone.
+            actionTitleLabel.hidden = true //same
+            actionDescriptionLabel.hidden = true //same
             presentViewController(networkVC, animated: true, completion: nil)
 
         }

@@ -113,14 +113,14 @@ class NetworkViewController: UIViewController {
         //setup network call & try to save action
         var person = TAUsers()
         
-        
-        
+        var myKey:String = aDate + "-" + toString(aColor)
+    println("passing in key: \(myKey)")
         if(networkingPurpose == .CreateAction) {
             person.saveAction(title: aTitle, description: aDescription, status: 0, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         }else if networkingPurpose == .ModifyAction {
             person.modifyAction(objectID: objectID, title: "My New Title", description: "Some New desc right here", status: 0, colornumber: aColor, task: aDescription, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         }else if networkingPurpose == .DeleteAction {
-            person.deleteAction(objectID: objectID, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
+            person.deleteAction(key: myKey, objectID: objectID, date: aDate, responseLabel: networkStatusLabel, complete: networkUpdateComplete)
         }
         
     }
