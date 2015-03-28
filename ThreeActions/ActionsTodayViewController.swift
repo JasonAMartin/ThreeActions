@@ -40,7 +40,10 @@ class ActionsTodayViewController: UIViewController {
     var actionLabelTwo = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var actionLabelThree = UILabel(frame: CGRectMake(0, 0, 200, 21))
     var actionLabelDate = UILabel(frame: CGRectMake(0, 0, 200, 21))
-    var hBarLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    var hBarLabelOne = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    var hBarLabelTwo = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    var hBarLabelThree = UILabel(frame: CGRectMake(0, 0, 200, 21))
+
     var quoteLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
 
 
@@ -76,18 +79,18 @@ class ActionsTodayViewController: UIViewController {
         
         
         //icon for done action
-        let actionImageDoneFile = "icon-star-80"
+        let actionImageDoneFile = "ta-complete-icon"
         let actionImageDone = UIImage(named: actionImageDoneFile)
         
         //icon for not done action
-        let actionImageNotDoneFile = "icon-undone-80-fade"
+        let actionImageNotDoneFile = "ta-incomplete"
         let actionImageNotDone = UIImage(named: actionImageNotDoneFile)
         
         
         
         //icon for forward action
-        let actionViewFile = "icon-arrow"
-        let actionViewImage = UIImage(named: actionViewFile)
+        //let actionViewFile = "icon-arrow"
+        //let actionViewImage = UIImage(named: actionViewFile)
         
         
         
@@ -112,11 +115,18 @@ class ActionsTodayViewController: UIViewController {
         actionLabelDate.backgroundColor = UIColor.appColorBackground()
         actionLabelDate.textColor = UIColor.appGhostWhite()
         
-        hBarLabel.backgroundColor = UIColor.appGrayFade()
+        hBarLabelOne.backgroundColor = UIColor.appActionOneDarker()
+        hBarLabelTwo.backgroundColor = UIColor.appActionTwoDarker()
+        hBarLabelThree.backgroundColor = UIColor.appActionThreeDarker()
+
         
-        quoteLabel.backgroundColor = UIColor.appGrayFade()
+//        quoteLabel.backgroundColor = UIColor.appGrayFade()
+        quoteLabel.backgroundColor = UIColor.appMidnight()
+
         quoteLabel.textAlignment = NSTextAlignment.Center
-        quoteLabel.textColor = UIColor.appDustyWall()
+//        quoteLabel.textColor = UIColor.appDustyWall()
+        quoteLabel.textColor = UIColor.appGhostWhite()
+
         quoteLabel.numberOfLines = 6
         quoteLabel.adjustsFontSizeToFitWidth = true
         quoteLabel.font = UIFont (name: "HelveticaNeue", size: 14)
@@ -131,9 +141,9 @@ class ActionsTodayViewController: UIViewController {
         let actionIconTwo = UIImageView(image: actionTwoStatusIcon)
         let actionIconThree = UIImageView(image: actionThreeStatusIcon)
         
-        let actionViewOne = UIImageView(image: actionViewImage!)
-        let actionViewTwo = UIImageView(image: actionViewImage!)
-        let actionViewThree = UIImageView(image: actionViewImage!)
+      //  let actionViewOne = UIImageView(image: actionViewImage!)
+       // let actionViewTwo = UIImageView(image: actionViewImage!)
+        //let actionViewThree = UIImageView(image: actionViewImage!)
         
         actionIconOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionIconOne.contentMode = UIViewContentMode.ScaleToFill
@@ -143,7 +153,8 @@ class ActionsTodayViewController: UIViewController {
         actionIconThree.contentMode = UIViewContentMode.ScaleToFill
         
         
-        actionViewOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        /*
+actionViewOne.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionViewOne.contentMode = UIViewContentMode.ScaleToFill
         actionViewOne.alpha = 0.6
         actionViewTwo.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
@@ -152,7 +163,7 @@ class ActionsTodayViewController: UIViewController {
         actionViewThree.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         actionViewThree.contentMode = UIViewContentMode.ScaleToFill
         actionViewThree.alpha = 0.6
-        
+        */
         //create 3 icons spaces
         
         
@@ -170,11 +181,13 @@ class ActionsTodayViewController: UIViewController {
         self.view.addSubview(actionLabelTwo)
         self.view.addSubview(actionLabelThree)
         self.view.addSubview(actionLabelDate)
-        self.view.addSubview(hBarLabel)
+        self.view.addSubview(hBarLabelOne)
+        self.view.addSubview(hBarLabelTwo)
+        self.view.addSubview(hBarLabelThree)
     
-        self.view.addSubview(actionViewOne)
-        self.view.addSubview(actionViewTwo)
-        self.view.addSubview(actionViewThree)
+       // self.view.addSubview(actionViewOne)
+        //self.view.addSubview(actionViewTwo)
+       // self.view.addSubview(actionViewThree)
         self.view.addSubview(quoteLabel)
         
         
@@ -193,13 +206,13 @@ class ActionsTodayViewController: UIViewController {
         
     
         layout(actionIconOne, actionButtonOne) { imageView, actionButtonOne in
-            imageView.width  == 40
-            imageView.height == 40
-            imageView.top == actionButtonOne.centerY - 20
+            imageView.width  == 50
+            imageView.height == 50
+            imageView.centerY == actionButtonOne.centerY
             imageView.left == imageView.superview!.left + 10
         }
         
-        layout(actionViewOne, actionButtonOne) { imageView, actionButtonOne in
+      /*  layout(actionViewOne, actionButtonOne) { imageView, actionButtonOne in
             imageView.width  == 20
             imageView.height == 20
             imageView.top == actionButtonOne.centerY - 10
@@ -220,12 +233,28 @@ class ActionsTodayViewController: UIViewController {
             imageView.top == actionButtonThree.centerY - 10
             imageView.right == imageView.superview!.right - 10
         }
+        */
         
+     
+layout(hBarLabelOne, actionButtonOne, view) { hBarLabel, actionButtonOne, view in
+            hBarLabel.width == 10
+            hBarLabel.height == (view.height/4)
+            hBarLabel.right == view.right
+            hBarLabel.top == actionButtonOne.top
+        }
         
-        layout(hBarLabel, view) { hBarLabel, view in
-            hBarLabel.width == 1
-            hBarLabel.height == (view.height/4) * 3
-            hBarLabel.left == view.left + 60
+        layout(hBarLabelTwo, actionButtonTwo, view) { hBarLabel, actionButtonTwo, view in
+            hBarLabel.width == 10
+            hBarLabel.height == (view.height/4)
+            hBarLabel.right == view.right
+            hBarLabel.top == actionButtonTwo.top
+        }
+        
+        layout(hBarLabelThree, actionButtonThree, view) { hBarLabel, actionButtonThree, view in
+            hBarLabel.width == 10
+            hBarLabel.height == (view.height/4)
+            hBarLabel.right == view.right
+            hBarLabel.top == actionButtonThree.top
         }
       
         
@@ -253,33 +282,34 @@ class ActionsTodayViewController: UIViewController {
         
         
         layout(actionIconTwo, actionButtonTwo) { imageView, actionButtonTwo in
-            imageView.width  == 40
-            imageView.height == 40
-            imageView.top == actionButtonTwo.centerY - 20
+            imageView.width  == 50
+            imageView.height == 50
+            imageView.centerY == actionButtonTwo.centerY
             imageView.left == imageView.superview!.left + 10
         }
         
         layout(actionIconThree, actionButtonThree) { imageView, actionButtonThree in
-            imageView.width  == 40
-            imageView.height == 40
-            imageView.top == actionButtonThree.centerY - 20
+            imageView.width  == 50
+            imageView.height == 50
+            imageView.centerY == actionButtonThree.centerY
             imageView.left == imageView.superview!.left + 10
         }
         
         layout(actionLabelOne, actionButtonOne, view) {actionLabelOne, actionButtonOne, view in
-            actionLabelOne.top == actionButtonOne.centerY - 10
+            actionLabelOne.centerY == actionButtonOne.centerY
             actionLabelOne.left == view.left + 80
             actionLabelOne.width == (view.width / 6) * 3.8
         }
         
         layout(actionLabelTwo, actionButtonTwo, view) {actionLabelTwo, actionButtonTwo, view in
-            actionLabelTwo.top == actionButtonTwo.centerY - 10
+            actionLabelTwo.centerY == actionButtonTwo.centerY
             actionLabelTwo.left == view.left + 80
             actionLabelTwo.width == (view.width / 6) * 3.8
         }
         
         layout(actionLabelThree, actionButtonThree, view) {actionLabelThree, actionButtonThree, view in
-            actionLabelThree.top == actionButtonThree.centerY - 10
+           /// actionLabelThree.top == actionButtonThree.centerY - 10
+            actionLabelThree.centerY == actionButtonThree.centerY
             actionLabelThree.left == view.left + 80
             actionLabelThree.width == (view.width / 6) * 3.8
         }
@@ -328,7 +358,7 @@ class ActionsTodayViewController: UIViewController {
         
         
         if let cdActionTitle = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionTitle") {
-            actionTitle = toString(cdActionTitle)
+            actionTitle = toString(cdActionTitle).uppercaseString
         }
         
         if let cdActionDescription = TAUsers.sharedInstance.actionDB[myDBKey]?.valueForKey("actionDescription") {
@@ -390,7 +420,10 @@ class ActionsTodayViewController: UIViewController {
                 
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
                     println("inside 1 -- \(cdActionTitle)")
-                    self.actionLabelOne.text = toString(cdActionTitle)
+                    self.actionLabelOne.text = toString(cdActionTitle).uppercaseString
+                    self.actionLabelOne.textColor = UIColor.appMidnight()
+                } else {
+                    self.actionLabelOne.textColor = UIColor.appGrayFade()
                 }
                 
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
@@ -404,8 +437,11 @@ class ActionsTodayViewController: UIViewController {
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
                     println("inside 2 -- \(cdActionTitle)")
 
-                    self.actionLabelTwo.text = toString(cdActionTitle)
+                    self.actionLabelTwo.text = toString(cdActionTitle).uppercaseString
+                }else{
+                    self.actionLabelTwo.textColor = UIColor.appGrayFade()
                 }
+                
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
                     actionTwoState = cdActionStatus as Int
                 }
@@ -416,8 +452,11 @@ class ActionsTodayViewController: UIViewController {
                 if let cdActionTitle = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") {
                     println("inside 3 -- \(cdActionTitle)")
 
-                    self.actionLabelThree.text = toString(cdActionTitle)
+                    self.actionLabelThree.text = toString(cdActionTitle).uppercaseString
+                } else {
+                    self.actionLabelThree.textColor = UIColor.appGrayFade()
                 }
+
                 if let cdActionStatus = TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionStatus") {
                     actionThreeState = cdActionStatus as Int
                 }
@@ -427,7 +466,7 @@ class ActionsTodayViewController: UIViewController {
         }
         
 
-    
+        
     //   println( TAUsers.sharedInstance.actionDB[myKey]?.valueForKey("actionTitle") as String)
         
     }
@@ -446,9 +485,9 @@ class ActionsTodayViewController: UIViewController {
     
     func cleanData(){
         // setting all items to empty on load to prevent deleted items from re-showing
-        actionLabelOne.text = ""
-        actionLabelTwo.text = ""
-        actionLabelThree.text = ""
+        actionLabelOne.text = "Tap here to add action".uppercaseString
+        actionLabelTwo.text = "Tap here to add action".uppercaseString
+        actionLabelThree.text = "Tap here to add action".uppercaseString
         actionLabelDate.text = ""
     }
     

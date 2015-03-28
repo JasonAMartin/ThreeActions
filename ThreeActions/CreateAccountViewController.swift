@@ -31,25 +31,17 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     let closeNoticeButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     var accountSpinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
     let continueButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
-
-
-
-
     
-    var emailTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
-     var passwordTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
-     var usernameTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
-
+    let emailTextField = UIViewController.textInput(placeholder: "Please enter a email", bgColor: UIColor.appLightBase())
+    let passwordTextField = UIViewController.textInput(placeholder: "Please enter a password", bgColor: UIColor.appLightBase())
+    let usernameTextField = UIViewController.textInput(placeholder: "Please enter a username", bgColor: UIColor.appLightBase())
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "endEditing:")
-        view.addGestureRecognizer(tapRecognizer)
-        
-        //icon for done action
-        let logoFile = "3Actions02"
-        let logoImage = UIImage(named: logoFile)
-        let logo = UIImageView(image: logoImage!)
+        //logo
+        let logo = UIViewController.logo()
+
         
         
         exitButton.setTitle("GO BACK", forState: .Normal)
@@ -115,21 +107,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         //make sure response panel is hidden
         errorPanelControl(false)
 
-        
-        emailTextField.backgroundColor = UIColor.appActionTwo()
-        emailTextField.placeholder = "enter your email"
-        emailTextField.layer.cornerRadius = 5.0
-        emailTextField.textAlignment = .Center
-        
-        passwordTextField.backgroundColor = UIColor.appActionTwo()
-        passwordTextField.placeholder = "enter password"
-        passwordTextField.layer.cornerRadius = 5.0
-        passwordTextField.textAlignment = .Center
-        
-        usernameTextField.backgroundColor = UIColor.appActionTwo()
-        usernameTextField.placeholder = "enter username"
-        usernameTextField.layer.cornerRadius = 5.0
-        usernameTextField.textAlignment = .Center
         
         errorPanel.hidden = true
         errorPanel.layer.cornerRadius = 5.0
@@ -354,8 +331,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    
     func loginUserAccount(#username:String, #password: String){
         
         //attempt signup
@@ -364,7 +339,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             (user: PFUser!, error: NSError!) -> Void in
             if user != nil {
                 // Do stuff after successful login.
-                self.userSignUpValid()
+                var person = TAUsers()
+                person.taNewSyncAll(self.userSignUpValid)
+               // self.userSignUpValid()
             } else {
                 // The login failed. 
                 

@@ -48,9 +48,8 @@ class SingleActionViewController: UIViewController {
         
         
         //logo
-        let logoFile = "3Actions02"
-        let logoImage = UIImage(named: logoFile)
-        let logo = UIImageView(image: logoImage!)
+        let logo = UIViewController.logo()
+
         
         
         exitButton.setTitle("GO BACK", forState: .Normal)
@@ -141,8 +140,8 @@ class SingleActionViewController: UIViewController {
         }
         
         
-        layout(actionDescriptionLabel, completeButton, view) {actionDescriptionLabel, completeButton, view in
-            actionDescriptionLabel.bottom == completeButton.top - 30
+        layout(actionDescriptionLabel, actionTitleLabel, view) {actionDescriptionLabel, actionTitleLabel, view in
+            actionDescriptionLabel.top == actionTitleLabel.bottom + 25
             actionDescriptionLabel.width == view.width - 40
             actionDescriptionLabel.centerX == view.centerX
         }

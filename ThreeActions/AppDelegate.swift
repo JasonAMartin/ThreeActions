@@ -15,16 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
         Parse.enableLocalDatastore()
         Parse.setApplicationId("OyzZg8q2PQn84b2otJSjlN39xQAdK99Q6juHyVdH", clientKey:"PGXprzLPJxB3J3UEhMgQY54Hiw5zA9qNjv3rFzWN")
         
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        // Override point for customization after application launch.
         return true
     }
-    
-    
     
 
     func applicationWillResignActive(application: UIApplication) {

@@ -102,6 +102,31 @@ class TAUsers {
     
     func taNewSyncAll(completion: (() -> Void)!){
         
+        
+        
+        //test msgs
+        
+        
+        
+        
+        
+        var msgQuery = PFQuery(className:"Messages")
+        msgQuery.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("SPECIAL: Successfully retrieved \(objects.count) actions.")
+                // Do something with the found objects
+                for object in objects {
+                    println(object["Message"])
+                    
+                }
+            }
+        }
+        
+        
+
+        
         //1. get all objects
         //2. dump local db
         //3. populate

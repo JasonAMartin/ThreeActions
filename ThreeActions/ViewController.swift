@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     var syncSpinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
     var syncNotice = UILabel(frame: CGRectMake(0, 0, 200, 21))
     
-    
    //--> @IBOutlet weak var syncNotice: UILabel!
     
     func userDataSyncComplete(){
@@ -63,11 +62,13 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        let logo = UIViewController.logo()
+
         
         //icon for done action
-        let logoFile = "3Actions02"
-        let logoImage = UIImage(named: logoFile)
-        let logo = UIImageView(image: logoImage!)
+       // let logoFile = "ThreeActionsLogoV2"
+        //let logoImage = UIImage(named: logoFile)
+        //let logo = UIImageView(image: logoImage!)
 
         
         
@@ -107,7 +108,7 @@ class ViewController: UIViewController {
         
         layout(logo,view) {logo, view in
             logo.width == (view.width - 40)
-            logo.height == (view.height / 3)
+            logo.height == (view.height / 3) + 40
             logo.top == view.top + 60
             logo.left == view.left + 20
             logo.right == view.right - 20
@@ -136,8 +137,6 @@ class ViewController: UIViewController {
             syncSpinner.top == logo.bottom + 40
             syncSpinner.centerX == view.centerX
         }
-  
-        
         
         syncUserData()
     }

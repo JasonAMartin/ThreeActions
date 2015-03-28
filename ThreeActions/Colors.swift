@@ -97,4 +97,20 @@ extension UIColor {
     class func appGrayFade() -> UIColor {
         return UIColor(red: 130.0/255.0, green: 109.0/255.0, blue: 118.0/255.0, alpha: 0.3)
     }
+    
+    class func appOffWhite() -> UIColor {
+        return UIColor(red: 230.0/255.0, green: 218.0/255.0, blue: 224.0/255.0, alpha: 1)
+    }
+    
+    class func appActionOneDarker() -> UIColor {
+        return UIColor(red: 159.0/255.0, green: 107.0/255.0, blue: 130.0/255.0, alpha: 1)
+    }
+    
+    class func appActionTwoDarker() -> UIColor {
+        return UIColor(red: 213.0/255.0, green: 167.0/255.0, blue: 153.0/255.0, alpha: 1)
+    }
+    
+    class func appActionThreeDarker() -> UIColor {
+        return UIColor(red: 217.0/255.0, green: 198.0/255.0, blue: 164.0/255.0, alpha: 1)
+    }
 }

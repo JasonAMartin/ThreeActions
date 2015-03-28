@@ -13,7 +13,7 @@ extension UIViewController {
     
     class func  buttonCreator(button:UIButton){
         //plum
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
         button.layer.borderWidth = 0.5
         button.backgroundColor = UIColor.appColorButtonNormal()
@@ -24,7 +24,7 @@ extension UIViewController {
     
     class func  buttonCreatorAction(button:UIButton){
         //sage
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
         button.layer.borderWidth = 0.5
         button.backgroundColor = UIColor.appColorButtonNormal()
@@ -35,7 +35,7 @@ extension UIViewController {
     
     class func  buttonCreatorDismiss(button:UIButton){
         //midnight
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
         button.layer.borderWidth = 0.5
         button.backgroundColor = UIColor.appColorButtonNormal()
@@ -47,16 +47,32 @@ extension UIViewController {
     
     class func  actionSectionButton(button:UIButton){
         //buttons for the 3 action section in Today view
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
         button.layer.borderWidth = 0.5        
     }
     
     class func roundedButton(button:UIButton){
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor.appColorButtonNormal().CGColor
         button.layer.borderWidth = 0.1
     }
     
+    class func logo() -> UIImageView{
+        let logoFile = "ThreeActionsLogoV2"
+        let logoImage = UIImage(named: logoFile)
+        let logo = UIImageView(image: logoImage!)
+        logo.sizeToFit()
+        return logo
+    }
+    
+    class func textInput(#placeholder: String, #bgColor: UIColor) -> UITextField {
+        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00))
+        textField.backgroundColor = bgColor
+        textField.placeholder = placeholder
+        textField.layer.cornerRadius = 15.0
+        textField.textAlignment = .Center
+        return textField
+    }
     
 }

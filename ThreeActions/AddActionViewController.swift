@@ -102,6 +102,9 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         preButtonWarning.textColor = UIColor.appMidnight()
         preButtonWarning.textAlignment = .Center
 
+    
+        actionDescriptionTextField.text = "Optional: enter a description"
+        actionDescriptionTextField.textColor = UIColor.lightGrayColor()
         
         //add items to view chooseActionColor1
         
@@ -250,8 +253,18 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     func textViewDidEndEditing(textView: UITextView) -> Bool {
+        if(actionDescriptionTextField.text == ""){
+            actionDescriptionTextField.text = "Optional: enter a description"
+        }
+        
         self.view.endEditing(true)
         return false
+    }
+    
+    func textViewShouldBeginEditing(textView: UITextView) {
+        if(actionDescriptionTextField.text == "Optional: enter a description") {
+            actionDescriptionTextField.text = nil
+        }
     }
     
     func didTapView(){

@@ -26,7 +26,6 @@
 		40687E841A98E36C005673D1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E831A98E36C005673D1 /* MobileCoreServices.framework */; };
 		40687E861A98E372005673D1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E851A98E372005673D1 /* QuartzCore.framework */; };
 		40687E881A98E37C005673D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E871A98E37C005673D1 /* Security.framework */; };
-		40687E8A1A98E381005673D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E891A98E381005673D1 /* StoreKit.framework */; };
 		40687E8C1A98E38F005673D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E8B1A98E38F005673D1 /* SystemConfiguration.framework */; };
 		40687E8E1A98E397005673D1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E8D1A98E397005673D1 /* libz.dylib */; };
 		40687E901A98E3A5005673D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */; };
@@ -68,6 +67,7 @@
 		40BD44181AB7B7EF0048A170 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD44031AB7B7EF0048A170 /* ViewUtils.swift */; };
 		40C89F4D1A9C1FD3008F0601 /* ThreeActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C89F4C1A9C1FD3008F0601 /* ThreeActionsViewController.swift */; };
 		40C89F501A9C2A92008F0601 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C89F4E1A9C2A92008F0601 /* Main.storyboard */; };
+		40DF5F9F1AC24A1700638D3C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF5F9E1AC24A1700638D3C /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +140,6 @@
 		40687E831A98E36C005673D1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		40687E851A98E372005673D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40687E871A98E37C005673D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		40687E891A98E381005673D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		40687E8B1A98E38F005673D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40687E8D1A98E397005673D1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -182,6 +181,7 @@
 		40BD44031AB7B7EF0048A170 /* ViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		40C89F4C1A9C1FD3008F0601 /* ThreeActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeActionsViewController.swift; sourceTree = "<group>"; };
 		40C89F4F1A9C2A92008F0601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40DF5F9E1AC24A1700638D3C /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,6 @@
 				40687E8E1A98E397005673D1 /* libz.dylib in Frameworks */,
 				40687E8C1A98E38F005673D1 /* SystemConfiguration.framework in Frameworks */,
 				40AE07841AB7D797008FAAB7 /* Snap.framework in Frameworks */,
-				40687E8A1A98E381005673D1 /* StoreKit.framework in Frameworks */,
 				40687E881A98E37C005673D1 /* Security.framework in Frameworks */,
 				40687E861A98E372005673D1 /* QuartzCore.framework in Frameworks */,
 				40687E841A98E36C005673D1 /* MobileCoreServices.framework in Frameworks */,
@@ -226,7 +225,6 @@
 				40687E8F1A98E3A5005673D1 /* libsqlite3.dylib */,
 				40687E8D1A98E397005673D1 /* libz.dylib */,
 				40687E8B1A98E38F005673D1 /* SystemConfiguration.framework */,
-				40687E891A98E381005673D1 /* StoreKit.framework */,
 				40687E871A98E37C005673D1 /* Security.framework */,
 				40687E851A98E372005673D1 /* QuartzCore.framework */,
 				40687E831A98E36C005673D1 /* MobileCoreServices.framework */,
@@ -265,6 +263,7 @@
 				4085A6771AA2A18600B59E99 /* NetworkViewController.swift */,
 				4085A6411AA2350600B59E99 /* UserData.swift */,
 				401201291AAB6A5200AFC69A /* TAUserData.swift */,
+				40DF5F9E1AC24A1700638D3C /* CalendarViewController.swift */,
 				40827F921ABDC57D00118EC8 /* SettingsViewController.swift */,
 				40B88BD01A998917008F7B5B /* LoginAccountViewController.swift */,
 				40687E911A98E7B7005673D1 /* ResponseDictionary.swift */,
@@ -407,6 +406,12 @@
 				TargetAttributes = {
 					40687E471A98E021005673D1 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 26AZNUFHS3;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					40687E5C1A98E021005673D1 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -503,6 +508,7 @@
 				40978E4F1ABF67CB00FDDBA0 /* QuoteDictionary.swift in Sources */,
 				40B88BC91A991297008F7B5B /* Colors.swift in Sources */,
 				40BD440E1AB7B7EF0048A170 /* Expression.swift in Sources */,
+				40DF5F9F1AC24A1700638D3C /* CalendarViewController.swift in Sources */,
 				40687E501A98E021005673D1 /* ViewController.swift in Sources */,
 				40BD44081AB7B7EF0048A170 /* ConstraintGroup.swift in Sources */,
 				40BD44181AB7B7EF0048A170 /* ViewUtils.swift in Sources */,
@@ -648,6 +654,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -656,6 +664,7 @@
 				INFOPLIST_FILE = ThreeActions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ThreeActions/ThreeActions-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -666,6 +675,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,6 +685,7 @@
 				INFOPLIST_FILE = ThreeActions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ThreeActions/ThreeActions-Bridging-Header.h";
 			};
 			name = Release;
