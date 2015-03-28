@@ -25,9 +25,9 @@ class SettingsViewController: UIViewController {
         
         
         logoutButton.setTitle("LOGOUT", forState: .Normal)
-        logoutButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 18)
+        logoutButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 14)
         logoutButton.addTarget(self, action: "logoutUser:", forControlEvents: UIControlEvents.TouchUpInside)
-        
+        UIViewController.buttonCreatorAction(logoutButton)
         
         
         logoutLabel.text = "Logout of your account"
@@ -46,12 +46,14 @@ class SettingsViewController: UIViewController {
         layout(logoutButton, view) {logoutButton, view in
             logoutButton.right == view.right - 20
             logoutButton.top == view.top + 60
+            logoutButton.width == view.width/4
         }
         
-        layout(logoutLabel, view) {logoutLabel, view in
+        layout(logoutLabel, logoutButton, view) {logoutLabel, logoutButton, view in
             logoutLabel.top == view.top + 60
-            logoutLabel.width == 200
-            logoutLabel.left == view.left + 20
+            logoutLabel.width == (view.width/4) * 3
+            logoutLabel.left == view.left + 10
+            logoutLabel.centerY == logoutButton.centerY
         }
         
         

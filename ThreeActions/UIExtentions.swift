@@ -75,4 +75,13 @@ extension UIViewController {
         return textField
     }
     
+    class func textView(#bgColor: UIColor) -> UITextView {
+        let textView =  UITextView(frame: CGRect(x: 0, y:0, width: 200.00, height:40.00))
+        textView.backgroundColor = bgColor
+        textView.layer.cornerRadius = 15.0
+        textView.textAlignment = .Left
+        textView.textColor = UIColor.appMidnight()
+        return textView
+    }
+    
 }

@@ -22,16 +22,13 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     let actionColorButton2:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     let actionColorButton3:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
     let createActionButton:UIButton = UIButton(frame: CGRectMake(100, 400, 100, 50))
-    let actionTitleTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 40.00));
-    let actionDescriptionTextField = UITextView(frame: CGRectMake(20.0, 30.0, 300.0, 30.0))
+    let actionTitleTextField = UIViewController.textInput(placeholder: "Enter an action title", bgColor: UIColor.appGhostWhiteFade())
+    let actionDescriptionTextField = UIViewController.textView(bgColor: UIColor.appGhostWhiteFade())
     let preButtonWarning = UILabel(frame: CGRectMake(0, 0, 200, 21))
     let actionDatePicker = UIDatePicker(frame: CGRectMake(0, 0, 200, 21))
-
-
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         //tap for keyboard
         let tapRecognizer = UITapGestureRecognizer()
@@ -39,7 +36,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         self.view.addGestureRecognizer(tapRecognizer)
         //end tap for keyboard
         
-        view.backgroundColor = UIColor.appShadyGhost()
+        isColorSelected()
+
 
         if(passActionColor == 1){
             view.backgroundColor = UIColor.appActionOne()
@@ -86,18 +84,8 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         createActionButton.hidden = true
         UIViewController.buttonCreatorAction(createActionButton)
         createActionButton.addTarget(self, action: "createAction:", forControlEvents: UIControlEvents.TouchUpInside)
-
         
-        actionTitleTextField.backgroundColor = UIColor.appGhostWhiteFade()
-        actionTitleTextField.placeholder = "Enter action title"
-        actionTitleTextField.layer.cornerRadius = 5.0
-        actionTitleTextField.textAlignment = .Center
-        
-        actionDescriptionTextField.backgroundColor = UIColor.appGhostWhiteFade()
-        actionDescriptionTextField.layer.cornerRadius = 5.0
-        actionDescriptionTextField.textAlignment = .Left
-        
-        preButtonWarning.text = "Complete required options . . ."
+        preWarning()
         preButtonWarning.font =  UIFont(name: "HelveticaNeue", size: 16)
         preButtonWarning.textColor = UIColor.appMidnight()
         preButtonWarning.textAlignment = .Center
@@ -265,7 +253,9 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         if(actionDescriptionTextField.text == "Optional: enter a description") {
             actionDescriptionTextField.text = nil
         }
+        actionDescriptionTextField.textColor = UIColor.appMidnight()
     }
+    
     
     func didTapView(){
         self.view.endEditing(true)
@@ -273,6 +263,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     func chooseActionColor1(sender: AnyObject) {
         aColor = 1
+        preWarning()
         view.backgroundColor = UIColor.appActionOne()
         displayButton()
         
@@ -283,6 +274,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
 
     func chooseActionColor2(sender: AnyObject) {
         aColor = 2
+        preWarning()
         view.backgroundColor = UIColor.appActionTwo()
         displayButton()
         
@@ -293,6 +285,7 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     func chooseActionColor3(sender: AnyObject) {
         aColor = 3
+        preWarning()
         view.backgroundColor = UIColor.appActionThree()
         displayButton()
         actionTitleTextField.backgroundColor = UIColor.appGrayFade()
@@ -300,6 +293,17 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
         preButtonWarning.textColor = UIColor.appMidnight()
     }
     
+    func isColorSelected(){
+        if(aColor == 1) {
+            view.backgroundColor = UIColor.appActionOne()
+        } else if (aColor == 2) {
+            view.backgroundColor = UIColor.appActionTwo()
+        } else if (aColor == 3){
+            view.backgroundColor = UIColor.appActionThree()
+        } else {
+            view.backgroundColor = UIColor.appShadyGhost()
+        }
+    }
     
     func fieldEntry(sender: AnyObject) {
         let myField = actionTitleTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -359,5 +363,13 @@ class AddActionViewController: UIViewController, UITextFieldDelegate, UITextView
     
     func removeThisModal() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func preWarning(){
+        if(aColor != 0){
+            preButtonWarning.text = "Complete required options . . .".uppercaseString
+        } else {
+            preButtonWarning.text = "Select an action color . . .".uppercaseString
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4012012A1AAB6A5200AFC69A /* TAUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401201291AAB6A5200AFC69A /* TAUserData.swift */; };
+		401826051AC65122001B8AA3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401826041AC65122001B8AA3 /* TabBar.swift */; };
 		40687E4E1A98E021005673D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E4D1A98E021005673D1 /* AppDelegate.swift */; };
 		40687E501A98E021005673D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40687E4F1A98E021005673D1 /* ViewController.swift */; };
 		40687E551A98E021005673D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40687E541A98E021005673D1 /* Images.xcassets */; };
@@ -117,6 +118,7 @@
 
 /* Begin PBXFileReference section */
 		401201291AAB6A5200AFC69A /* TAUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAUserData.swift; sourceTree = "<group>"; };
+		401826041AC65122001B8AA3 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		40687E481A98E021005673D1 /* ThreeActions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeActions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40687E4C1A98E021005673D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40687E4D1A98E021005673D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				4085A63D1AA15EDF00B59E99 /* ActionsTodayViewController.swift */,
 				40827F8F1ABD020E00118EC8 /* SingleActionViewController.swift */,
 				40C89F4E1A9C2A92008F0601 /* Main.storyboard */,
+				401826041AC65122001B8AA3 /* TabBar.swift */,
 				4085A6771AA2A18600B59E99 /* NetworkViewController.swift */,
 				4085A6411AA2350600B59E99 /* UserData.swift */,
 				401201291AAB6A5200AFC69A /* TAUserData.swift */,
@@ -506,6 +509,7 @@
 				40BD44151AB7B7EF0048A170 /* Property.swift in Sources */,
 				4085A6781AA2A18600B59E99 /* NetworkViewController.swift in Sources */,
 				40978E4F1ABF67CB00FDDBA0 /* QuoteDictionary.swift in Sources */,
+				401826051AC65122001B8AA3 /* TabBar.swift in Sources */,
 				40B88BC91A991297008F7B5B /* Colors.swift in Sources */,
 				40BD440E1AB7B7EF0048A170 /* Expression.swift in Sources */,
 				40DF5F9F1AC24A1700638D3C /* CalendarViewController.swift in Sources */,

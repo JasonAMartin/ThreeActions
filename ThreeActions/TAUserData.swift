@@ -34,6 +34,7 @@ class TAUsers {
     
     var userAccount: String
     var actionDB = [String: AnyObject]()
+    var actionCalendarDB = [Int: AnyObject]()
     
     
     //INIT
@@ -52,9 +53,19 @@ class TAUsers {
         
         if(actionDate != "" && actionColor != ""){
             var newKey = actionDate+"-"+actionColor
-                //put in dictionary
-                ///TAUsers.sharedInstance.actionDB.updateValue(data, forKey: newKey)
+
+            //put in dictionary
+            ///TAUsers.sharedInstance.actionDB.updateValue(data, forKey: newKey)
+            
             TAUsers.sharedInstance.actionDB[newKey] = data
+            
+            var secondKey = newKey.stringByReplacingOccurrencesOfString("/", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            
+                secondKey =  secondKey.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            
+            if let newKey = secondKey.toInt(){
+                TAUsers.sharedInstance.actionCalendarDB[newKey] = data
+            }
         }
     
     }
@@ -103,30 +114,6 @@ class TAUsers {
     func taNewSyncAll(completion: (() -> Void)!){
         
         
-        
-        //test msgs
-        
-        
-        
-        
-        
-        var msgQuery = PFQuery(className:"Messages")
-        msgQuery.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                // The find succeeded.
-                NSLog("SPECIAL: Successfully retrieved \(objects.count) actions.")
-                // Do something with the found objects
-                for object in objects {
-                    println(object["Message"])
-                    
-                }
-            }
-        }
-        
-        
-
-        
         //1. get all objects
         //2. dump local db
         //3. populate
@@ -137,6 +124,7 @@ class TAUsers {
         //grab objects and populate new local
         var query = PFQuery(className:"UserActions")
         query.whereKey("owner", equalTo:userAccount)
+        query.orderByAscending("actionDate") //sort by date ascending, which helps the calendar VC display data
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
@@ -145,9 +133,7 @@ class TAUsers {
                 // Do something with the found objects
                 for object in objects {
                     object.pinInBackground()
-                    
                     //add this for singleton
-                    
                     self.setInstanceDB(data: object)
                  //   println(object.objectId)
                     

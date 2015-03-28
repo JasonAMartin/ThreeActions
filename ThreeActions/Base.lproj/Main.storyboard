@@ -38,9 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add" image="icon-add-white" id="VEF-mS-bpG">
-                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Add" image="icon-add-white" id="VEF-mS-bpG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqO-hM-bjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,9 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Today" image="icon-today-white" id="8Bm-ZZ-dTe">
-                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" tag="1" title="Today" image="icon-today-white" id="8Bm-ZZ-dTe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhK-Fy-pFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,9 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Messages" image="icon-star-80" id="2dr-SV-7xZ">
-                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" tag="1" title="Messages" image="icon-star-80" id="2dr-SV-7xZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unf-yk-Xpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,9 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="icon-gear-white" id="o0Y-Hj-TZZ">
-                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Settings" image="icon-gear-white" id="o0Y-Hj-TZZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9o-eH-96p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,9 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" image="icon-cal-80-white" id="Hf5-bC-SEL">
-                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="icon-cal-80-white" id="Hf5-bC-SEL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auu-2e-HRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,10 +137,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="ThreeActionsMainApp" title="MainAppTabBarController" id="E4a-1r-pfW" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="Enb-fg-eHN">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="Enb-fg-eHN" customClass="TabBar" customModule="ThreeActions" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.2145463675" green="0.023200840560000002" blue="0.023099831880000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
                         <color key="tintColor" red="0.84313725490000002" green="0.71372549019999998" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" red="1" green="0.39802631579999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -11,6 +11,13 @@ import QuartzCore
 
 class SingleActionViewController: UIViewController {
     
+    enum CallingVC {
+        case Today, Calendar
+    }
+    
+    var callingViewController = CallingVC.Today //set default to Today actions VC
+
+    
     var actionColor = 0
     var actionTitle = ""
     var actionDescription = ""
@@ -33,6 +40,10 @@ class SingleActionViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        if callingViewController == .Calendar {
+                println("CALENDAR CALLED ME !!!!")
+        }
+        
         //set BG color
         if(actionColor==1) {
             view.backgroundColor = UIColor.appActionOne()
